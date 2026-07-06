@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CB Realty North Hills — Office Calendar</title>
+<style>
+  :root{
+    --navy:#012169;
+    --navy-mid:#35528C;
+    --navy-pale:#7C93BE;
+    --slate:#5B6472;
+    --charcoal:#2B2F36;
+    --bg:#F4F5F7;
+    --card:#FFFFFF;
+    --border:#DCE0E6;
+    --text:#1A1D22;
+    --text-muted:#5B6472;
+    --error:#B3261E;
+    --error-bg:#FCEBEA;
+    --success:#1E6B3C;
+    --success-bg:#E9F5EE;
+    --warn:#8A6D0B;
+    --warn-bg:#FCF4DA;
+    --warn-border:#EBD9A0;
+    --font-display:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    --font-body:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    --font-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:var(--font-body);}
+  body{min-height:100vh;}
+  header.app-header{
+    background:var(--navy);color:#fff;padding:14px 20px;
+    display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  }
+  .brand-block{line-height:1.2;}
+  .brand-eyebrow{
+    font-family:var(--font-display);font-weight:700;font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--navy-pale);
+  }
+  .brand-title{
+    font-family:var(--font-display);font-weight:700;font-size:19px;letter-spacing:.02em;
+  }
+  .header-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  button{
+    font-family:var(--font-body);cursor:pointer;border-radius:6px;border:1px solid transparent;
+    font-size:14px;padding:8px 14px;transition:background .12s,border-color .12s;
+  }
+  button:focus-visible{outline:2px solid #fff;outline-offset:2px;}
+  .btn-ghost-on-navy{
+    background:transparent;border:1px solid rgba(255,255,255,.45);color:#fff;
+  }
+  .btn-ghost-on-navy:hover{background:rgba(255,255,255,.12);}
+  .btn-primary{background:var(--navy);color:#fff;border:1px solid var(--navy);}
+  .btn-primary:hover{background:#01184f;}
+  .btn-secondary{background:#fff;color:var(--navy);border:1px solid var(--border);}
+  .btn-secondary:hover{background:#F0F2F5;}
+  .btn-danger{background:#fff;color:var(--error);border:1px solid #E8B9B5;}
+  .btn-danger:hover{background:var(--error-bg);}
+  .btn-sm{padding:5px 10px;font-size:13px;}
+
+  #banner-area{position:sticky;top:0;z-index:50;}
+  .banner{
+    padding:10px 20px;font-size:14px;display:flex;align-items:center;justify-content:space-between;gap:12px;
+    border-bottom:1px solid var(--border);
+  }
+  .banner.error{background:var(--error-bg);color:var(--error);}
+  .banner.success{background:var(--success-bg);color:var(--success);}
+  .banner.info{background:#EEF1F7;color:var(--navy);}
+  .banner strong{font-weight:700;}
+  .banner-actions{display:flex;gap:8px;flex-shrink:0;}
+
+  /* Unpublished-changes bar */
+  #publish-bar:empty{display:none;}
+  .publish-bar{
+    background:var(--warn-bg);border-bottom:1px solid var(--warn-border);color:var(--warn);
+    padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    font-size:14px;
+  }
+  .publish-bar .pb-msg{font-weight:600;}
+  .publish-bar .pb-actions{display:flex;gap:8px;flex-shrink:0;}
+  .btn-publish{background:var(--warn);color:#fff;border:1px solid var(--warn);}
+  .btn-publish:hover{background:#6f5709;}
+
+  main{max-width:960px;margin:0 auto;padding:20px;}
+
+  .toolbar{
+    display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:10px;
+  }
+  .month-nav{display:flex;align-items:center;gap:10px;}
+  .month-label{font-family:var(--font-display);font-weight:700;font-size:20px;min-width:190px;text-align:center;}
+  .nav-arrow{
+    background:#fff;border:1px solid var(--border);color:var(--navy);width:34px;height:34px;
+    border-radius:6px;font-size:16px;line-height:1;padding:0;display:flex;align-items:center;justify-content:center;
+  }
+  .nav-arrow:hover{background:#F0F2F5;}
+  .toolbar-right{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+
+  .cal-grid{background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+  .cal-weekdays,.cal-week{display:grid;grid-template-columns:repeat(7,1fr);}
+  .cal-weekdays div{
+    font-family:var(--font-display);font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--text-muted);text-align:center;padding:10px 4px;border-bottom:1px solid var(--border);background:#FAFBFC;
+  }
+  .cal-day{
+    min-height:92px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);
+    padding:6px;cursor:pointer;position:relative;background:#fff;display:flex;flex-direction:column;gap:4px;
+  }
+  .cal-day:hover{background:#F7F9FC;}
+  .cal-day.empty{background:#FAFBFC;cursor:default;}
+  .cal-day.empty:hover{background:#FAFBFC;}
+  .cal-week .cal-day:nth-child(7n){border-right:none;}
+  .day-num{font-weight:700;font-size:13px;color:var(--text);}
+  .cal-day.is-today .day-num{
+    background:var(--navy);color:#fff;border-radius:50%;width:22px;height:22px;
+    display:flex;align-items:center;justify-content:center;font-size:12px;
+  }
+  .day-chip{
+    font-size:11px;padding:2px 5px;border-radius:4px;color:#fff;white-space:nowrap;overflow:hidden;
+    text-overflow:ellipsis;font-weight:600;
+  }
+  .day-more{font-size:11px;color:var(--text-muted);font-weight:600;padding:0 2px;}
+
+  .cat-BEST_HOUR{background:var(--navy);}
+  .cat-TRAINING{background:var(--navy-mid);}
+  .cat-MEETING{background:var(--slate);}
+  .cat-OTHER{background:var(--charcoal);}
+
+  .cal-loading,.cal-empty-note{padding:40px 20px;text-align:center;color:var(--text-muted);font-size:14px;}
+
+  /* Modal */
+  .overlay{
+    position:fixed;inset:0;background:rgba(10,14,22,.5);display:none;align-items:flex-start;justify-content:center;
+    padding:24px 16px;z-index:100;overflow-y:auto;
+  }
+  .overlay.open{display:flex;}
+  .modal{
+    background:#fff;border-radius:10px;width:100%;max-width:560px;margin-top:24px;
+    box-shadow:0 12px 40px rgba(0,0,0,.25);
+  }
+  .modal-header{
+    display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border);
+  }
+  .modal-header h2{font-family:var(--font-display);font-size:17px;margin:0;font-weight:700;}
+  .modal-close{background:none;border:none;font-size:20px;color:var(--text-muted);padding:2px 8px;}
+  .modal-close:hover{color:var(--text);}
+  .modal-body{padding:16px 20px;max-height:70vh;overflow-y:auto;}
+  .modal-footer{padding:14px 20px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px;}
+
+  .event-row{
+    border:1px solid var(--border);border-radius:8px;padding:12px;margin-bottom:10px;
+  }
+  .event-row-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;}
+  .event-title{font-weight:700;font-size:15px;margin:0 0 2px 0;word-break:break-word;}
+  .event-meta{font-size:12px;color:var(--text-muted);display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:4px;}
+  .cat-tag{
+    display:inline-block;font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+    color:#fff;padding:2px 7px;border-radius:4px;
+  }
+  .event-notes{font-size:13px;color:var(--text);white-space:pre-wrap;margin:6px 0 0 0;}
+  .event-actions{display:flex;gap:6px;flex-shrink:0;}
+  .event-link-btn{
+    display:inline-block;margin-top:8px;font-size:13px;font-weight:600;color:var(--navy);
+    text-decoration:none;border:1px solid var(--navy-pale);padding:5px 10px;border-radius:6px;
+  }
+  .event-link-btn:hover{background:#EEF1F7;}
+
+  .no-events{color:var(--text-muted);font-size:14px;padding:8px 0 16px 0;}
+
+  form.event-form label,.field-label{
+    display:block;font-size:12px;font-weight:700;color:var(--text-muted);text-transform:uppercase;
+    letter-spacing:.05em;margin:14px 0 5px 0;
+  }
+  form.event-form label:first-child{margin-top:0;}
+  form.event-form input[type=text],
+  form.event-form input[type=url],
+  form.event-form select,
+  form.event-form textarea{
+    width:100%;padding:9px 10px;border:1px solid var(--border);border-radius:6px;font-size:14px;
+    font-family:var(--font-body);color:var(--text);background:#fff;
+  }
+  form.event-form textarea{min-height:70px;resize:vertical;}
+  form.event-form .required-mark{color:var(--error);}
+  .field-error{color:var(--error);font-size:12px;margin-top:4px;display:none;}
+  .field-error.show{display:block;}
+
+  /* Export modal */
+  .export-step{margin:0 0 14px 0;font-size:14px;line-height:1.5;}
+  .export-step strong{color:var(--navy);}
+  .export-json{
+    width:100%;min-height:180px;font-family:var(--font-mono);font-size:12px;line-height:1.45;
+    border:1px solid var(--border);border-radius:6px;padding:10px;color:var(--text);background:#FAFBFC;
+    resize:vertical;white-space:pre;
+  }
+  .export-note{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.5;}
+  .hr-or{display:flex;align-items:center;gap:10px;color:var(--text-muted);font-size:12px;
+    text-transform:uppercase;letter-spacing:.08em;margin:18px 0;}
+  .hr-or::before,.hr-or::after{content:"";flex:1;height:1px;background:var(--border);}
+
+  .pin-box{display:flex;gap:6px;align-items:center;}
+  .pin-box input{
+    width:110px;padding:7px 9px;border-radius:6px;border:1px solid rgba(255,255,255,.5);
+    background:rgba(255,255,255,.08);color:#fff;font-size:14px;
+  }
+  .pin-box input::placeholder{color:rgba(255,255,255,.6);}
+  .pin-error{font-size:12px;color:#FFD7D2;margin-left:4px;}
+
+  .lock-state{font-size:12px;color:var(--navy-pale);font-weight:600;}
+
+  footer.app-footer{max-width:960px;margin:8px auto 30px auto;padding:0 20px;font-size:12px;color:var(--text-muted);line-height:1.6;}
+
+  @media (max-width:640px){
+    .cal-day{min-height:64px;padding:4px;}
+    .day-num{font-size:12px;}
+    .day-chip{font-size:10px;}
+    .month-label{min-width:0;font-size:17px;}
+    main{padding:12px;}
+    .modal{margin-top:0;border-radius:0;min-height:100vh;}
+    .overlay{padding:0;}
+  }
+</style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="brand-block">
+    <div class="brand-eyebrow">Coldwell Banker Realty</div>
+    <div class="brand-title">North Hills — Office Calendar</div>
+  </div>
+  <div class="header-controls" id="header-controls"></div>
+</header>
+
+<div id="publish-bar"></div>
+<div id="banner-area"></div>
+
+<main>
+  <div class="toolbar">
+    <div class="month-nav">
+      <button class="nav-arrow" id="prev-month" type="button" aria-label="Previous month">‹</button>
+      <div class="month-label" id="month-label">—</div>
+      <button class="nav-arrow" id="next-month" type="button" aria-label="Next month">›</button>
+    </div>
+    <div class="toolbar-right">
+      <button class="btn-secondary btn-sm" id="today-btn" type="button">Today</button>
+      <button class="btn-secondary btn-sm" id="reload-btn" type="button">Reload</button>
+    </div>
+  </div>
+
+  <div class="cal-grid">
+    <div class="cal-weekdays">
+      <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+    </div>
+    <div id="cal-body"></div>
+  </div>
+</main>
+
+<footer class="app-footer">
+  This is a static page — the calendar everyone sees is the version published to GitHub.
+  Editors: unlock with the office PIN, make changes, then use <strong>Export to publish</strong> and commit the file. Viewers just open the link — no account, no login.
+</footer>
+
+<div class="overlay" id="overlay">
+  <div class="modal" id="modal"></div>
+</div>
+
+<!--
+  ============================================================
+  CALENDAR DATA  —  this JSON block is the published calendar
+  everyone sees. You can edit it directly here in code, then
+  commit & push (or use the in-page editor + "Export to publish").
+
+  Format: keys are dates "YYYY-MM-DD"; each maps to a list of events.
+  {
+    "2026-07-14": [
+      {
+        "id": "e1",
+        "title": "Best Hour",
+        "time": "9:00 AM",
+        "category": "BEST_HOUR",
+        "link": "https://zoom.us/j/123",
+        "notes": "Bring 2 listings to review."
+      }
+    ]
+  }
+
+  - category must be one of: BEST_HOUR | TRAINING | MEETING | OTHER
+  - id must be unique within the file (any string works)
+  - time, link, notes are optional (use "" or omit)
+  - a "<" inside any text may appear escaped as < — that is fine,
+    it is read back as "<". Leave it as-is.
+  Keep this valid JSON. If it is broken, the page shows a loud error
+  and disables editing so nothing gets overwritten.
+  ============================================================
+-->
+<script type="application/json" id="calendar-data">
+{}
+</script>
+
+<script>
+(function(){
+  "use strict";
+
+  // ---- Configuration ------------------------------------------------
+  var EDITOR_PIN = "7734";                 // <-- Change the office PIN here.
+  var DRAFT_KEY  = "cbnh_calendar_draft_v1"; // per-browser working copy (not shared).
+  var DOWNLOAD_FILENAME = "cb-north-hills-calendar.html";
+
+  var CATEGORY_META = {
+    BEST_HOUR: { label: "Best Hour", cls: "cat-BEST_HOUR" },
+    TRAINING:  { label: "Training",  cls: "cat-TRAINING"  },
+    MEETING:   { label: "Meeting",   cls: "cat-MEETING"   },
+    OTHER:     { label: "Other",     cls: "cat-OTHER"     }
+  };
+
+  var WEEKDAY_COUNT = 7;
+
+  var state = {
+    seed: {},            // published data, parsed from the JSON block in this file
+    events: {},          // working copy shown on screen (seed, or a local draft)
+    loaded: false,
+    loadFailed: false,
+    hasUnpublished: false,
+    unlocked: false,
+    viewYear: (new Date()).getFullYear(),
+    viewMonth: (new Date()).getMonth() // 0-11
+  };
+
+  // ---- DOM refs -------------------------------------------------------
+  var el = {
+    bannerArea: document.getElementById("banner-area"),
+    publishBar: document.getElementById("publish-bar"),
+    calBody: document.getElementById("cal-body"),
+    monthLabel: document.getElementById("month-label"),
+    prevBtn: document.getElementById("prev-month"),
+    nextBtn: document.getElementById("next-month"),
+    todayBtn: document.getElementById("today-btn"),
+    reloadBtn: document.getElementById("reload-btn"),
+    headerControls: document.getElementById("header-controls"),
+    overlay: document.getElementById("overlay"),
+    modal: document.getElementById("modal"),
+    dataNode: document.getElementById("calendar-data")
+  };
+
+  // ---- Utilities -------------------------------------------------------
+  function pad2(n){ return n < 10 ? "0" + n : "" + n; }
+  function dateKey(y, m, d){ return y + "-" + pad2(m + 1) + "-" + pad2(d); }
+  function isSameDate(a, b){
+    return a.getFullYear() === b.getFullYear() &&
+           a.getMonth() === b.getMonth() &&
+           a.getDate() === b.getDate();
+  }
+  function monthName(m){
+    return ["January","February","March","April","May","June","July",
+            "August","September","October","November","December"][m];
+  }
+  function makeId(){
+    return "e" + Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+  }
+
+  // Editing is offered only when unlocked AND the data loaded cleanly, so we
+  // never let someone export on top of data the file couldn't parse.
+  function canEdit(){
+    return state.unlocked && state.loaded && !state.loadFailed;
+  }
+
+  function normalizeLink(raw){
+    var v = (raw || "").trim();
+    if (!v) return "";
+    if (!/^https?:\/\//i.test(v)) v = "https://" + v;
+    return v;
+  }
+
+  function clearChildren(node){
+    while (node.firstChild) node.removeChild(node.firstChild);
+  }
+
+  // Deterministic stringify (sorted keys) — used both to compare states and to
+  // emit clean, diff-friendly output for publishing.
+  function stableStringify(value, indent){
+    function norm(v){
+      if (Array.isArray(v)) return v.map(norm);
+      if (v && typeof v === "object"){
+        var out = {};
+        Object.keys(v).sort().forEach(function(k){ out[k] = norm(v[k]); });
+        return out;
+      }
+      return v;
+    }
+    return JSON.stringify(norm(value), null, indent || 0);
+  }
+  function eventsEqual(a, b){
+    return stableStringify(a) === stableStringify(b);
+  }
+  // JSON safe to embed inside a <script> tag (escape "<" so notes can't break out).
+  function jsonForScript(events){
+    return stableStringify(events, 2).replace(/</g, "\\u003c");
+  }
+
+  // ---- Banners -----------------------------------------------------
+  function showBanner(kind, message, opts){
+    opts = opts || {};
+    clearChildren(el.bannerArea);
+    var b = document.createElement("div");
+    b.className = "banner " + kind;
+    var span = document.createElement("span");
+    span.textContent = message;
+    b.appendChild(span);
+    if (opts.retry){
+      var wrap = document.createElement("div");
+      wrap.className = "banner-actions";
+      var btn = document.createElement("button");
+      btn.className = "btn-sm " + (kind === "error" ? "btn-danger" : "btn-secondary");
+      btn.type = "button";
+      btn.textContent = "Retry";
+      btn.addEventListener("click", opts.retry);
+      wrap.appendChild(btn);
+      b.appendChild(wrap);
+    }
+    el.bannerArea.appendChild(b);
+    if (opts.autoDismissMs){
+      setTimeout(function(){
+        if (el.bannerArea.contains(b)) el.bannerArea.removeChild(b);
+      }, opts.autoDismissMs);
+    }
+  }
+  function clearBanner(){ clearChildren(el.bannerArea); }
+
+  // ---- Data: read published seed + local draft -------------------------
+  function readSeed(){
+    var txt = (el.dataNode && el.dataNode.textContent ? el.dataNode.textContent : "").trim();
+    if (!txt) return {};
+    var data = JSON.parse(txt); // caller catches
+    if (!data || typeof data !== "object" || Array.isArray(data)) {
+      throw new Error("data block is not an object of dates");
+    }
+    return data;
+  }
+
+  function readDraft(){
+    try {
+      var raw = window.localStorage.getItem(DRAFT_KEY);
+      if (!raw) return null;
+      var d = JSON.parse(raw);
+      if (!d || typeof d !== "object" || Array.isArray(d)) return null;
+      return d;
+    } catch (e){ return null; }
+  }
+  function writeDraft(events){
+    try { window.localStorage.setItem(DRAFT_KEY, JSON.stringify(events)); return true; }
+    catch (e){ return false; }
+  }
+  function clearDraft(){
+    try { window.localStorage.removeItem(DRAFT_KEY); } catch (e){}
+  }
+
+  function loadData(){
+    var seed;
+    try {
+      seed = readSeed();
+    } catch (e){
+      state.loadFailed = true;
+      state.loaded = false;
+      render();
+      showBanner("error",
+        "The calendar data in this file isn't valid JSON (" + (e.message || "parse error") +
+        "). Fix the data block in the file — or restore the last working version from GitHub. Editing is disabled so nothing is overwritten.");
+      return;
+    }
+
+    state.seed = seed;
+
+    // A local draft is this browser's unpublished edits. Show it if it differs
+    // from what's published; otherwise it's stale and we drop it.
+    var draft = readDraft();
+    if (draft && !eventsEqual(draft, seed)){
+      state.events = draft;
+    } else {
+      state.events = seed;
+      if (draft) clearDraft();
+    }
+
+    state.loaded = true;
+    state.loadFailed = false;
+    state.hasUnpublished = !eventsEqual(state.events, state.seed);
+    clearBanner();
+    render();
+    renderPublishBar();
+  }
+
+  // Apply an edit to the working copy + local backup. Never throws; reports
+  // whether the local backup persisted so the caller can warn loudly if not.
+  function commitLocal(nextEvents, onDone){
+    state.events = nextEvents;
+    var backedUp = writeDraft(nextEvents);
+    state.hasUnpublished = !eventsEqual(state.events, state.seed);
+    if (!state.hasUnpublished) clearDraft();
+    render();
+    renderPublishBar();
+    onDone(backedUp);
+  }
+
+  // ---- Publish bar (unpublished-changes indicator) ---------------------
+  function renderPublishBar(){
+    clearChildren(el.publishBar);
+    if (!state.hasUnpublished) return;
+
+    var bar = document.createElement("div");
+    bar.className = "publish-bar";
+
+    var msg = document.createElement("span");
+    msg.className = "pb-msg";
+    msg.textContent = "Unpublished changes — visible only in this browser until you export and push to GitHub.";
+    bar.appendChild(msg);
+
+    var actions = document.createElement("div");
+    actions.className = "pb-actions";
+
+    var pubBtn = document.createElement("button");
+    pubBtn.className = "btn-publish btn-sm";
+    pubBtn.type = "button";
+    pubBtn.textContent = "Export to publish";
+    pubBtn.addEventListener("click", openExportModal);
+    actions.appendChild(pubBtn);
+
+    var discardBtn = document.createElement("button");
+    discardBtn.className = "btn-secondary btn-sm";
+    discardBtn.type = "button";
+    discardBtn.textContent = "Discard";
+    discardBtn.addEventListener("click", function(){
+      if (!window.confirm("Discard your unpublished local changes and go back to the published version?")) return;
+      clearDraft();
+      state.events = state.seed;
+      state.hasUnpublished = false;
+      render();
+      renderPublishBar();
+      showBanner("info", "Local changes discarded. Showing the published version.", { autoDismissMs: 3000 });
+    });
+    actions.appendChild(discardBtn);
+
+    bar.appendChild(actions);
+    el.publishBar.appendChild(bar);
+  }
+
+  // ---- Export / publish modal ------------------------------------------
+  function buildUpdatedHtml(cb){
+    // Fetch this page's own pristine source, then swap in the current events.
+    // Works when served over http(s) (e.g. GitHub Pages). May fail on file://.
+    fetch(window.location.href, { cache: "no-store" }).then(function(r){
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.text();
+    }).then(function(src){
+      var re = /(<script type="application\/json" id="calendar-data">)([\s\S]*?)(<\/script>)/;
+      if (!re.test(src)){
+        cb(null, new Error("Couldn't find the data block in the page source."));
+        return;
+      }
+      var payload = jsonForScript(state.events);
+      var out = src.replace(re, function(_m, open, _mid, close){
+        return open + "\n" + payload + "\n" + close;
+      });
+      cb(out, null);
+    }, function(err){
+      cb(null, err || new Error("fetch failed"));
+    });
+  }
+
+  function openExportModal(){
+    clearChildren(el.modal);
+
+    var header = document.createElement("div");
+    header.className = "modal-header";
+    var h2 = document.createElement("h2");
+    h2.textContent = "Publish changes";
+    header.appendChild(h2);
+    var closeBtn = document.createElement("button");
+    closeBtn.className = "modal-close";
+    closeBtn.type = "button";
+    closeBtn.setAttribute("aria-label", "Close");
+    closeBtn.textContent = "×";
+    closeBtn.addEventListener("click", closeModal);
+    header.appendChild(closeBtn);
+    el.modal.appendChild(header);
+
+    var body = document.createElement("div");
+    body.className = "modal-body";
+
+    var intro = document.createElement("p");
+    intro.className = "export-step";
+    intro.innerHTML = "Your changes are saved on this device but <strong>not live yet</strong>. Publish by updating the file on GitHub. Pick either method:";
+    body.appendChild(intro);
+
+    // Method 1: download the whole updated file.
+    var s1 = document.createElement("p");
+    s1.className = "export-step";
+    s1.innerHTML = "<strong>Option A — replace the file.</strong> Download the updated page, then upload it to your repo in place of the old one (GitHub → the file → “Upload files” or edit → commit).";
+    body.appendChild(s1);
+
+    var dlBtn = document.createElement("button");
+    dlBtn.className = "btn-primary btn-sm";
+    dlBtn.type = "button";
+    dlBtn.textContent = "Download updated " + DOWNLOAD_FILENAME;
+    var dlNote = document.createElement("div");
+    dlNote.className = "export-note";
+    dlBtn.addEventListener("click", function(){
+      dlBtn.disabled = true;
+      dlBtn.textContent = "Preparing…";
+      buildUpdatedHtml(function(html, err){
+        dlBtn.disabled = false;
+        dlBtn.textContent = "Download updated " + DOWNLOAD_FILENAME;
+        if (err){
+          dlNote.textContent = "Couldn't build the file automatically here (" +
+            (err.message || "error") + "). Use Option B below instead — copy the data and paste it into the file.";
+          dlNote.style.color = "var(--error)";
+          return;
+        }
+        var blob = new Blob([html], { type: "text/html" });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement("a");
+        a.href = url;
+        a.download = DOWNLOAD_FILENAME;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(function(){ URL.revokeObjectURL(url); }, 1500);
+        dlNote.style.color = "var(--text-muted)";
+        dlNote.textContent = "Downloaded. Commit this file to GitHub, then reload the live page — this banner clears once it's published.";
+      });
+    });
+    body.appendChild(dlBtn);
+    body.appendChild(dlNote);
+
+    var orDiv = document.createElement("div");
+    orDiv.className = "hr-or";
+    orDiv.textContent = "or";
+    body.appendChild(orDiv);
+
+    // Method 2: copy just the JSON data block.
+    var s2 = document.createElement("p");
+    s2.className = "export-step";
+    s2.innerHTML = "<strong>Option B — edit in code.</strong> Copy the data below and paste it between the <code>&lt;script type=\"application/json\" id=\"calendar-data\"&gt;</code> tags in the file, replacing what's there. Commit &amp; push.";
+    body.appendChild(s2);
+
+    var ta = document.createElement("textarea");
+    ta.className = "export-json";
+    ta.readOnly = true;
+    ta.value = jsonForScript(state.events);
+    body.appendChild(ta);
+
+    var copyBtn = document.createElement("button");
+    copyBtn.className = "btn-secondary btn-sm";
+    copyBtn.type = "button";
+    copyBtn.textContent = "Copy data";
+    copyBtn.style.marginTop = "8px";
+    copyBtn.addEventListener("click", function(){
+      function done(ok){
+        copyBtn.textContent = ok ? "Copied ✓" : "Press Ctrl+C to copy";
+        setTimeout(function(){ copyBtn.textContent = "Copy data"; }, 2500);
+      }
+      ta.focus(); ta.select();
+      if (navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(ta.value).then(function(){ done(true); }, function(){ done(false); });
+      } else {
+        try { done(document.execCommand("copy")); } catch (e){ done(false); }
+      }
+    });
+    body.appendChild(copyBtn);
+
+    el.modal.appendChild(body);
+
+    var footer = document.createElement("div");
+    footer.className = "modal-footer";
+    var doneBtn = document.createElement("button");
+    doneBtn.className = "btn-secondary btn-sm";
+    doneBtn.type = "button";
+    doneBtn.textContent = "Close";
+    doneBtn.addEventListener("click", closeModal);
+    footer.appendChild(doneBtn);
+    el.modal.appendChild(footer);
+
+    el.overlay.classList.add("open");
+  }
+
+  // ---- Rendering: calendar grid ---------------------------------------
+  function render(){
+    el.monthLabel.textContent = monthName(state.viewMonth) + " " + state.viewYear;
+
+    if (!state.loaded){
+      clearChildren(el.calBody);
+      var loading = document.createElement("div");
+      loading.className = "cal-loading";
+      loading.style.gridColumn = "1 / -1";
+      loading.textContent = state.loadFailed
+        ? "Calendar could not be loaded. See the message above."
+        : "Loading calendar…";
+      el.calBody.appendChild(loading);
+      return;
+    }
+
+    clearChildren(el.calBody);
+
+    var firstOfMonth = new Date(state.viewYear, state.viewMonth, 1);
+    var startWeekday = firstOfMonth.getDay(); // 0=Sun
+    var daysInMonth = new Date(state.viewYear, state.viewMonth + 1, 0).getDate();
+    var today = new Date();
+
+    var totalCells = Math.ceil((startWeekday + daysInMonth) / WEEKDAY_COUNT) * WEEKDAY_COUNT;
+    var cellIndex = 0;
+    var week;
+
+    for (var i = 0; i < totalCells; i++){
+      if (cellIndex % WEEKDAY_COUNT === 0){
+        week = document.createElement("div");
+        week.className = "cal-week";
+        el.calBody.appendChild(week);
+      }
+      var dayNum = i - startWeekday + 1;
+      var cell = document.createElement("div");
+
+      if (dayNum < 1 || dayNum > daysInMonth){
+        cell.className = "cal-day empty";
+      } else {
+        cell.className = "cal-day";
+        var thisDate = new Date(state.viewYear, state.viewMonth, dayNum);
+        if (isSameDate(thisDate, today)) cell.className += " is-today";
+
+        var numEl = document.createElement("div");
+        numEl.className = "day-num";
+        numEl.textContent = String(dayNum);
+        cell.appendChild(numEl);
+
+        var key = dateKey(state.viewYear, state.viewMonth, dayNum);
+        var dayEvents = state.events[key] || [];
+        var maxChips = 3;
+        for (var j = 0; j < Math.min(dayEvents.length, maxChips); j++){
+          var ev = dayEvents[j];
+          var chip = document.createElement("div");
+          var meta = CATEGORY_META[ev.category] || CATEGORY_META.OTHER;
+          chip.className = "day-chip " + meta.cls;
+          chip.textContent = ev.title || "(untitled)";
+          cell.appendChild(chip);
+        }
+        if (dayEvents.length > maxChips){
+          var more = document.createElement("div");
+          more.className = "day-more";
+          more.textContent = "+" + (dayEvents.length - maxChips) + " more";
+          cell.appendChild(more);
+        }
+
+        (function(k, d){
+          cell.addEventListener("click", function(){ openDayModal(k, d); });
+        })(key, thisDate);
+      }
+
+      week.appendChild(cell);
+      cellIndex++;
+    }
+  }
+
+  // ---- Modal: day detail / add / edit ---------------------------------
+  function closeModal(){
+    el.overlay.classList.remove("open");
+    clearChildren(el.modal);
+  }
+
+  el.overlay.addEventListener("click", function(e){
+    if (e.target === el.overlay) closeModal();
+  });
+
+  function formatFullDate(d){
+    var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    return days[d.getDay()] + ", " + monthName(d.getMonth()) + " " + d.getDate() + ", " + d.getFullYear();
+  }
+
+  function openDayModal(key, dateObj){
+    clearChildren(el.modal);
+
+    var header = document.createElement("div");
+    header.className = "modal-header";
+    var h2 = document.createElement("h2");
+    h2.textContent = formatFullDate(dateObj);
+    header.appendChild(h2);
+    var closeBtn = document.createElement("button");
+    closeBtn.className = "modal-close";
+    closeBtn.type = "button";
+    closeBtn.setAttribute("aria-label", "Close");
+    closeBtn.textContent = "×";
+    closeBtn.addEventListener("click", closeModal);
+    header.appendChild(closeBtn);
+    el.modal.appendChild(header);
+
+    var body = document.createElement("div");
+    body.className = "modal-body";
+    el.modal.appendChild(body);
+
+    renderDayList(body, key, dateObj);
+
+    var footer = document.createElement("div");
+    footer.className = "modal-footer";
+    if (canEdit()){
+      var addBtn = document.createElement("button");
+      addBtn.className = "btn-primary btn-sm";
+      addBtn.type = "button";
+      addBtn.textContent = "+ Add Event";
+      addBtn.addEventListener("click", function(){
+        renderEventForm(body, key, dateObj, null);
+      });
+      footer.appendChild(addBtn);
+    }
+    var doneBtn = document.createElement("button");
+    doneBtn.className = "btn-secondary btn-sm";
+    doneBtn.type = "button";
+    doneBtn.textContent = "Close";
+    doneBtn.addEventListener("click", closeModal);
+    footer.appendChild(doneBtn);
+    el.modal.appendChild(footer);
+
+    el.overlay.classList.add("open");
+  }
+
+  function renderDayList(container, key, dateObj){
+    clearChildren(container);
+    var dayEvents = state.events[key] || [];
+
+    if (dayEvents.length === 0){
+      var none = document.createElement("div");
+      none.className = "no-events";
+      none.textContent = canEdit()
+        ? "No events on this day yet. Use “+ Add Event” below to create one."
+        : "No events on this day.";
+      container.appendChild(none);
+      return;
+    }
+
+    dayEvents.forEach(function(ev){
+      var row = document.createElement("div");
+      row.className = "event-row";
+
+      var top = document.createElement("div");
+      top.className = "event-row-top";
+
+      var left = document.createElement("div");
+      var title = document.createElement("p");
+      title.className = "event-title";
+      title.textContent = ev.title || "(untitled)";
+      left.appendChild(title);
+
+      var meta = document.createElement("div");
+      meta.className = "event-meta";
+      var meta2 = CATEGORY_META[ev.category] || CATEGORY_META.OTHER;
+      var tag = document.createElement("span");
+      tag.className = "cat-tag " + meta2.cls;
+      tag.textContent = meta2.label;
+      meta.appendChild(tag);
+      if (ev.time){
+        var timeSpan = document.createElement("span");
+        timeSpan.textContent = ev.time;
+        meta.appendChild(timeSpan);
+      }
+      left.appendChild(meta);
+
+      if (ev.notes){
+        var notes = document.createElement("p");
+        notes.className = "event-notes";
+        notes.textContent = ev.notes;
+        left.appendChild(notes);
+      }
+
+      if (ev.link){
+        var linkBtn = document.createElement("a");
+        linkBtn.className = "event-link-btn";
+        linkBtn.href = ev.link;
+        linkBtn.target = "_blank";
+        linkBtn.rel = "noopener noreferrer";
+        linkBtn.textContent = "Open Link ↗";
+        left.appendChild(linkBtn);
+      }
+
+      top.appendChild(left);
+
+      if (canEdit()){
+        var actions = document.createElement("div");
+        actions.className = "event-actions";
+        var editBtn = document.createElement("button");
+        editBtn.className = "btn-secondary btn-sm";
+        editBtn.type = "button";
+        editBtn.textContent = "Edit";
+        editBtn.addEventListener("click", function(){
+          renderEventForm(container, key, dateObj, ev.id);
+        });
+        var delBtn = document.createElement("button");
+        delBtn.className = "btn-danger btn-sm";
+        delBtn.type = "button";
+        delBtn.textContent = "Delete";
+        delBtn.addEventListener("click", function(){
+          if (!window.confirm("Delete “" + (ev.title || "this event") + "”? This cannot be undone.")) return;
+          deleteEvent(key, ev.id, container, dateObj);
+        });
+        actions.appendChild(editBtn);
+        actions.appendChild(delBtn);
+        top.appendChild(actions);
+      }
+
+      row.appendChild(top);
+      container.appendChild(row);
+    });
+  }
+
+  function renderEventForm(container, key, dateObj, editId){
+    clearChildren(container);
+    var existing = null;
+    if (editId){
+      var dayEvents = state.events[key] || [];
+      for (var i = 0; i < dayEvents.length; i++){
+        if (dayEvents[i].id === editId){ existing = dayEvents[i]; break; }
+      }
+    }
+
+    var form = document.createElement("form");
+    form.className = "event-form";
+
+    function field(labelText, inputEl, required){
+      var label = document.createElement("label");
+      label.textContent = labelText;
+      if (required){
+        var star = document.createElement("span");
+        star.className = "required-mark";
+        star.textContent = " *";
+        label.appendChild(star);
+      }
+      form.appendChild(label);
+      form.appendChild(inputEl);
+    }
+
+    var titleInput = document.createElement("input");
+    titleInput.type = "text";
+    titleInput.maxLength = 120;
+    titleInput.value = existing ? existing.title : "";
+    titleInput.required = true;
+    field("Title", titleInput, true);
+    var titleErr = document.createElement("div");
+    titleErr.className = "field-error";
+    titleErr.textContent = "Title is required.";
+    form.appendChild(titleErr);
+
+    var timeInput = document.createElement("input");
+    timeInput.type = "text";
+    timeInput.placeholder = "e.g. 9:00 AM (optional)";
+    timeInput.maxLength = 40;
+    timeInput.value = existing ? (existing.time || "") : "";
+    field("Time (optional)", timeInput, false);
+
+    var categorySelect = document.createElement("select");
+    Object.keys(CATEGORY_META).forEach(function(catKey){
+      var opt = document.createElement("option");
+      opt.value = catKey;
+      opt.textContent = CATEGORY_META[catKey].label;
+      categorySelect.appendChild(opt);
+    });
+    categorySelect.value = existing ? existing.category : "BEST_HOUR";
+    field("Category", categorySelect, false);
+
+    var linkInput = document.createElement("input");
+    linkInput.type = "text";
+    linkInput.placeholder = "https:// (optional — Zoom, sign-up form, doc)";
+    linkInput.value = existing ? (existing.link || "") : "";
+    field("Link (optional)", linkInput, false);
+
+    var notesInput = document.createElement("textarea");
+    notesInput.placeholder = "Optional notes";
+    notesInput.value = existing ? (existing.notes || "") : "";
+    field("Notes (optional)", notesInput, false);
+
+    var saveErr = document.createElement("div");
+    saveErr.className = "field-error";
+    form.appendChild(saveErr);
+
+    var btnRow = document.createElement("div");
+    btnRow.style.marginTop = "16px";
+    btnRow.style.display = "flex";
+    btnRow.style.gap = "8px";
+
+    var saveBtn = document.createElement("button");
+    saveBtn.type = "submit";
+    saveBtn.className = "btn-primary btn-sm";
+    saveBtn.textContent = existing ? "Save Changes" : "Add Event";
+
+    var cancelBtn = document.createElement("button");
+    cancelBtn.type = "button";
+    cancelBtn.className = "btn-secondary btn-sm";
+    cancelBtn.textContent = "Cancel";
+    cancelBtn.addEventListener("click", function(){
+      renderDayList(container, key, dateObj);
+    });
+
+    btnRow.appendChild(saveBtn);
+    btnRow.appendChild(cancelBtn);
+    form.appendChild(btnRow);
+
+    container.appendChild(form);
+    titleInput.focus();
+
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      var titleVal = titleInput.value.trim();
+      if (!titleVal){
+        titleErr.classList.add("show");
+        titleInput.focus();
+        return;
+      }
+      titleErr.classList.remove("show");
+      saveErr.classList.remove("show");
+
+      var eventObj = {
+        id: existing ? existing.id : makeId(),
+        title: titleVal,
+        time: timeInput.value.trim(),
+        category: categorySelect.value,
+        link: normalizeLink(linkInput.value),
+        notes: notesInput.value.trim()
+      };
+
+      var nextEvents = JSON.parse(JSON.stringify(state.events || {}));
+      var list = nextEvents[key] ? nextEvents[key].slice() : [];
+      if (existing){
+        list = list.map(function(e2){ return e2.id === existing.id ? eventObj : e2; });
+      } else {
+        list.push(eventObj);
+      }
+      nextEvents[key] = list;
+
+      commitLocal(nextEvents, function(backedUp){
+        renderDayList(container, key, dateObj);
+        render();
+        if (backedUp){
+          showBanner("success",
+            "Saved on this device — not published yet. Use “Export to publish” when you're done.",
+            { autoDismissMs: 4000 });
+        } else {
+          showBanner("error",
+            "Change is applied on screen, but this browser blocked local backup — it will be lost if you reload. Export now to publish it.");
+        }
+      });
+    });
+  }
+
+  function deleteEvent(key, id, container, dateObj){
+    var nextEvents = JSON.parse(JSON.stringify(state.events || {}));
+    var list = (nextEvents[key] || []).filter(function(e){ return e.id !== id; });
+    if (list.length){
+      nextEvents[key] = list;
+    } else {
+      delete nextEvents[key];
+    }
+    commitLocal(nextEvents, function(backedUp){
+      renderDayList(container, key, dateObj);
+      render();
+      if (backedUp){
+        showBanner("success", "Deleted on this device — not published yet. Use “Export to publish”.", { autoDismissMs: 4000 });
+      } else {
+        showBanner("error", "Deleted on screen, but local backup was blocked — it will return on reload. Export now to publish.");
+      }
+    });
+  }
+
+  // ---- Edit-mode / PIN gate --------------------------------------------
+  function renderLockUI(){
+    clearChildren(el.headerControls);
+
+    if (state.unlocked){
+      var status = document.createElement("span");
+      status.className = "lock-state";
+      status.textContent = "Editing unlocked";
+      el.headerControls.appendChild(status);
+
+      var pubBtn = document.createElement("button");
+      pubBtn.className = "btn-ghost-on-navy btn-sm";
+      pubBtn.type = "button";
+      pubBtn.textContent = "Export to publish";
+      pubBtn.addEventListener("click", openExportModal);
+      el.headerControls.appendChild(pubBtn);
+
+      var lockBtn = document.createElement("button");
+      lockBtn.className = "btn-ghost-on-navy btn-sm";
+      lockBtn.type = "button";
+      lockBtn.textContent = "Lock";
+      lockBtn.addEventListener("click", function(){
+        state.unlocked = false;
+        renderLockUI();
+      });
+      el.headerControls.appendChild(lockBtn);
+      return;
+    }
+
+    var status2 = document.createElement("span");
+    status2.className = "lock-state";
+    status2.textContent = "Viewing only";
+    el.headerControls.appendChild(status2);
+
+    var unlockBtn = document.createElement("button");
+    unlockBtn.className = "btn-ghost-on-navy btn-sm";
+    unlockBtn.type = "button";
+    unlockBtn.textContent = "Unlock Editing";
+    unlockBtn.addEventListener("click", function(){ showPinPrompt(); });
+    el.headerControls.appendChild(unlockBtn);
+  }
+
+  function showPinPrompt(){
+    clearChildren(el.headerControls);
+    var box = document.createElement("div");
+    box.className = "pin-box";
+
+    var input = document.createElement("input");
+    input.type = "password";
+    input.placeholder = "Office PIN";
+    input.inputMode = "numeric";
+    input.maxLength = 16;
+    box.appendChild(input);
+
+    var goBtn = document.createElement("button");
+    goBtn.className = "btn-ghost-on-navy btn-sm";
+    goBtn.type = "button";
+    goBtn.textContent = "Unlock";
+    box.appendChild(goBtn);
+
+    var cancelBtn = document.createElement("button");
+    cancelBtn.className = "btn-ghost-on-navy btn-sm";
+    cancelBtn.type = "button";
+    cancelBtn.textContent = "Cancel";
+    box.appendChild(cancelBtn);
+
+    var err = document.createElement("span");
+    err.className = "pin-error";
+    box.appendChild(err);
+
+    el.headerControls.appendChild(box);
+    input.focus();
+
+    function attempt(){
+      if (input.value === EDITOR_PIN){
+        state.unlocked = true;
+        renderLockUI();
+      } else {
+        err.textContent = "Incorrect PIN.";
+        input.value = "";
+        input.focus();
+      }
+    }
+
+    goBtn.addEventListener("click", attempt);
+    input.addEventListener("keydown", function(e){
+      if (e.key === "Enter") attempt();
+    });
+    cancelBtn.addEventListener("click", renderLockUI);
+  }
+
+  // ---- Month navigation -------------------------------------------------
+  function shiftMonth(delta){
+    var m = state.viewMonth + delta;
+    var y = state.viewYear;
+    while (m < 0){ m += 12; y -= 1; }
+    while (m > 11){ m -= 12; y += 1; }
+    state.viewMonth = m;
+    state.viewYear = y;
+    render();
+  }
+
+  el.prevBtn.addEventListener("click", function(){ shiftMonth(-1); });
+  el.nextBtn.addEventListener("click", function(){ shiftMonth(1); });
+  el.todayBtn.addEventListener("click", function(){
+    var t = new Date();
+    state.viewYear = t.getFullYear();
+    state.viewMonth = t.getMonth();
+    render();
+  });
+  el.reloadBtn.addEventListener("click", function(){
+    window.location.reload();
+  });
+
+  // ---- Boot -------------------------------------------------------------
+  renderLockUI();
+  render();
+  loadData();
+
+})();
+</script>
+</body>
+</html>
