@@ -27,7 +27,6 @@ LOOKBACK_DAYS = 35   # keep the current + previous month browsable
 LOOKAHEAD_DAYS = 120
 
 CATEGORY_RULES = [
-    ("BEST_HOUR", ["best hour"]),
     ("WORKSHOP", ["workshop", "masterclass", "mastermind"]),
     ("TRAINING", ["training", "agent development", "agent panel", "skill", "bootcamp", "class", "coaching", "growth session"]),
     ("MEETING", ["meeting", "news to use", "town hall", "huddle", "office hours"]),

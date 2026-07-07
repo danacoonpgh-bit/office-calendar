@@ -28,9 +28,9 @@ Nobody edits this site by hand.
 ## How events are displayed
 
 - **Category colors** are picked automatically from the event title:
-  "Best Hour" → navy · "workshop" → gold · "training / agent development /
-  panel / class" → mid-navy · "meeting / news to use" → slate · everything
-  else → charcoal. (Rules live in `scripts/sync_calendar.py`.)
+  "workshop" → gold · "training / agent development / panel / class" →
+  mid-navy · "meeting / news to use" → slate · everything else → charcoal.
+  (Rules live in `scripts/sync_calendar.py`.)
 - **Teams/Zoom links** in the event location or body become a "Join Meeting"
   button.
 - Meeting IDs, passcodes, and boilerplate are stripped from the notes.
@@ -50,7 +50,7 @@ to `manual-events.json` (edit it right on GitHub):
 }
 ```
 
-Categories: `BEST_HOUR` | `TRAINING` | `MEETING` | `WORKSHOP` | `OTHER`.
+Categories: `TRAINING` | `MEETING` | `WORKSHOP` | `OTHER`.
 Manual events are merged with the Outlook events; the sync never touches this
 file.
 
