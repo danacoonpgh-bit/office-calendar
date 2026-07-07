@@ -1,0 +1,119 @@
+{
+  "generated": "2026-07-06T12:00:00-04:00",
+  "source": "manual",
+  "days":
+  {
+    "2026-07-06": [
+      { "id": "io-0706-panel", "title": "Agent Panel", "time": "1:00 PM", "category": "TRAINING", "link": "https://teams.microsoft.com/l/meetup-join/19%3ameeting_YzFhYWRjMjctYTNjZi00YmExLWE1YTUtYjY3MTcxOGVkYTQy%40thread.v2/0?context=%7b%22Tid%22%3a%2228743320-645e-4840-8154-b4babd41162c%22%2c%22Oid%22%3a%222cde77d6-8afe-4e8e-9dd9-c06d60de1710%22%7d", "notes": "Monthly agent panel (Teams)." }
+    ],
+    "2026-07-07": [
+      { "id": "io-0707-news", "title": "News To Use ~ Maximize Your Growth", "time": "12:00 PM", "category": "MEETING", "link": "https://teams.microsoft.com/l/meetup-join/19%3ameeting_ODYwMTgyYmMtYmI5Ny00YjEyLTg3YzEtYTJhYzAzMDUxMTRm%40thread.v2/0?context=%7b%22Tid%22%3a%2228743320-645e-4840-8154-b4babd41162c%22%2c%22Oid%22%3a%22c807ac35-0ed4-4e6d-81ac-a98f9941869f%22%7d", "notes": "Regional leadership conversation (Teams)." },
+      { "id": "ws-0707-meta", "title": "Real Growth with Meta and Instagram", "time": "1:00–2:00 PM", "category": "WORKSHOP", "link": "https://www.cbrmarketingworkshops.com/workshop-schedule/", "notes": "CBR Marketing Workshop (virtual via Teams). Unlock the power of Meta (Facebook & Instagram) to grow your business — create engaging content, attract leads, showcase listings, and build a strong online presence. Register on the CBR workshop schedule." }
+    ],
+    "2026-07-08": [
+      { "id": "io-stef-0708", "title": "Stefania in Poland", "time": "All day", "category": "OTHER", "link": "", "notes": "Stefania James traveling / out of office Jul 8–24." },
+      { "id": "ws-0708-database", "title": "Database Spring Cleaning", "time": "12:00–1:00 PM", "category": "WORKSHOP", "link": "https://www.cbrmarketingworkshops.com/workshop-schedule/", "notes": "CBR Marketing Workshop (Essentials, virtual via Teams). Clean, organize, and audit your database with a simple no-overwhelm system — who to keep or remove, assess contact quality, and structure for stronger follow-up and referrals. Register on the CBR workshop schedule." }
+    ],
+    "2026-07-09": [
+      { "id": "io-stef-0709", "title": "Stefania in Poland", "time": "All day", "category": "OTHER", "link": "", "notes": "Stefania James traveling / out of office Jul 8–24." }
+    ],
+    "2026-07-10": [
+      { "id": "io-stef-0710", "title": "Stefania in Poland", "time": "All day", "category": "OTHER", "link": "", "notes": "Stefania James traveling / out of office Jul 8–24." }
+    ],
+    "2026-07-11": [
+      { "id": "io-stef-0711", "title": "Stefania in Poland", "time": "All day", "category": "OTHER", "link": "", "notes": "Stefania James traveling / out of office Jul 8–24." },
+      { "id": "io-dana-0711", "title": "Dana Vacation", "time": "All day", "category": "OTHER", "link": "", "notes": "Dana out of office Jul 11–20." }
+    ],
+    "2026-07-12": [
+      { "id": "io-stef-0712", "title": "Stefania in Poland", "time": "All day", "category": "OTHER", "link": "", "notes": "Stefania James traveling / out of office Jul 8–24." },
+      { "id": "io-dana-0712", "title": "Dana Vacation", "time": "All day", "category": "OTHER", "link": "", "notes": "Dana out of office Jul 11–20." }
+    ],
+    "2026-07-13": [
+      { "id": "io-stef-0713", "title": "Stefania in Poland", "time": "All day", "category": "OTHER", "link": "", "notes": "Stefania James traveling / out of office Jul 8–24." },
+      { "id": "io-dana-0713", "title": "Dana Vacation", "time": "All day", "category": "OTHER", "link": "", "notes": "Dana out of office Jul 11–20." }
+    ],
+    "2026-07-14": [
+      { "id": "io-stef-0714", "title": "Stefania in Poland", "time": "All day", "category": "OTHER", "link": "", "notes": "Stefania James traveling / out of office Jul 8–24." },
+      { "id": "io-dana-0714", "title": "Dana Vacation", "time": "All day", "category": "OTHER", "link": "", "notes": "Dana out of office Jul 11–20." }
+    ],
+    "2026-07-15": [
+      { "id": "io-stef-0715", "title": "Stefania in Poland", "time": "All day", "category": "OTHER", "link": "", "notes": "Stefania James traveling / out of office Jul 8–24." },
+      { "id": "io-dana-0715", "title": "Dana Vacation", "time": "All day", "category": "OTHER", "link": "", "notes": "Dana out of office Jul 11–20." }
+    ],
+    "2026-07-16": [
+      { "id": "io-stef-0716", "title": "Stefania in Poland", "time": "All day", "category": "OTHER", "link": "", "notes": "Stefania James traveling / out of office Jul 8–24." },
+      { "id": "io-dana-0716", "title": "Dana Vacation", "time": "All day", "category": "OTHER", "link": "", "notes": "Dana out of office Jul 11–20." }
+    ],
+    "2026-07-17": [
+      { "id": "io-stef-0717", "title": "Stefania in Poland", "time": "All day", "category": "OTHER", "link": "", "notes": "Stefania James traveling / out of office Jul 8–24." },
+      { "id": "io-dana-0717", "title": "Dana Vacation", "time": "All day", "category": "OTHER", "link": "", "notes": "Dana out of office Jul 11–20." }
+    ],
+    "2026-07-18": [
+      { "id": "io-stef-0718", "title": "Stefania in Poland", "time": "All day", "category": "OTHER", "link": "", "notes": "Stefania James traveling / out of office Jul 8–24." },
+      { "id": "io-dana-0718", "title": "Dana Vacation", "time": "All day", "category": "OTHER", "link": "", "notes": "Dana out of office Jul 11–20." }
+    ],
+    "2026-07-19": [
+      { "id": "io-stef-0719", "title": "Stefania in Poland", "time": "All day", "category": "OTHER", "link": "", "notes": "Stefania James traveling / out of office Jul 8–24." },
+      { "id": "io-dana-0719", "title": "Dana Vacation", "time": "All day", "category": "OTHER", "link": "", "notes": "Dana out of office Jul 11–20." }
+    ],
+    "2026-07-20": [
+      { "id": "io-stef-0720", "title": "Stefania in Poland", "time": "All day", "category": "OTHER", "link": "", "notes": "Stefania James traveling / out of office Jul 8–24." },
+      { "id": "io-dana-0720", "title": "Dana Vacation", "time": "All day", "category": "OTHER", "link": "", "notes": "Dana out of office Jul 11–20." },
+      { "id": "ws-0720-sold", "title": "Content with Impact: The S.O.L.D Method", "time": "1:00–2:00 PM", "category": "WORKSHOP", "link": "https://www.cbrmarketingworkshops.com/workshop-schedule/", "notes": "CBR Marketing Workshop (virtual via Teams). Create social media content that captures attention, builds your brand, and drives real results. Register on the CBR workshop schedule." },
+      { "id": "ws-0720-aeo1", "title": "From Search to Answers: AEO to SEO", "time": "1:00–2:00 PM", "category": "WORKSHOP", "link": "https://www.cbrmarketingworkshops.com/workshop-schedule/", "notes": "CBR Marketing Workshop (virtual via Teams). Evolve from SEO to AEO — optimize your online presence, stay consistent across platforms, and use conversational content to boost visibility in AI-driven search. Register on the CBR workshop schedule." },
+      { "id": "ws-0720-aeo2", "title": "From Search to Answers: AEO to SEO (Advanced)", "time": "3:00–4:00 PM", "category": "WORKSHOP", "link": "https://www.cbrmarketingworkshops.com/workshop-schedule/", "notes": "CBR Marketing Workshop (Advanced, virtual via Teams). Advanced session — evolve from SEO to AEO for stronger visibility in AI-driven search results. Register on the CBR workshop schedule." }
+    ],
+    "2026-07-21": [
+      { "id": "io-stef-0721", "title": "Stefania in Poland", "time": "All day", "category": "OTHER", "link": "", "notes": "Stefania James traveling / out of office Jul 8–24." },
+      { "id": "io-0721-allpgh", "title": "All Pittsburgh Meeting", "time": "10:00 AM", "category": "MEETING", "link": "https://cbu.zoom.us/j/98182607374", "notes": "Zoom." },
+      { "id": "io-0721-dev", "title": "Agent Development", "time": "11:30 AM", "category": "TRAINING", "link": "https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZmI4ZGRjNWUtZTMwOC00NjljLThiYTItMGUzYzYxNmY5NzM0%40thread.v2/0?context=%7b%22Tid%22%3a%2228743320-645e-4840-8154-b4babd41162c%22%2c%22Oid%22%3a%222cde77d6-8afe-4e8e-9dd9-c06d60de1710%22%7d", "notes": "Teams." },
+      { "id": "ws-0721-video", "title": "Beyond the Lens: Video Essentials", "time": "1:00–2:00 PM", "category": "WORKSHOP", "link": "https://www.cbrmarketingworkshops.com/workshop-schedule/", "notes": "CBR Marketing Workshop (virtual via Teams). Create high-quality video content using just your phone — planning, filming, editing, and publishing tips that elevate your presence on social media. Register on the CBR workshop schedule." }
+    ],
+    "2026-07-22": [
+      { "id": "io-stef-0722", "title": "Stefania in Poland", "time": "All day", "category": "OTHER", "link": "", "notes": "Stefania James traveling / out of office Jul 8–24." },
+      { "id": "ws-0722-midyear", "title": "Data-Driven Marketing: 2026 Mid-Year Report", "time": "3:00–4:00 PM", "category": "WORKSHOP", "link": "https://www.cbrmarketingworkshops.com/workshop-schedule/", "notes": "CBR Marketing Workshop (Essentials, virtual via Teams). Leverage the Coldwell Banker Global Luxury 2026 Mid-Year Report as a marketing and thought-leadership tool — luxury market trends, buyer insights, and wealth data. Register on the CBR workshop schedule." }
+    ],
+    "2026-07-23": [
+      { "id": "io-stef-0723", "title": "Stefania in Poland", "time": "All day", "category": "OTHER", "link": "", "notes": "Stefania James traveling / out of office Jul 8–24." },
+      { "id": "ws-0723-paidads", "title": "From Scrolls to Sold: Paid Social Media Ads", "time": "1:00–2:00 PM", "category": "WORKSHOP", "link": "https://www.cbrmarketingworkshops.com/workshop-schedule/", "notes": "CBR Marketing Workshop (virtual via Teams). Build high-performing paid campaigns across Facebook, Instagram, Google, LinkedIn, TikTok, and YouTube — targeting, creatives, and ad objectives. Register on the CBR workshop schedule." }
+    ],
+    "2026-07-24": [
+      { "id": "io-stef-0724", "title": "Stefania in Poland", "time": "All day", "category": "OTHER", "link": "", "notes": "Stefania James traveling / out of office Jul 8–24." }
+    ],
+    "2026-07-28": [
+      { "id": "io-0728-sales", "title": "North Hills Sales Meeting", "time": "10:00 AM", "category": "MEETING", "link": "https://teams.microsoft.com/l/meetup-join/19%3ameeting_YzIzZjg1NjUtODJjZC00ZWM5LTgyNDQtNjYwMmI3ODczNDhi%40thread.v2/0?context=%7b%22Tid%22%3a%2228743320-645e-4840-8154-b4babd41162c%22%2c%22Oid%22%3a%222cde77d6-8afe-4e8e-9dd9-c06d60de1710%22%7d", "notes": "Teams." },
+      { "id": "io-0728-dev", "title": "Agent Development", "time": "11:30 AM", "category": "TRAINING", "link": "https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZmI4ZGRjNWUtZTMwOC00NjljLThiYTItMGUzYzYxNmY5NzM0%40thread.v2/0?context=%7b%22Tid%22%3a%2228743320-645e-4840-8154-b4babd41162c%22%2c%22Oid%22%3a%222cde77d6-8afe-4e8e-9dd9-c06d60de1710%22%7d", "notes": "Teams." }
+    ],
+    "2026-07-29": [
+      { "id": "io-0729-pirates", "title": "Pirates Game (Office Outing)", "time": "1:00 PM", "category": "OTHER", "link": "", "notes": "Office outing, 1:00–6:00 PM." },
+      { "id": "ws-0729-aftersale", "title": "Marketing Your Business After the Sale", "time": "1:00–2:00 PM", "category": "WORKSHOP", "link": "https://www.cbrmarketingworkshops.com/workshop-schedule/", "notes": "CBR Marketing Workshop (Advanced, virtual via Teams). Leverage a completed Listing Concierge sale to showcase your talent and grow your business with the remaining Listing Concierge tools. Register on the CBR workshop schedule." },
+      { "id": "ws-0729-mastermind", "title": "Social Media Mastermind", "time": "1:00 PM", "category": "WORKSHOP", "link": "https://www.cbrmarketingworkshops.com/workshop-schedule/", "notes": "CBR Marketing Workshop (virtual via Teams). Live Q&A with the social media team — get your questions answered by the experts. Register on the CBR workshop schedule." },
+      { "id": "ws-0729-aeo", "title": "From Search to Answers: AEO to SEO (Advanced)", "time": "3:00–4:00 PM", "category": "WORKSHOP", "link": "https://www.cbrmarketingworkshops.com/workshop-schedule/", "notes": "CBR Marketing Workshop (Advanced, virtual via Teams). Advanced session — evolve from SEO to AEO for stronger visibility in AI-driven search results. Register on the CBR workshop schedule." }
+    ],
+    "2026-07-30": [
+      { "id": "ws-0730-edit", "title": "Edit Like a Pro: Real Estate Visuals", "time": "1:00–2:00 PM", "category": "WORKSHOP", "link": "https://www.cbrmarketingworkshops.com/workshop-schedule/", "notes": "CBR Marketing Workshop (virtual via Teams). Elevate your listing photos and videos with simple editing techniques — fix lighting and color, apply basic color theory, and create clean, consistent visuals. Register on the CBR workshop schedule." }
+    ],
+    "2026-08-03": [
+      { "id": "io-0803-panel", "title": "Agent Panel", "time": "1:00 PM", "category": "TRAINING", "link": "https://teams.microsoft.com/l/meetup-join/19%3ameeting_YzFhYWRjMjctYTNjZi00YmExLWE1YTUtYjY3MTcxOGVkYTQy%40thread.v2/0?context=%7b%22Tid%22%3a%2228743320-645e-4840-8154-b4babd41162c%22%2c%22Oid%22%3a%222cde77d6-8afe-4e8e-9dd9-c06d60de1710%22%7d", "notes": "Monthly agent panel (Teams)." }
+    ],
+    "2026-08-04": [
+      { "id": "io-0804-holdnews", "title": "Hold: News to Use 2026", "time": "10:00 AM", "category": "MEETING", "link": "", "notes": "Link sent from Joe King." },
+      { "id": "io-0804-dev", "title": "Agent Development", "time": "11:30 AM", "category": "TRAINING", "link": "https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZmI4ZGRjNWUtZTMwOC00NjljLThiYTItMGUzYzYxNmY5NzM0%40thread.v2/0?context=%7b%22Tid%22%3a%2228743320-645e-4840-8154-b4babd41162c%22%2c%22Oid%22%3a%222cde77d6-8afe-4e8e-9dd9-c06d60de1710%22%7d", "notes": "Teams." }
+    ],
+    "2026-08-11": [
+      { "id": "io-0811-sales", "title": "North Hills Sales Meeting", "time": "10:00 AM", "category": "MEETING", "link": "https://teams.microsoft.com/l/meetup-join/19%3ameeting_YzIzZjg1NjUtODJjZC00ZWM5LTgyNDQtNjYwMmI3ODczNDhi%40thread.v2/0?context=%7b%22Tid%22%3a%2228743320-645e-4840-8154-b4babd41162c%22%2c%22Oid%22%3a%222cde77d6-8afe-4e8e-9dd9-c06d60de1710%22%7d", "notes": "Teams." },
+      { "id": "io-0811-dev", "title": "Agent Development", "time": "11:30 AM", "category": "TRAINING", "link": "https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZmI4ZGRjNWUtZTMwOC00NjljLThiYTItMGUzYzYxNmY5NzM0%40thread.v2/0?context=%7b%22Tid%22%3a%2228743320-645e-4840-8154-b4babd41162c%22%2c%22Oid%22%3a%222cde77d6-8afe-4e8e-9dd9-c06d60de1710%22%7d", "notes": "Teams." }
+    ],
+    "2026-08-18": [
+      { "id": "io-0818-allpgh", "title": "All Pittsburgh Meeting", "time": "10:00 AM", "category": "MEETING", "link": "https://cbu.zoom.us/j/98182607374", "notes": "Zoom." },
+      { "id": "io-0818-dev", "title": "Agent Development", "time": "11:30 AM", "category": "TRAINING", "link": "https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZmI4ZGRjNWUtZTMwOC00NjljLThiYTItMGUzYzYxNmY5NzM0%40thread.v2/0?context=%7b%22Tid%22%3a%2228743320-645e-4840-8154-b4babd41162c%22%2c%22Oid%22%3a%222cde77d6-8afe-4e8e-9dd9-c06d60de1710%22%7d", "notes": "Teams." }
+    ],
+    "2026-08-19": [
+      { "id": "ws-0819-luxury", "title": "Launching Luxury: New Developments & New Construction", "time": "3:00–4:00 PM", "category": "WORKSHOP", "link": "https://www.cbrmarketingworkshops.com/workshop-schedule/", "notes": "CBR Marketing Workshop (Unlocked, virtual via Teams). Elevated strategies for positioning and marketing luxury new developments — branding, storytelling, buyer insights, and strategic campaign execution. Register on the CBR workshop schedule." }
+    ],
+    "2026-08-25": [
+      { "id": "io-0825-sales", "title": "North Hills Sales Meeting", "time": "10:00 AM", "category": "MEETING", "link": "https://teams.microsoft.com/l/meetup-join/19%3ameeting_YzIzZjg1NjUtODJjZC00ZWM5LTgyNDQtNjYwMmI3ODczNDhi%40thread.v2/0?context=%7b%22Tid%22%3a%2228743320-645e-4840-8154-b4babd41162c%22%2c%22Oid%22%3a%222cde77d6-8afe-4e8e-9dd9-c06d60de1710%22%7d", "notes": "Teams." },
+      { "id": "io-0825-dev", "title": "Agent Development", "time": "11:30 AM", "category": "TRAINING", "link": "https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZmI4ZGRjNWUtZTMwOC00NjljLThiYTItMGUzYzYxNmY5NzM0%40thread.v2/0?context=%7b%22Tid%22%3a%2228743320-645e-4840-8154-b4babd41162c%22%2c%22Oid%22%3a%222cde77d6-8afe-4e8e-9dd9-c06d60de1710%22%7d", "notes": "Teams." }
+    ]
+  }
+}
