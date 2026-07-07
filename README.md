@@ -8,39 +8,22 @@ automatically, and remembers your choice).
 
 ## How events get on the calendar
 
-The calendar updates **automatically from an Outlook calendar**. A GitHub
-Action checks the Outlook feed every couple of hours and publishes any changes
-to `events.json`, which the page reads. Nobody edits this site by hand.
+The calendar updates **automatically from Dana's Outlook**. A scheduled
+Claude task on Dana's computer reads two sources through her Outlook
+connection and publishes any changes to `events.json`, which the page reads:
 
-```
-Outlook "Office Calendar"  →  published ICS feed  →  GitHub Action (every 2h)  →  events.json  →  the site
-```
+1. Everything on the dedicated **"Office Calendar"** in Outlook, and
+2. Events on Dana's main calendar tagged with the **"In Office"** category.
 
-## One-time setup (Dana)
+So Dana's workflow is: create the event on the Office Calendar (or tag an
+existing event "In Office") — the website updates itself on the next sync.
+Nobody edits this site by hand.
 
-1. **Create a dedicated calendar in Outlook** called `Office Calendar`
-   (Outlook → Calendar → Add calendar → Create blank calendar).
-   Put office-wide events on it: Best Hour, sales meetings, trainings,
-   workshops, office outings, who's out of office. Personal appointments stay
-   on your main calendar and never appear on the site.
-   *Tip: for existing events, you can copy them onto this calendar, or invite
-   the calendar — anything on it gets published.*
-
-2. **Publish it as an ICS link**: Outlook on the web → Settings ⚙ →
-   Calendar → **Shared calendars** → "Publish a calendar" → pick
-   `Office Calendar`, permission **"Can view all details"** → Publish →
-   copy the **ICS** link.
-
-3. **Give the link to GitHub**: this repo → Settings → Secrets and variables →
-   **Actions** → "New repository secret" → Name: `ICS_URL`, Value: the ICS
-   link → Save.
-
-4. **Run it once**: repo → Actions tab → "Sync calendar from Outlook" →
-   "Run workflow". After that it runs by itself every 2 hours (6 AM–8 PM ET).
-
-From then on: **add or change an event in Outlook, and the site updates itself
-within a couple of hours.** To force an immediate update, run the workflow
-from the Actions tab.
+> Note: the company's Microsoft 365 tenant has calendar publishing (ICS links)
+> disabled, so the classic feed approach doesn't work. The GitHub Action in
+> `.github/workflows/sync-calendar.yml` is kept as a dormant fallback — if IT
+> ever enables publishing, add the ICS link as an `ICS_URL` repo secret and it
+> takes over.
 
 ## How events are displayed
 
