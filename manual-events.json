@@ -76,15 +76,19 @@
   "2026-07-24": [
     { "id": "io-stef-0724", "title": "Stefania in Poland", "time": "All day", "category": "OTHER", "link": "", "notes": "Stefania James traveling / out of office Jul 8–24." }
   ],
+  "2026-07-27": [
+    { "id": "io-0727-assurant", "title": "Assurant Home Warranty Program Overview", "time": "9:30–10:30 AM", "category": "TRAINING", "link": "https://teams.microsoft.com/meet/298889265047039?p=Ss34PkXpITbgGJW9rM", "notes": "Virtual overview of the Assurant home warranty program, hosted by Christopher Speanburg (Assurant). Teams." }
+  ],
   "2026-07-28": [
     { "id": "io-0728-sales", "title": "North Hills Sales Meeting", "time": "10:00 AM", "category": "MEETING", "link": "https://teams.microsoft.com/meet/28664551904578?p=bGNa3J8a70BVjgCKUI", "notes": "Teams." },
     { "id": "io-0728-dev", "title": "Agent Development", "time": "11:30 AM", "category": "TRAINING", "link": "https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZmI4ZGRjNWUtZTMwOC00NjljLThiYTItMGUzYzYxNmY5NzM0%40thread.v2/0?context=%7b%22Tid%22%3a%2228743320-645e-4840-8154-b4babd41162c%22%2c%22Oid%22%3a%222cde77d6-8afe-4e8e-9dd9-c06d60de1710%22%7d", "notes": "Teams." }
   ],
   "2026-07-29": [
-    { "id": "io-0729-pirates", "title": "Pirates Game (Office Outing)", "time": "1:00 PM", "category": "OTHER", "link": "", "notes": "Office outing, 1:00–6:00 PM." },
+    { "id": "io-0729-pirates", "title": "Pirates Game (Office Outing)", "time": "12:00 PM", "category": "OTHER", "link": "", "notes": "Office outing, 12:00–6:00 PM. First pitch 12:35 PM at PNC Park, 115 Federal Street." },
     { "id": "ws-0729-aftersale", "title": "Marketing Your Business After the Sale", "time": "1:00–2:00 PM", "category": "WORKSHOP", "link": "https://events.teams.microsoft.com/event/db0de504-2eb1-4265-ae20-cd8a2fbadc65@28743320-645e-4840-8154-b4babd41162c", "notes": "CBR Marketing Workshop (Advanced, virtual via Teams). Leverage a completed Listing Concierge sale to showcase your talent and grow your business with the remaining Listing Concierge tools. Click the link to register (Teams)." },
     { "id": "ws-0729-mastermind", "title": "Social Media Mastermind", "time": "1:00 PM", "category": "WORKSHOP", "link": "https://events.teams.microsoft.com/event/958a2e7e-4b21-4f1d-b744-1d137167b144@28743320-645e-4840-8154-b4babd41162c", "notes": "CBR Marketing Workshop (virtual via Teams). Live Q&A with the social media team — get your questions answered by the experts. Click the link to register (Teams)." },
-    { "id": "ws-0729-aeo", "title": "From Search to Answers: AEO to SEO (Advanced)", "time": "3:00–4:00 PM", "category": "WORKSHOP", "link": "https://events.teams.microsoft.com/event/77db6a39-98d7-46d1-affb-37d57bea1825@28743320-645e-4840-8154-b4babd41162c", "notes": "CBR Marketing Workshop (Advanced, virtual via Teams). Advanced session — evolve from SEO to AEO for stronger visibility in AI-driven search results. Click the link to register (Teams)." }
+    { "id": "ws-0729-aeo", "title": "From Search to Answers: AEO to SEO (Advanced)", "time": "3:00–4:00 PM", "category": "WORKSHOP", "link": "https://events.teams.microsoft.com/event/77db6a39-98d7-46d1-affb-37d57bea1825@28743320-645e-4840-8154-b4babd41162c", "notes": "CBR Marketing Workshop (Advanced, virtual via Teams). Advanced session — evolve from SEO to AEO for stronger visibility in AI-driven search results. Click the link to register (Teams)." },
+    { "id": "io-0729-appraisals", "title": "Appraisals 101: Be a Rock Star Agent for Your Clients", "time": "5:00–6:00 PM", "category": "TRAINING", "link": "https://teams.microsoft.com/meet/211971071255881?p=9Z2SJbjRb4ntGtPvKo", "notes": "Christi Bryant, ADS & Certified Residential Appraiser — how the appraisal process works, what drives a home's value, reading appraisal reports, and explaining outcomes to clients. Teams." }
   ],
   "2026-07-30": [
     { "id": "ws-0730-edit", "title": "Edit Like a Pro: Real Estate Visuals", "time": "1:00–2:00 PM", "category": "WORKSHOP", "link": "https://events.teams.microsoft.com/event/da7664b3-4394-4210-b1e6-832e04a33f21@28743320-645e-4840-8154-b4babd41162c", "notes": "CBR Marketing Workshop (virtual via Teams). Elevate your listing photos and videos with simple editing techniques — fix lighting and color, apply basic color theory, and create clean, consistent visuals. Click the link to register (Teams)." }
