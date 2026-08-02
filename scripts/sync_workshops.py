@@ -74,7 +74,10 @@ def discover_widget_id() -> str:
         print(f"  ! could not read schedule page ({e}); using default widget id")
         return DEFAULT_WIDGET_ID
 
-    m = re.search(r"eapps-event-calendar-([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})", r.text)
+    # The served HTML carries `elfsight-app-<uuid>`; the `eapps-event-calendar-<uuid>`
+    # class only exists after the widget's JS runs, so match the embed marker first.
+    uuid = r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+    m = re.search(rf"(?:elfsight-app-|eapps-event-calendar-)({uuid})", r.text)
     if m:
         found = m.group(1)
         if found != DEFAULT_WIDGET_ID:
