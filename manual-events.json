@@ -94,14 +94,18 @@
     { "id": "ws-0730-edit", "title": "Edit Like a Pro: Real Estate Visuals", "time": "1:00–2:00 PM", "category": "WORKSHOP", "link": "https://events.teams.microsoft.com/event/da7664b3-4394-4210-b1e6-832e04a33f21@28743320-645e-4840-8154-b4babd41162c", "notes": "CBR Marketing Workshop (virtual via Teams). Elevate your listing photos and videos with simple editing techniques — fix lighting and color, apply basic color theory, and create clean, consistent visuals. Click the link to register (Teams)." }
   ],
   "2026-08-03": [
-    { "id": "io-0803-panel", "title": "Agent Panel", "time": "1:00 PM", "category": "TRAINING", "link": "https://teams.microsoft.com/l/meetup-join/19%3ameeting_YzFhYWRjMjctYTNjZi00YmExLWE1YTUtYjY3MTcxOGVkYTQy%40thread.v2/0?context=%7b%22Tid%22%3a%2228743320-645e-4840-8154-b4babd41162c%22%2c%22Oid%22%3a%222cde77d6-8afe-4e8e-9dd9-c06d60de1710%22%7d", "notes": "Monthly agent panel (Teams)." }
+    { "id": "io-0803-detox", "title": "Database Detox", "time": "1:00–2:00 PM", "category": "TRAINING", "link": "https://teams.microsoft.com/meet/212574553890987?p=sJ9X0YxDGSf8Hrph", "notes": "Every Monday in August. Weekly tip and tool highlight, hosted by Annie Nelson. Teams." }
   ],
   "2026-08-04": [
     { "id": "io-0804-holdnews", "title": "Hold: News to Use 2026", "time": "10:00 AM", "category": "MEETING", "link": "", "notes": "Link sent from Joe King." },
     { "id": "io-0804-dev", "title": "Agent Development", "time": "11:30 AM", "category": "TRAINING", "link": "https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZmI4ZGRjNWUtZTMwOC00NjljLThiYTItMGUzYzYxNmY5NzM0%40thread.v2/0?context=%7b%22Tid%22%3a%2228743320-645e-4840-8154-b4babd41162c%22%2c%22Oid%22%3a%222cde77d6-8afe-4e8e-9dd9-c06d60de1710%22%7d", "notes": "Teams." },
     { "id": "ws-0804-real-growth-meta", "title": "Real Growth with Meta and Instagram", "time": "1:00–2:00 PM", "category": "WORKSHOP", "link": "https://events.teams.microsoft.com/event/742f57a2-cdf4-4546-a7f9-c02d4a50bf14@28743320-645e-4840-8154-b4babd41162c", "notes": "CBR Marketing Workshop (virtual via Teams). Unlock the power of Meta (Facebook & Instagram) to grow your real estate business — create engaging content, use Meta’s tools to attract leads, showcase listings, and build a strong online presence. Click the link to register (Teams)." }
   ],
+  "2026-08-06": [
+    { "id": "io-0806-assurant-lunch", "title": "Assurant Home Warranty North Hills Lunch & Learn", "time": "12:00–1:00 PM", "category": "TRAINING", "link": "", "notes": "In person at the North Hills office, 9600 Perry Highway. Hosted by Christopher Speanburg (Assurant)." }
+  ],
   "2026-08-10": [
+    { "id": "io-0810-detox", "title": "Database Detox", "time": "1:00–2:00 PM", "category": "TRAINING", "link": "https://teams.microsoft.com/meet/212574553890987?p=sJ9X0YxDGSf8Hrph", "notes": "Every Monday in August. Weekly tip and tool highlight, hosted by Annie Nelson. Teams." },
     { "id": "ws-0810-content-impact-s", "title": "Content with Impact: The S.O.L.D Method", "time": "1:00–2:00 PM", "category": "WORKSHOP", "link": "https://events.teams.microsoft.com/event/940a734d-af8f-410f-b3e3-5e6b356b38ef@28743320-645e-4840-8154-b4babd41162c", "notes": "CBR Marketing Workshop (virtual via Teams). Create social media content that captures attention, builds your brand, and drives real results — impactful posts that connect with clients and stand out online. Click the link to register (Teams)." }
   ],
   "2026-08-11": [
@@ -115,6 +119,9 @@
   "2026-08-14": [
     { "id": "ws-0814-marketing-coffee-talk", "title": "Marketing Coffee Talk: Unlocking Home Platform", "time": "10:00–11:00 AM", "category": "WORKSHOP", "link": "https://events.teams.microsoft.com/event/0d072496-d008-4e99-91d4-99a369bef55e@28743320-645e-4840-8154-b4babd41162c", "notes": "CBR Marketing Workshop (virtual via Teams). Overview of key Home Platform capabilities — CRM, Marketing Center, CMA, Search, and CB Curated — and how they work together to support daily workflows. Click the link to register (Teams)." }
   ],
+  "2026-08-17": [
+    { "id": "io-0817-detox", "title": "Database Detox", "time": "1:00–2:00 PM", "category": "TRAINING", "link": "https://teams.microsoft.com/meet/212574553890987?p=sJ9X0YxDGSf8Hrph", "notes": "Every Monday in August. Weekly tip and tool highlight, hosted by Annie Nelson. Teams." }
+  ],
   "2026-08-18": [
     { "id": "io-0818-allpgh", "title": "All Pittsburgh Meeting", "time": "10:00 AM", "category": "MEETING", "link": "https://cbu.zoom.us/j/98182607374", "notes": "Zoom." },
     { "id": "io-0818-dev", "title": "Agent Development", "time": "11:30 AM", "category": "TRAINING", "link": "https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZmI4ZGRjNWUtZTMwOC00NjljLThiYTItMGUzYzYxNmY5NzM0%40thread.v2/0?context=%7b%22Tid%22%3a%2228743320-645e-4840-8154-b4babd41162c%22%2c%22Oid%22%3a%222cde77d6-8afe-4e8e-9dd9-c06d60de1710%22%7d", "notes": "Teams." },
@@ -126,11 +133,17 @@
   "2026-08-20": [
     { "id": "ws-0820-edit-like-pro", "title": "Edit Like a Pro: Real Estate Visuals in Edits", "time": "1:00–2:00 PM", "category": "WORKSHOP", "link": "https://events.teams.microsoft.com/event/40610fce-ddcb-4040-ae82-1b1caa52c064@28743320-645e-4840-8154-b4babd41162c", "notes": "CBR Marketing Workshop (virtual via Teams). Elevate listing photos and video with simple editing techniques — fix lighting and color, apply basic color theory, and build clean, consistent visuals. Click the link to register (Teams)." }
   ],
+  "2026-08-24": [
+    { "id": "io-0824-detox", "title": "Database Detox", "time": "1:00–2:00 PM", "category": "TRAINING", "link": "https://teams.microsoft.com/meet/212574553890987?p=sJ9X0YxDGSf8Hrph", "notes": "Every Monday in August. Weekly tip and tool highlight, hosted by Annie Nelson. Teams." }
+  ],
   "2026-08-25": [
     { "id": "io-0825-sales", "title": "North Hills Sales Meeting", "time": "10:00 AM", "category": "MEETING", "link": "https://teams.microsoft.com/l/meetup-join/19%3ameeting_YzIzZjg1NjUtODJjZC00ZWM5LTgyNDQtNjYwMmI3ODczNDhi%40thread.v2/0?context=%7b%22Tid%22%3a%2228743320-645e-4840-8154-b4babd41162c%22%2c%22Oid%22%3a%222cde77d6-8afe-4e8e-9dd9-c06d60de1710%22%7d", "notes": "Teams." },
     { "id": "io-0825-dev", "title": "Agent Development", "time": "11:30 AM", "category": "TRAINING", "link": "https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZmI4ZGRjNWUtZTMwOC00NjljLThiYTItMGUzYzYxNmY5NzM0%40thread.v2/0?context=%7b%22Tid%22%3a%2228743320-645e-4840-8154-b4babd41162c%22%2c%22Oid%22%3a%222cde77d6-8afe-4e8e-9dd9-c06d60de1710%22%7d", "notes": "Teams." }
   ],
   "2026-08-26": [
     { "id": "ws-0826-social-media-mastermind", "title": "Social Media Mastermind", "time": "1:00–2:00 PM", "category": "WORKSHOP", "link": "https://events.teams.microsoft.com/event/28c80ee9-0c0a-4ca8-b32c-548e6195ef9e@28743320-645e-4840-8154-b4babd41162c", "notes": "CBR Marketing Workshop (virtual via Teams). Live Q&A with the social media team — have your questions answered by the experts. Click the link to register (Teams)." }
+  ],
+  "2026-08-31": [
+    { "id": "io-0831-detox", "title": "Database Detox", "time": "1:00–2:00 PM", "category": "TRAINING", "link": "https://teams.microsoft.com/meet/212574553890987?p=sJ9X0YxDGSf8Hrph", "notes": "Every Monday in August. Weekly tip and tool highlight, hosted by Annie Nelson. Teams." }
   ]
 }
