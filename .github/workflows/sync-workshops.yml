@@ -1,0 +1,53 @@
+name: Sync CBR marketing workshops
+
+on:
+  schedule:
+    # Weekly — Wednesday 2:30 PM Eastern. GitHub cron is UTC and has no DST,
+    # so both offsets are listed; the script is idempotent, so the extra run
+    # during the "wrong" half of the year is a harmless no-op.
+    - cron: "30 18 * * 3"  # 2:30 PM EDT (Mar–Nov)
+    - cron: "30 19 * * 3"  # 2:30 PM EST (Nov–Mar)
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Report what would be added without writing"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-workshops
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install --quiet requests
+
+      - name: Pull workshops from cbrmarketingworkshops.com
+        env:
+          # Scheduled runs write; manual runs default to a dry run.
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || 'false' }}
+        run: python scripts/sync_workshops.py
+
+      - name: Commit and push if changed
+        run: |
+          if git diff --quiet manual-events.json; then
+            echo "No new workshops to publish."
+            exit 0
+          fi
+          git config user.name "workshop-sync-bot"
+          git config user.email "actions@github.com"
+          git add manual-events.json
+          git commit -m "Add CBR marketing workshops from cbrmarketingworkshops.com"
+          git push
