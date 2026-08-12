@@ -137,12 +137,16 @@
   ],
   "2026-08-25": [
     { "id": "io-0825-sales", "title": "North Hills Sales Meeting", "time": "10:00 AM", "category": "MEETING", "link": "https://teams.microsoft.com/meet/28664551904578?p=bGNa3J8a70BVjgCKUI", "notes": "Teams." },
-    { "id": "io-0825-dev", "title": "Agent Development", "time": "11:30 AM", "category": "TRAINING", "link": "https://teams.microsoft.com/meet/29992697359044?p=pWmd1PZAgx8uG7vXdT", "notes": "Teams." }
+    { "id": "io-0825-dev", "title": "Agent Development", "time": "11:30 AM", "category": "TRAINING", "link": "https://teams.microsoft.com/meet/29992697359044?p=pWmd1PZAgx8uG7vXdT", "notes": "Teams." },
+    { "id": "ws-0825-reels-real-time", "title": "Reels in Real Time", "time": "1:00 PM", "category": "WORKSHOP", "link": "https://events.teams.microsoft.com/event/1fc23cc0-7df0-4a55-8b71-5234bfa65990@28743320-645e-4840-8154-b4babd41162c", "notes": "CBR Marketing Workshop (virtual via Teams). Reels in Real Time teaches agents the importance of video marketing and how to plan, film, and edit a reel during class. Click the link to register (Teams)." }
   ],
   "2026-08-26": [
     { "id": "ws-0826-social-media-mastermind", "title": "Social Media Mastermind", "time": "1:00–2:00 PM", "category": "WORKSHOP", "link": "https://events.teams.microsoft.com/event/28c80ee9-0c0a-4ca8-b32c-548e6195ef9e@28743320-645e-4840-8154-b4babd41162c", "notes": "CBR Marketing Workshop (virtual via Teams). Live Q&A with the social media team — have your questions answered by the experts. Click the link to register (Teams)." }
   ],
   "2026-08-31": [
     { "id": "io-0831-detox", "title": "Database Detox", "time": "1:00–2:00 PM", "category": "TRAINING", "link": "https://teams.microsoft.com/meet/212574553890987?p=sJ9X0YxDGSf8Hrph0Y", "notes": "Every Monday in August. Weekly tip and tool highlight, hosted by Annie Nelson. Teams." }
+  ],
+  "2026-09-30": [
+    { "id": "ws-0930-social-media-mastermind", "title": "Social Media Mastermind", "time": "1:00–2:00 PM", "category": "WORKSHOP", "link": "https://events.teams.microsoft.com/event/1355e3f4-9cc5-4f5a-835c-768679de86e9@28743320-645e-4840-8154-b4babd41162c", "notes": "CBR Marketing Workshop (virtual via Teams). Live Q&A with the social media team. Have your questions answered by the social media experts! Click the link to register (Teams)." }
   ]
 }
