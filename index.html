@@ -166,6 +166,44 @@
 
   footer.app-footer{max-width:960px;margin:8px auto 30px auto;padding:0 20px;font-size:12px;color:var(--text-muted);line-height:1.6;}
 
+  /* ---- Top-level tabs ---- */
+  .tabbar{background:var(--navy);padding:0 20px;display:flex;gap:2px;border-bottom:3px solid rgba(255,255,255,.12);}
+  .tabbar button{
+    font-family:var(--font-display);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;
+    background:transparent;color:var(--navy-pale);border:none;border-radius:6px 6px 0 0;
+    padding:11px 18px;cursor:pointer;position:relative;top:3px;
+  }
+  .tabbar button:hover{color:#fff;}
+  .tabbar button.active{background:var(--bg);color:var(--navy);}
+  .panel{display:none;} .panel.active{display:block;}
+
+  /* ---- Showing agents ---- */
+  .sa-intro{
+    background:var(--card);border:1px solid var(--border);border-left:4px solid var(--gold);
+    border-radius:10px;padding:14px 16px;margin-bottom:14px;font-size:14px;line-height:1.55;
+  }
+  .sa-intro strong{font-family:var(--font-display);}
+  .sa-intro a{color:var(--navy);font-weight:600;}
+  .sa-count{
+    font-size:12px;font-weight:700;color:var(--text-muted);letter-spacing:.04em;
+    text-transform:uppercase;margin:0 0 10px 2px;
+  }
+  .sa-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;}
+  .sa-card{
+    background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 14px;
+    display:flex;flex-direction:column;gap:7px;min-width:0;
+  }
+  .sa-name{font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--text);}
+  .sa-area{
+    display:inline-flex;align-items:center;font-size:12px;font-weight:600;color:#fff;
+    background:var(--navy-mid);border-radius:999px;padding:3px 10px;align-self:flex-start;line-height:1.35;
+  }
+  .sa-area.any{background:var(--gold);}
+  .sa-links{display:flex;flex-direction:column;gap:3px;margin-top:2px;}
+  .sa-links a{font-size:13px;color:var(--navy);text-decoration:none;word-break:break-all;}
+  .sa-links a:hover{text-decoration:underline;}
+  .sa-links .none{font-size:13px;color:var(--text-muted);}
+
   @media (max-width:640px){
     main{padding:12px;}
     .month-label{min-width:0;font-size:17px;}
@@ -190,7 +228,13 @@
   <div class="updated-pill" id="updated-pill">Loading…</div>
 </header>
 
+<nav class="tabbar">
+  <button type="button" data-tab="calendar" class="active">Calendar</button>
+  <button type="button" data-tab="showing">Showing Agents</button>
+</nav>
+
 <main>
+<section class="panel active" id="panel-calendar">
   <div id="error-area"></div>
 
   <div class="toolbar">
@@ -220,6 +264,19 @@
   </div>
 
   <div class="agenda" id="agenda"></div>
+</section>
+
+<section class="panel" id="panel-showing">
+  <div class="sa-intro">
+    <strong>Need someone to cover a showing?</strong><br>
+    These agents have volunteered to help out when you&rsquo;re double-booked or out of town.
+    Reach out directly and work out the arrangement between you.
+    Want to be added to the list?
+    <a href="https://forms.gle/SSLzb9NrFtZxiN5x7" target="_blank" rel="noopener">Sign up here</a>.
+  </div>
+  <div class="sa-count" id="sa-count"></div>
+  <div class="sa-grid" id="sa-grid"></div>
+</section>
 </main>
 
 <footer class="app-footer">
@@ -573,6 +630,64 @@
   }
 
   load();
+})();
+</script>
+
+<script>
+/* ---- Showing Agents tab ---- */
+(function(){
+  var AGENTS = [
+    {n:"Jennifer Bargar",   e:"jennifer.bargar@cbrealty.com",       p:"412-600-4294", a:"Mars / Hampton"},
+    {n:"Marissa Boal",      e:"marissa.kohan@pittsburghmoves.com",  p:"412-780-3105", a:"Shaler / North Hills"},
+    {n:"Terene Cain",       e:"terene.cain@gmail.com",              p:"724-884-7830", a:"Washington, PA"},
+    {n:"Caryn Carson",      e:"caryn@thecarsonteam.com",            p:"724-991-5351", a:"Hampton / North Hills"},
+    {n:"Alexandra DeMoss",  e:"alexandra.demoss@cbrealty.com",      p:"412-225-9405", a:"Murrysville"},
+    {n:"Zoey Hampton",      e:"zoey.hampton@cbrealty.com",          p:"412-960-0116", a:"Bellevue — north, east & northwest"},
+    {n:"Chelsea Handyside", e:"chelsea.handyside@cbrealty.com",     p:"412-780-5270", a:"Shaler / North Hills"},
+    {n:"John Hendrickson",  e:"johnhendricksonrealty@gmail.com",    p:"724-480-7422", a:"Cranberry Township"},
+    {n:"Kayla Higham",      e:"kayla.higham@cbrealty.com",          p:"724-771-4069", a:"Sewickley / Beaver / North Hills"},
+    {n:"John F. Kelly",     e:"john.kelly@pittsburghmoves.com",     p:"412-287-9535", a:"Anywhere / everywhere", any:true},
+    {n:"Lynne Kelly",       e:"burjakellyteam@gmail.com",           p:"412-443-3482", a:"Gibsonia"},
+    {n:"Courtney Lynn",     e:"courtney.lynn@cbrealty.com",         p:"412-298-5474", a:"Bellevue"},
+    {n:"Mutsa Mavesere",    e:"mutsa.mavesere@cbrealty.com",        p:"412-722-9693", a:"Bellevue"},
+    {n:"Ryan Miller",       e:"ryanmillerrealty412@gmail.com",      p:"724-650-6579", a:"Bellevue"},
+    {n:"Cecilia Nelson",    e:"cecilia.nelson@cbrealty.com",        p:"724-986-5603", a:"South Hills"},
+    {n:"Jamie Pillar",      e:"jamie.pillar@cbrealty.com",          p:"412-334-8479", a:"Gibsonia"},
+    {n:"Ashley Pugliesi",   e:"ashley.pugliesi@cbrealty.com",       p:"412-689-0172", a:"Regent Square"},
+    {n:"Gracie Reis",       e:"sellingwithgracie@gmail.com",        p:"412-812-9282", a:"Green Tree"},
+    {n:"Kevin Trumble",     e:"kevin.trumble@pittsburghmoves.com",  p:"412-874-3333", a:"North Hills — and beyond if available", any:true},
+    {n:"Kristina Waltman",  e:"kristina.waltman@cbrealty.com",      p:"412-973-8501", a:"North Hills"}
+  ];
+
+  function esc(s){
+    return String(s).replace(/[&<>"]/g,function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];
+    });
+  }
+
+  var grid=document.getElementById('sa-grid');
+  document.getElementById('sa-count').textContent=AGENTS.length+' agents';
+  grid.innerHTML=AGENTS.map(function(x){
+    return '<div class="sa-card">'
+      +'<div class="sa-name">'+esc(x.n)+'</div>'
+      +'<span class="sa-area'+(x.any?' any':'')+'">'+esc(x.a)+'</span>'
+      +'<div class="sa-links">'
+        +'<a href="mailto:'+esc(x.e)+'">'+esc(x.e)+'</a>'
+        +'<a href="tel:'+esc(x.p.replace(/-/g,''))+'">'+esc(x.p)+'</a>'
+      +'</div></div>';
+  }).join('');
+
+  var tabs=document.querySelectorAll('.tabbar button');
+  Array.prototype.forEach.call(tabs,function(b){
+    b.addEventListener('click',function(){
+      Array.prototype.forEach.call(tabs,function(x){x.classList.remove('active');});
+      b.classList.add('active');
+      Array.prototype.forEach.call(document.querySelectorAll('.panel'),function(p){
+        p.classList.remove('active');
+      });
+      document.getElementById('panel-'+b.getAttribute('data-tab')).classList.add('active');
+    });
+  });
 })();
 </script>
 </body>
