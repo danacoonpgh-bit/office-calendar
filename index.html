@@ -225,7 +225,6 @@
     <div class="brand-eyebrow">Coldwell Banker Realty</div>
     <div class="brand-title">North Hills — Office Calendar</div>
   </div>
-  <div class="updated-pill" id="updated-pill">Loading…</div>
 </header>
 
 <nav class="tabbar">
@@ -313,6 +312,7 @@
   ["updated-pill","error-area","month-label","prev-month","next-month","today-btn",
    "view-month","view-list","legend","month-wrap","cal-body","agenda","overlay","modal","month-nav"]
     .forEach(function(id){ el[id.replace(/-(\w)/g, function(_,c){ return c.toUpperCase(); })] = document.getElementById(id); });
+  if (!el.updatedPill) el.updatedPill = {};   // pill removed from header; keep writes harmless
 
   function pad2(n){ return n < 10 ? "0" + n : "" + n; }
   function dateKey(y,m,d){ return y + "-" + pad2(m+1) + "-" + pad2(d); }
