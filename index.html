@@ -540,7 +540,9 @@
       a.href = ev.link;
       a.target = "_blank";
       a.rel = "noopener noreferrer";
-      a.textContent = /teams\.microsoft|zoom\.us|meet\.google/i.test(ev.link) ? "Join Meeting ↗" : "Open Link ↗";
+      a.textContent = (ev.category === "WORKSHOP" || /\/registration/i.test(ev.link))
+        ? "Register ↗"
+        : (/teams\.microsoft|zoom\.us|meet\.google/i.test(ev.link) ? "Join Meeting ↗" : "Open Link ↗");
       main.appendChild(a);
     }
     card.appendChild(main);
