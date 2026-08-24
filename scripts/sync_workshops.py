@@ -220,7 +220,7 @@ def to_entry(event: dict, types: dict[str, str], existing_ids: set[str]) -> tupl
         "id": eid,
         "title": title,
         "time": time_text,
-        "category": "WORKSHOP",
+        "category": "CBR_MARKETING",
         "link": register_link(event),
         "notes": notes,
     }
