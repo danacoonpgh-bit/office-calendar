@@ -12,6 +12,7 @@
     --slate:#5B6472;
     --charcoal:#2B2F36;
     --gold:#B8860B;
+    --teal:#0F7B6C;
     --bg:#F4F5F7;
     --card:#FFFFFF;
     --border:#DCE0E6;
@@ -75,7 +76,8 @@
   .cat-TRAINING{background:var(--navy-mid);}
   .cat-MEETING{background:var(--slate);}
   .cat-OTHER{background:var(--charcoal);}
-  .cat-WORKSHOP{background:var(--gold);}
+  .cat-CBR_MARKETING{background:var(--gold);}
+  .cat-HOME_PLATFORM{background:var(--teal);}
 
   /* ---- Month grid ---- */
   .cal-grid{background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
@@ -294,9 +296,14 @@
   var CATEGORY_META = {
     TRAINING:  { label: "Training",     cls: "cat-TRAINING"  },
     MEETING:   { label: "Meeting",      cls: "cat-MEETING"   },
-    WORKSHOP:  { label: "CBR Workshop", cls: "cat-WORKSHOP"  },
+    CBR_MARKETING: { label: "CB Marketing Workshop", cls: "cat-CBR_MARKETING" },
+    HOME_PLATFORM: { label: "HOME Platform Workshop", cls: "cat-HOME_PLATFORM" },
     OTHER:     { label: "Other",        cls: "cat-OTHER"     }
   };
+  // Legacy alias: anything still tagged WORKSHOP is a CB marketing session.
+  var CATEGORY_ALIAS = { WORKSHOP: "CBR_MARKETING" };
+  function catKey(ev){ var k = ev.category; return CATEGORY_ALIAS[k] || k; }
+  function isWorkshop(ev){ var k = catKey(ev); return k === "CBR_MARKETING" || k === "HOME_PLATFORM"; }
   var VIEW_KEY = "cbnh_view_pref";
   var AGENDA_DAYS_AHEAD = 60;
 
@@ -326,7 +333,7 @@
     return days[d.getDay()] + ", " + monthName(d.getMonth()) + " " + d.getDate() + ", " + d.getFullYear();
   }
   function clearChildren(n){ while (n.firstChild) n.removeChild(n.firstChild); }
-  function catMeta(ev){ return CATEGORY_META[ev.category] || CATEGORY_META.OTHER; }
+  function catMeta(ev){ return CATEGORY_META[catKey(ev)] || CATEGORY_META.OTHER; }
 
   // ---- Data loading ----------------------------------------------------
   function fetchJson(url){
@@ -540,7 +547,7 @@
       a.href = ev.link;
       a.target = "_blank";
       a.rel = "noopener noreferrer";
-      a.textContent = (ev.category === "WORKSHOP" || /\/registration/i.test(ev.link))
+      a.textContent = (isWorkshop(ev) || /\/registration/i.test(ev.link))
         ? "Register ↗"
         : (/teams\.microsoft|zoom\.us|meet\.google/i.test(ev.link) ? "Join Meeting ↗" : "Open Link ↗");
       main.appendChild(a);
