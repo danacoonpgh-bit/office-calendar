@@ -164,10 +164,46 @@
   "2026-08-31": [
     { "id": "io-0831-detox", "title": "Database Detox", "time": "1:00–2:00 PM", "category": "TRAINING", "link": "https://teams.microsoft.com/meet/212574553890987?p=sJ9X0YxDGSf8Hrph0Y", "notes": "Every Monday in August. Weekly tip and tool highlight, hosted by Annie Nelson. Teams." }
   ],
+  "2026-09-01": [
+    { "id": "io-0901-news-to-use", "title": "News To Use ~ The Next Level of HOME: A Conversation with Tom Ferry", "time": "12:00–1:00 PM", "category": "MEETING", "link": "https://teams.microsoft.com/l/meetup-join/19%3ameeting_Nzc2YmYzZTEtZDM5YS00YWE3LTlmNzUtZWU3ZWUzOTFkMzEz%40thread.v2/0?context=%7b%22Tid%22%3a%2228743320-645e-4840-8154-b4babd41162c%22%2c%22Oid%22%3a%22c807ac35-0ed4-4e6d-81ac-a98f9941869f%22%7d", "notes": "Hosted by Joe King. Brian Bolier (Regional VP, CBR Minnesota/Wisconsin) interviews Tom Ferry on maximizing success with the HOME platform and the habits that drive agent productivity. Join on Teams or come to the North Hills watch party." }
+  ],
+  "2026-09-02": [
+    { "id": "io-0902-young-professionals", "title": "Coldwell Banker Young Professionals", "time": "12:00–1:00 PM", "category": "OTHER", "link": "https://teams.microsoft.com/meet/289969442389546?p=oHt8oCa1T5vrNlsL8l", "notes": "In person at the North Hills office, with a Teams option. Hosted by John Perry." }
+  ],
+  "2026-09-08": [
+    { "id": "io-0908-sales-meeting", "title": "North Hills Sales Meeting", "time": "10:00 AM", "category": "MEETING", "link": "https://teams.microsoft.com/meet/22928830154684?p=SXqfIvrY5n6UdM8moJ", "notes": "Weekly North Hills sales meeting (Teams)." },
+    { "id": "io-0908-agent-development", "title": "Agent Development", "time": "11:30 AM", "category": "TRAINING", "link": "https://teams.microsoft.com/meet/29992697359044?p=pWmd1PZAgx8uG7vXdT", "notes": "Weekly agent development session (Teams)." },
+    { "id": "ws-0908-real-growth-meta-instagram", "title": "Real Growth with Meta & Instagram", "time": "1:00–2:00 PM", "category": "CBR_MARKETING", "link": "https://events.teams.microsoft.com/event/85bbbef6-0670-4610-a3c8-9d301b8a55c0@28743320-645e-4840-8154-b4babd41162c", "notes": "CBR Marketing Workshop (virtual via Teams). Unlock the power of Meta (Facebook & Instagram) to grow your real estate business — create engaging content, attract leads, showcase listings, and build a strong online presence. Click the link to register (Teams)." }
+  ],
+  "2026-09-09": [
+    { "id": "io-0909-cb-cares", "title": "CB Cares Foundation Meeting", "time": "12:00–1:00 PM", "category": "OTHER", "link": "https://teams.microsoft.com/meet/229159063438834?p=XRj6ALZCGU7bHKiTip", "notes": "In person at the North Hills office, with a Teams option. Hosted by John Perry." }
+  ],
   "2026-09-11": [
     { "id": "ws-0911-marketing-coffee-talk", "title": "Marketing Coffee Talk: CB Curated", "time": "10:00–11:00 AM", "category": "CBR_MARKETING", "link": "https://events.teams.microsoft.com/event/8575006d-cdb6-49b2-8204-8b988109dde4@28743320-645e-4840-8154-b4babd41162c", "notes": "CBR Marketing Workshop (virtual via Teams). Not ever seller needs the SAME Launch. CB Curated gives your seller more choice around timing, exposure, and strategy. Click the link to register (Teams)." }
   ],
+  "2026-09-14": [
+    { "id": "io-0914-panel", "title": "Agent Panel", "time": "1:00–2:00 PM", "category": "TRAINING", "link": "https://teams.microsoft.com/meet/238737558835899?p=Lg51oNehLFjCSDmkwB", "notes": "Monthly agent panel (Teams)." },
+    { "id": "ws-0914-content-with-impact-sold", "title": "Content with Impact the S.O.L.D Method", "time": "1:00–2:00 PM", "category": "CBR_MARKETING", "link": "https://events.teams.microsoft.com/event/17504707-256f-4fbc-93cc-703cc9a9061a@28743320-645e-4840-8154-b4babd41162c", "notes": "CBR Marketing Workshop (virtual via Teams). Create social media content that captures attention, builds your brand, and drives real results. Click the link to register (Teams)." }
+  ],
+  "2026-09-15": [
+    { "id": "io-0915-all-pittsburgh", "title": "All Pittsburgh Meeting", "time": "10:00 AM", "category": "MEETING", "link": "https://cbu.zoom.us/j/98182607374", "notes": "Region-wide meeting (Zoom). Replaces the North Hills sales meeting this week." },
+    { "id": "io-0915-agent-development", "title": "Agent Development", "time": "11:30 AM", "category": "TRAINING", "link": "https://teams.microsoft.com/meet/29992697359044?p=pWmd1PZAgx8uG7vXdT", "notes": "Weekly agent development session (Teams)." },
+    { "id": "ws-0915-from-scrolls-to-sold", "title": "From Scrolls to Sold: Paid Social Media Ads", "time": "1:00–2:00 PM", "category": "CBR_MARKETING", "link": "https://events.teams.microsoft.com/event/ebe027b9-5085-43de-8a2e-abc05b8b6540@28743320-645e-4840-8154-b4babd41162c", "notes": "CBR Marketing Workshop (virtual via Teams). Build high-performing paid campaigns across Facebook, Instagram, Google, LinkedIn, TikTok and YouTube — targeting, creative, and ad objectives. Click the link to register (Teams)." }
+  ],
+  "2026-09-22": [
+    { "id": "io-0922-agent-development", "title": "Agent Development", "time": "11:30 AM", "category": "TRAINING", "link": "https://teams.microsoft.com/meet/29992697359044?p=pWmd1PZAgx8uG7vXdT", "notes": "Weekly agent development session (Teams)." },
+    { "id": "ws-0922-beyond-the-lens", "title": "Beyond the Lens: Video Essentials for Elevated Content", "time": "1:00–2:00 PM", "category": "CBR_MARKETING", "link": "https://events.teams.microsoft.com/event/58fe1b25-434f-4f92-abc9-678bd111f002@28743320-645e-4840-8154-b4babd41162c", "notes": "CBR Marketing Workshop (virtual via Teams). Create high-quality video using just your phone — planning, filming, editing, and publishing. Click the link to register (Teams)." }
+  ],
+  "2026-09-24": [
+    { "id": "ws-0924-reels-in-real-time", "title": "Reels in Real Time", "time": "1:00–2:00 PM", "category": "CBR_MARKETING", "link": "https://events.teams.microsoft.com/event/4c367c30-244e-4659-8b98-8f57a31181ed@28743320-645e-4840-8154-b4babd41162c", "notes": "CBR Marketing Workshop (virtual via Teams). Plan, film, and edit a reel during class. Click the link to register (Teams)." }
+  ],
+  "2026-09-29": [
+    { "id": "io-0929-sales-meeting", "title": "North Hills Sales Meeting", "time": "10:00 AM", "category": "MEETING", "link": "https://teams.microsoft.com/meet/28664551904578?p=bGNa3J8a70BVjgCKUI", "notes": "Weekly North Hills sales meeting (Teams)." },
+    { "id": "ws-0929-edit-like-a-pro", "title": "Edit Like a Pro: Real Estate Visuals in Edits", "time": "1:00–2:00 PM", "category": "CBR_MARKETING", "link": "https://events.teams.microsoft.com/event/77465c00-0266-4ddf-b85f-df2d4d99b665@28743320-645e-4840-8154-b4babd41162c", "notes": "CBR Marketing Workshop (virtual via Teams). Elevate listing photos and social content — fix lighting and color, apply basic color theory, and build clean, consistent visuals. Click the link to register (Teams)." }
+  ],
   "2026-09-30": [
-    { "id": "ws-0930-social-media-mastermind", "title": "Social Media Mastermind", "time": "1:00–2:00 PM", "category": "CBR_MARKETING", "link": "https://events.teams.microsoft.com/event/1355e3f4-9cc5-4f5a-835c-768679de86e9@28743320-645e-4840-8154-b4babd41162c", "notes": "CBR Marketing Workshop (virtual via Teams). Live Q&A with the social media team. Have your questions answered by the social media experts! Click the link to register (Teams)." }
+    { "id": "ws-0930-social-media-mastermind", "title": "Social Media Mastermind", "time": "1:00–2:00 PM", "category": "CBR_MARKETING", "link": "https://events.teams.microsoft.com/event/1355e3f4-9cc5-4f5a-835c-768679de86e9@28743320-645e-4840-8154-b4babd41162c", "notes": "CBR Marketing Workshop (virtual via Teams). Live Q&A with the social media team. Have your questions answered by the social media experts! Click the link to register (Teams)." }  ],
+  "2026-10-05": [
+    { "id": "io-1005-panel", "title": "Agent Panel", "time": "1:00–2:00 PM", "category": "TRAINING", "link": "https://teams.microsoft.com/meet/238737558835899?p=Lg51oNehLFjCSDmkwB", "notes": "Monthly agent panel (Teams)." }
   ]
 }
