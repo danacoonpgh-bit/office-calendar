@@ -287,6 +287,7 @@
     { "id": "hp-0930-unlock-inventory-with-likely-t", "title": "Unlock Inventory with Likely to Sell & Make Me Sell", "time": "3:00–3:45 PM", "category": "HOME_PLATFORM", "link": "https://events.teams.microsoft.com/event/09f95737-e844-41c1-9ef6-1781e5ab709f@28743320-645e-4840-8154-b4babd41162c", "notes": "HOME Platform live workshop (virtual via Teams). Click Register to sign up." }
   ],
   "2026-10-01": [
+    { "id": "io-1001-listoberfest", "title": "Listoberfest", "time": "11:00 AM–12:00 PM", "category": "TRAINING", "link": "https://teams.microsoft.com/meet/276425387613551?p=EQdCbIzGSdV0A92BHZ", "notes": "Weeks 5 to 8 of the 8 week listing focused series from CB Pittsburgh (September to Remember in September, Listoberfest in October). This half focuses on the listing appointment itself, with the new HOME platform resources built in. Every Thursday, 11:00 AM (Teams)." },
     { "id": "hp-1001-communicate-with-contacts-usin", "title": "Communicate with Contacts Using Bulk Messages", "time": "12:00–12:45 PM", "category": "HOME_PLATFORM", "link": "https://events.teams.microsoft.com/event/bbafb930-d775-4ecc-bf9c-5740907dcf8b@28743320-645e-4840-8154-b4babd41162c", "notes": "HOME Platform live workshop (virtual via Teams). Click Register to sign up." },
     { "id": "hp-1001-contact-engagement-opportuniti", "title": "Contact Engagement Opportunities", "time": "2:00–2:45 PM", "category": "HOME_PLATFORM", "link": "https://events.teams.microsoft.com/event/92742137-67d5-4bc0-8bdc-307724854bf8@28743320-645e-4840-8154-b4babd41162c", "notes": "HOME Platform live workshop (virtual via Teams). Click Register to sign up." }
   ],
@@ -296,5 +297,17 @@
   ],
   "2026-10-05": [
     { "id": "io-1005-panel", "title": "Agent Panel", "time": "1:00–2:00 PM", "category": "TRAINING", "link": "https://teams.microsoft.com/meet/238737558835899?p=Lg51oNehLFjCSDmkwB", "notes": "Monthly agent panel (Teams)." }
+  ],
+  "2026-10-08": [
+    { "id": "io-1008-listoberfest", "title": "Listoberfest", "time": "11:00 AM–12:00 PM", "category": "TRAINING", "link": "https://teams.microsoft.com/meet/276425387613551?p=EQdCbIzGSdV0A92BHZ", "notes": "Weeks 5 to 8 of the 8 week listing focused series from CB Pittsburgh (September to Remember in September, Listoberfest in October). This half focuses on the listing appointment itself, with the new HOME platform resources built in. Every Thursday, 11:00 AM (Teams)." }
+  ],
+  "2026-10-15": [
+    { "id": "io-1015-listoberfest", "title": "Listoberfest", "time": "11:00 AM–12:00 PM", "category": "TRAINING", "link": "https://teams.microsoft.com/meet/276425387613551?p=EQdCbIzGSdV0A92BHZ", "notes": "Weeks 5 to 8 of the 8 week listing focused series from CB Pittsburgh (September to Remember in September, Listoberfest in October). This half focuses on the listing appointment itself, with the new HOME platform resources built in. Every Thursday, 11:00 AM (Teams)." }
+  ],
+  "2026-10-22": [
+    { "id": "io-1022-listoberfest", "title": "Listoberfest", "time": "11:00 AM–12:00 PM", "category": "TRAINING", "link": "https://teams.microsoft.com/meet/276425387613551?p=EQdCbIzGSdV0A92BHZ", "notes": "Weeks 5 to 8 of the 8 week listing focused series from CB Pittsburgh (September to Remember in September, Listoberfest in October). This half focuses on the listing appointment itself, with the new HOME platform resources built in. Every Thursday, 11:00 AM (Teams)." }
+  ],
+  "2026-10-29": [
+    { "id": "io-1029-listoberfest", "title": "Listoberfest", "time": "11:00 AM–12:00 PM", "category": "TRAINING", "link": "https://teams.microsoft.com/meet/276425387613551?p=EQdCbIzGSdV0A92BHZ", "notes": "Additional Listoberfest session. Listing appointment focused series from CB Pittsburgh, with the new HOME platform resources built in. Every Thursday, 11:00 AM (Teams)." }
   ]
 }
