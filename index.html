@@ -69,9 +69,18 @@
   .view-toggle button{border:none;border-radius:0;background:#fff;color:var(--text-muted);padding:6px 14px;font-size:13px;font-weight:600;}
   .view-toggle button.active{background:var(--navy);color:#fff;}
 
-  .legend{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 14px 0;}
-  .legend span{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--text-muted);font-weight:600;}
-  .legend i{width:10px;height:10px;border-radius:3px;display:inline-block;}
+  .legend{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px 0;align-items:center;}
+  .legend button{
+    display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text-muted);font-weight:600;
+    background:#fff;border:1px solid var(--border);border-radius:999px;padding:5px 11px;line-height:1;
+  }
+  .legend button i{width:10px;height:10px;border-radius:3px;display:inline-block;flex:0 0 auto;}
+  .legend button[aria-pressed="false"]{opacity:.45;background:#F0F2F5;text-decoration:line-through;}
+  .legend button:hover{border-color:var(--navy);}
+  .legend .legend-hint{font-size:11px;color:var(--text-muted);font-weight:600;opacity:.8;}
+  .legend .legend-reset{
+    border:none;background:none;color:var(--navy);text-decoration:underline;padding:5px 4px;font-size:12px;font-weight:600;
+  }
 
   .cat-TRAINING{background:var(--navy-mid);}
   .cat-MEETING{background:var(--slate);}
@@ -114,6 +123,7 @@
   .agenda{display:none;}
   .agenda.active{display:block;}
   .month-wrap.hidden{display:none;}
+  .legend-reset.hidden{display:none;}
   .agenda-day{margin-bottom:16px;}
   .agenda-day-header{
     font-family:var(--font-display);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;
@@ -305,6 +315,30 @@
   function catKey(ev){ var k = ev.category; return CATEGORY_ALIAS[k] || k; }
   function isWorkshop(ev){ var k = catKey(ev); return k === "CBR_MARKETING" || k === "HOME_PLATFORM"; }
   var VIEW_KEY = "cbnh_view_pref";
+  var FILTER_KEY = "cbnh_cat_filter";
+
+  // ---- Category filter --------------------------------------------------
+  // Which categories this viewer wants to see. Remembered per browser.
+  var hidden = {};
+  try {
+    var savedFilter = localStorage.getItem(FILTER_KEY);
+    if (savedFilter){
+      JSON.parse(savedFilter).forEach(function(k){
+        if (CATEGORY_META[k]) hidden[k] = true;
+      });
+    }
+  } catch(e){ hidden = {}; }
+
+  function saveFilter(){
+    try {
+      localStorage.setItem(FILTER_KEY, JSON.stringify(Object.keys(hidden).filter(function(k){ return hidden[k]; })));
+    } catch(e){}
+  }
+  function isVisible(ev){ return !hidden[catKey(ev)]; }
+  function visibleEvents(list){ return (list || []).filter(isVisible); }
+  function anyHidden(){
+    return Object.keys(CATEGORY_META).some(function(k){ return hidden[k]; });
+  }
   var AGENDA_DAYS_AHEAD = 60;
 
   var state = {
@@ -383,16 +417,59 @@
     el.updatedPill.textContent = "Updated " + d.toLocaleString("en-US", opts);
   }
 
-  // ---- Legend ----------------------------------------------------------
-  (function renderLegend(){
+  // ---- Legend doubles as the category filter ---------------------------
+  var resetBtn = null;
+  function syncLegend(){
     Object.keys(CATEGORY_META).forEach(function(k){
-      var s = document.createElement("span");
+      var b = CATEGORY_META[k].btn;
+      if (!b) return;
+      var on = !hidden[k];
+      b.setAttribute("aria-pressed", on ? "true" : "false");
+      b.title = (on ? "Hide " : "Show ") + CATEGORY_META[k].label + " events";
+    });
+    if (resetBtn) resetBtn.classList.toggle("hidden", !anyHidden());
+  }
+
+  function toggleCategory(k){
+    if (hidden[k]) delete hidden[k]; else hidden[k] = true;
+    saveFilter();
+    syncLegend();
+    renderAll();
+    closeModal();
+  }
+
+  (function renderLegend(){
+    var hint = document.createElement("span");
+    hint.className = "legend-hint";
+    hint.textContent = "Show:";
+    el.legend.appendChild(hint);
+
+    Object.keys(CATEGORY_META).forEach(function(k){
+      var b = document.createElement("button");
+      b.type = "button";
       var i = document.createElement("i");
       i.className = CATEGORY_META[k].cls;
-      s.appendChild(i);
-      s.appendChild(document.createTextNode(CATEGORY_META[k].label));
-      el.legend.appendChild(s);
+      b.appendChild(i);
+      b.appendChild(document.createTextNode(CATEGORY_META[k].label));
+      b.addEventListener("click", function(){ toggleCategory(k); });
+      CATEGORY_META[k].btn = b;
+      el.legend.appendChild(b);
     });
+
+    resetBtn = document.createElement("button");
+    resetBtn.type = "button";
+    resetBtn.className = "legend-reset";
+    resetBtn.textContent = "Show all";
+    resetBtn.addEventListener("click", function(){
+      hidden = {};
+      saveFilter();
+      syncLegend();
+      renderAll();
+      closeModal();
+    });
+    el.legend.appendChild(resetBtn);
+
+    syncLegend();
   })();
 
   // ---- View switching ----------------------------------------------------
@@ -449,7 +526,7 @@
         cell.appendChild(numEl);
 
         var key = dateKey(state.viewYear, state.viewMonth, dayNum);
-        var dayEvents = state.days[key] || [];
+        var dayEvents = visibleEvents(state.days[key]);
 
         // Desktop: text chips. Mobile: colored dots (CSS switches which shows).
         var maxChips = 3;
@@ -567,7 +644,7 @@
       var d = new Date(today.getTime());
       d.setDate(today.getDate() + i);
       var key = keyOf(d);
-      var dayEvents = state.days[key] || [];
+      var dayEvents = visibleEvents(state.days[key]);
       if (!dayEvents.length) continue;
 
       var section = document.createElement("div");
@@ -584,7 +661,9 @@
     if (!shown){
       var none = document.createElement("div");
       none.className = "agenda-empty";
-      none.textContent = "No upcoming events in the next " + AGENDA_DAYS_AHEAD + " days.";
+      none.textContent = anyHidden()
+        ? "No upcoming events in the categories you're showing. Tap “Show all” above to see everything."
+        : "No upcoming events in the next " + AGENDA_DAYS_AHEAD + " days.";
       el.agenda.appendChild(none);
     }
   }
@@ -625,11 +704,14 @@
 
     var body = document.createElement("div");
     body.className = "modal-body";
-    var dayEvents = state.days[key] || [];
+    var dayEvents = visibleEvents(state.days[key]);
     if (!dayEvents.length){
+      var hiddenHere = (state.days[key] || []).length;
       var none = document.createElement("div");
       none.className = "no-events";
-      none.textContent = "No events on this day.";
+      none.textContent = hiddenHere
+        ? "No events on this day in the categories you're showing."
+        : "No events on this day.";
       body.appendChild(none);
     } else {
       dayEvents.forEach(function(ev){ body.appendChild(eventCard(ev)); });
