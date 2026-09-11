@@ -198,6 +198,76 @@
   .tabbar button.active{background:var(--blue-bright);color:var(--onink);}
   .panel{display:none;} .panel.active{display:block;}
 
+  /* ---- Contractors / Vendors ---- */
+  .vnd-toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;
+    flex-wrap:wrap;gap:12px;}
+  .vnd-toolbar h3{font-family:var(--font-display);font-weight:400;font-size:27px;text-transform:uppercase;
+    letter-spacing:-.01em;margin:0;}
+  .vnd-controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .vnd-controls input[type="search"]{font:inherit;font-weight:400;font-size:15px;width:250px;max-width:62vw;
+    padding:8px 11px;border:2px solid var(--rule);background:var(--paper-2);color:var(--ink);}
+  .vnd-controls select{font:inherit;font-weight:500;font-size:13px;letter-spacing:.06em;
+    text-transform:uppercase;padding:9px 11px;border:2px solid var(--rule);
+    background:var(--paper-2);color:var(--ink);cursor:pointer;max-width:62vw;}
+  .vnd-controls select:hover{border-color:var(--blue);}
+  .vnd-count{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);}
+  .vnd-intro{background:var(--paper-2);border:2px solid var(--rule);padding:13px 16px;margin-bottom:14px;
+    font-size:14px;line-height:1.55;color:var(--ink-2);}
+  .vnd-intro strong{color:var(--ink);}
+
+  .vnd-legend{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px 0;align-items:center;}
+  .vnd-legend button{display:inline-flex;align-items:center;gap:7px;font-size:11px;color:var(--ink-2);
+    font-weight:500;letter-spacing:.1em;text-transform:uppercase;background:var(--paper-2);
+    border:2px solid var(--rule);padding:5px 11px;line-height:1;}
+  .vnd-legend button i{width:12px;height:12px;display:inline-block;flex:0 0 auto;}
+  .vnd-legend button[aria-pressed="false"]{opacity:.4;background:var(--paper-3);text-decoration:line-through;}
+  .vnd-legend button:hover{border-color:var(--blue);color:var(--ink);}
+  .vnd-hint{font-size:11px;color:var(--ink-3);font-weight:500;letter-spacing:.1em;text-transform:uppercase;}
+  .vnd-legend .vnd-reset{border:none;background:none;color:var(--blue);text-decoration:underline;
+    padding:5px 4px;font-size:12px;font-weight:500;letter-spacing:0;text-transform:none;}
+  .vnd-legend .vnd-reset.vnd-off{display:none;}
+
+  .vnd-spec{margin-bottom:26px;}
+  .vnd-spec-head{font-family:var(--font-display);font-weight:400;font-size:21px;letter-spacing:-.01em;
+    text-transform:uppercase;color:var(--ink);margin:0 0 9px 0;padding-bottom:6px;
+    border-bottom:2px solid var(--rule);display:flex;align-items:center;gap:10px;}
+  .vnd-dot{width:13px;height:13px;flex:none;display:inline-block;}
+  .vnd-spec-head span:last-child{font-family:var(--font-body);font-size:11px;font-weight:600;
+    letter-spacing:.14em;color:var(--ink-3);margin-left:auto;}
+
+  .vnd-card{background:var(--paper-2);border:2px solid var(--rule);padding:13px 15px;
+    margin-bottom:10px;display:flex;gap:13px;align-items:flex-start;}
+  .vnd-bar{width:5px;align-self:stretch;flex-shrink:0;}
+  .vnd-main{flex:1;min-width:0;}
+  .vnd-title{font-weight:600;font-size:17px;line-height:1.25;margin:0 0 5px 0;word-break:break-word;
+    display:flex;flex-wrap:wrap;gap:9px;align-items:center;}
+  .vnd-tag{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.14em;
+    text-transform:uppercase;color:#fff;padding:3px 8px;}
+  .vnd-t-good{background:var(--blue-bright);}
+  .vnd-t-warn{background:var(--gold);}
+  .vnd-t-plain{background:var(--ink-3);}
+  .vnd-tags{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 7px 0;}
+  .vnd-trade{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.12em;
+    text-transform:uppercase;color:#fff;padding:3px 8px;}
+  .vnd-flag{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--ink-2);padding:1px 8px;border:2px solid var(--rule);}
+  .vnd-meta{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--ink-3);display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .vnd-sep{color:var(--hair);}
+  .vnd-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+  .vnd-link{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.14em;
+    text-transform:uppercase;text-decoration:none;padding:6px 11px;border:2px solid var(--rule);
+    background:var(--paper-2);color:var(--ink-2);}
+  .vnd-link:hover{background:var(--blue-bright);border-color:var(--blue-bright);color:var(--onink);}
+  .vnd-call{background:var(--blue-bright);border-color:var(--blue-bright);color:var(--onink);}
+  .vnd-call:hover{background:var(--blue);border-color:var(--blue);}
+  .vnd-prov{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--ink-3);margin:9px 0 0 0;padding-top:8px;border-top:1px solid var(--hair);}
+  .vnd-prov b{color:var(--ink-2);font-weight:600;}
+  .vnd-empty{color:var(--ink-3);font-size:11px;font-weight:600;letter-spacing:.14em;
+    text-transform:uppercase;text-align:center;padding:44px 10px;background:var(--paper-2);
+    border:2px solid var(--rule);}
+
   /* ---- Floor time planner ---- */
   .ft-rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:22px 26px;
     border-bottom:2px solid var(--rule);padding:0 0 22px;margin-bottom:18px;}
@@ -336,6 +406,7 @@
   <button type="button" data-tab="calendar" class="active">Calendar</button>
   <button type="button" data-tab="floor">Floor Time</button>
   <button type="button" data-tab="showing">Showing Agents</button>
+  <button type="button" data-tab="vendors">Contractors / Vendors</button>
 </nav>
 
 <main>
@@ -424,6 +495,24 @@
   </div>
   <div class="sa-count" id="sa-count"></div>
   <div class="sa-grid" id="sa-grid"></div>
+</section>
+<section class="panel" id="panel-vendors">
+  <div class="vnd-toolbar">
+    <h3>Who We Call</h3>
+    <div class="vnd-controls">
+      <input type="search" id="vnd-q" placeholder="Roofer, Wexford, Ireland&hellip;" aria-label="Search vendors">
+      <select id="vnd-spec" aria-label="Choose a specialty"></select>
+      <span class="vnd-count" id="vnd-count"></span>
+    </div>
+  </div>
+  <div class="vnd-intro">
+    <strong>Contractors and vendors our agents have recommended to each other.</strong>
+    Phone numbers come from those emails and from each business&rsquo;s own listing, so confirm before
+    you send a client. Know somebody good?
+    <a href="mailto:dana.coon@pittsburghmoves.com?subject=Vendor%20for%20the%20office%20list">Email Dana to add them</a>.
+  </div>
+  <div class="vnd-legend" id="vnd-legend"></div>
+  <div id="vnd-list"></div>
 </section>
 </main>
 
@@ -1170,6 +1259,241 @@
       if(which==='floor') ftLoad();
     });
   });
+})();
+
+(function(){
+var FAMILIES = [
+  {key:"EXTERIOR",  label:"Exterior",      trades:["Roofer","General Contractor","Landscaper"]},
+  {key:"SYSTEMS",   label:"Systems",       trades:["Plumber","Electrician","HVAC Contractor"]},
+  {key:"MARKETING", label:"Listing Prep",  trades:["Stager","Painter","Photographer","Cleaner"]},
+  {key:"DILIGENCE", label:"Due Diligence", trades:["Inspector","Appraiser","Attorney"]},
+  {key:"SERVICE",   label:"Services",      trades:["Locksmith","Property Manager","Other"]}
+];
+
+var SEED = [
+  {name:"Miele Roofing, LLC", cat:"Roofer", contact:"Joshua Miele", phone:"724-272-5330",
+   area:"Valencia, serving the North Hills", site:"mieleroofingllc.com", by:"Cindy Hovan", trust:"good"},
+  {name:"Resnick Roofing & Contracting", cat:"Roofer", contact:"Mik or Ethan, project managers",
+   phone:"412-307-9809", area:"Gibsonia", site:"resnickroof.com", by:"Anne Sherman", trust:"good"},
+  {name:"Ireland Contracting", cat:"Roofer", contact:"Lora, coordinator", phone:"412-492-7663",
+   area:"Glenshaw", site:"irelandcontracting.com", by:"Anne Sherman", trust:"good"},
+  {name:"RBK Enterprises, Inc.", cat:"General Contractor", contact:"Stephanie, coordinator", phone:"412-492-8123",
+   area:"Allison Park", site:"rbkenterprisesinc.com", by:"Anne Sherman", trust:"good"},
+  {name:"ModCon, LLC", cat:"General Contractor", phone:"412-201-9266",
+   area:"Pittsburgh and the North Hills", site:"modconstruction.us", by:"Dana Coon", trust:"good"},
+  {name:"ModCon, LLC", cat:"Electrician", phone:"412-201-9266",
+   area:"Pittsburgh and the North Hills", site:"modconstruction.us", by:"Dana Coon", trust:"good"},
+  {name:"Krupp Whitney Plumbing", cat:"Plumber", contact:"Trenchless sewer, hydro jetting, camera inspection",
+   phone:"412-365-4383", area:"24 Ingram Ave, Pittsburgh", site:"kruppwhitneyplumbing.com",
+   by:"Dana Coon", trust:"good"},
+  {name:"Bulldog Plumbing LLC", cat:"Plumber", contact:"Sewer repair, sewer lining, gas and water line replacement",
+   phone:"724-704-0943", area:"Saltsburg, serving Allegheny, Westmoreland, Indiana counties",
+   site:"bulldogplumbingofpittsburgh.com", by:"Dana Coon", trust:"good"},
+  {name:"Brickhaas Plumbing HVAC", cat:"Plumber", phone:"412-206-1868",
+   area:"West Mifflin, serving greater Pittsburgh", site:"brickhaas.com", by:"Dana Coon", trust:"good"},
+  {name:"Brickhaas Plumbing HVAC", cat:"HVAC Contractor", phone:"412-206-1868",
+   area:"West Mifflin, serving greater Pittsburgh", site:"brickhaas.com", by:"Dana Coon", trust:"good"},
+  {name:"Ace Lock, Inc.", cat:"Locksmith", phone:"412-363-3328",
+   area:"5964 Baum Blvd, East Liberty", site:"acelockinc.com", by:"Marilyn Merenstein, Squirrel Hill", trust:"good"},
+  {name:"Fly Over Properties", cat:"Photographer", flag:"Listing Concierge", phone:"412-336-3331",
+   area:"Pittsburgh", site:"flyoverproperties.com", by:"Dana Coon", trust:"good"},
+  {name:"Next Door Photos - Pittsburgh", cat:"Photographer", flag:"Listing Concierge",
+   phone:"724-916-9290", email:"OHPA@nextdoorphotos.com", area:"Pittsburgh",
+   site:"nextdoorphotos.com", by:"Dana Coon", trust:"good"},
+  {name:"Perseus Drone Solutions", cat:"Photographer", flag:"Listing Concierge",
+   phone:"412-475-9130", email:"info@perseusdronesolutions.com",
+   area:"4746 William Flinn Hwy, Allison Park", site:"perseusdronesolutions.com",
+   by:"Dana Coon", trust:"good"},
+  {name:"Pittsburgh Real Estate Media", cat:"Photographer", flag:"Listing Concierge",
+   contact:"Gene Yuger", phone:"412-606-4394", area:"4679 Marjorie Dr, Murrysville",
+   site:"pittsburghrealestatemedia.com", by:"Dana Coon", trust:"good"},
+  {name:"Steel City Visuals", cat:"Photographer", flag:"Listing Concierge",
+   contact:"Nick Colicchie", phone:"724-612-0863", email:"nick@steelcityvisuals.com",
+   area:"Pittsburgh", site:"steelcityvisuals.com", by:"Dana Coon", trust:"good"},
+  {name:"Theis Media", cat:"Photographer", flag:"Listing Concierge",
+   contact:"Peter Theis, request Erin", phone:"412-501-4001", area:"77 Broad St, Leetsdale",
+   site:"petertheis.com", by:"Monica Reynolds, Shadyside", trust:"good"},
+  {name:"Set the Stage Pittsburgh 3 Rivers", cat:"Stager", contact:"Roberta Schwarzbach, owner",
+   phone:"724-719-8088", area:"Greater Pittsburgh", site:"wesetthestage.com", by:"Dana Coon", trust:"good"},
+  {name:"Beth Frank Interiors", cat:"Stager", contact:"Beth Frank", phone:"724-674-0716",
+   area:"Sewickley, Cranberry, Wexford, Pittsburgh", site:"bethfrankinteriors.com", by:"Dana Coon", trust:"good"},
+  {name:"Cornerstone Home Inspection", cat:"Inspector", contact:"Scott Kelly", phone:"724-799-7611",
+   area:"Pittsburgh and north", site:"cornerstonehomeinspection.us", by:"Dana Coon", trust:"good"},
+  {name:"Owen Appraisal Service, LLC", cat:"Appraiser", contact:"Bob Owen, SRA", phone:"412-921-6936",
+   area:"300 Bilmar Dr, Pittsburgh, tri-state", site:"owenappraisal.com",
+   by:"Spoke at the North Hills sales meeting, Aug 25, 2026", trust:"good"},
+  {name:"Bella's Army Painting", cat:"Painter", contact:"Brian", phone:"412-378-1006",
+   email:"brian@bellasarmy.com", area:"3367 Babcock Blvd, Pittsburgh", site:"bellasarmy.com",
+   by:"Spoke at the North Hills sales meeting, Feb 24, 2026", trust:"warn"},
+  {name:"Foundations Property Inspection", cat:"Inspector",
+   contact:"Home, pest, radon, water, septic dye, well flow, sewer camera",
+   phones:[{who:"Jarrod",num:"724-884-3271"},{who:"Jake",num:"412-849-0201"},{who:"Mike",num:"412-583-0073"}],
+   area:"Jefferson Hills, serving southwestern PA", site:"foundationspropertyinspection.com",
+   by:"Dana Coon", trust:"good"},
+  {name:"Real Property Management Pittsburgh", cat:"Property Manager", contact:"Claudette", phone:"412-600-4824",
+   area:"134 S Highland Ave, Pittsburgh", site:"rpmpittsburgh.com", by:"Dana Coon", trust:"good"}
+];
+
+var FAM_OF = {};
+FAMILIES.forEach(function(f){ f.trades.forEach(function(t){ FAM_OF[t] = f.key; }); });
+
+var TRUST = {
+  good:  ["Vouched",    "vnd-t-good"],
+  warn:  ["Named once", "vnd-t-warn"],
+  plain: ["Not vetted", "vnd-t-plain"]
+};
+
+var FILTER_KEY = "cbnh_vendor_filter";
+var hidden = [];
+try{ hidden = JSON.parse(localStorage.getItem(FILTER_KEY)) || []; }catch(e){ hidden = []; }
+if(!Array.isArray(hidden)) hidden = [];
+var query = "", specFilter = "";
+
+function esc(s){
+  return String(s == null ? "" : s).replace(/[&<>"]/g, function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];
+  });
+}
+
+function merged(){
+  var byName = {}, order = [];
+  SEED.forEach(function(v){
+    var key = v.name.toLowerCase();
+    if(!byName[key]){
+      byName[key] = {name:v.name, cats:[], contact:v.contact, email:v.email, area:v.area,
+        phone:v.phone, phones:v.phones, site:v.site, by:v.by, trust:v.trust, flag:v.flag};
+      order.push(key);
+    }
+    var m = byName[key];
+    if(m.cats.indexOf(v.cat) === -1) m.cats.push(v.cat);
+    ["contact","email","area","phone","phones","site","by","flag"].forEach(function(f){
+      if(!m[f] && v[f]) m[f] = v[f];
+    });
+  });
+  return order.map(function(k){ return byName[k]; })
+    .sort(function(a,b){ return a.name.localeCompare(b.name, "en", {sensitivity:"base"}); });
+}
+
+function famsOf(v){ return v.cats.map(function(c){ return FAM_OF[c] || "SERVICE"; }); }
+
+function visible(list){
+  return list.filter(function(v){
+    if(specFilter && v.cats.indexOf(specFilter) === -1) return false;
+    if(famsOf(v).every(function(f){ return hidden.indexOf(f) !== -1; })) return false;
+    if(!query) return true;
+    return [v.name,v.cats.join(" "),v.flag,v.contact,v.area,v.by,v.phone,v.email,v.site,
+      (v.phones||[]).map(function(p){return (p.who||"")+" "+p.num;}).join(" ")]
+      .filter(Boolean).join(" ").toLowerCase().indexOf(query) !== -1;
+  });
+}
+
+function cardHTML(v, spec){
+  var t = TRUST[v.trust] || TRUST.plain;
+  var meta = [];
+  if(v.contact) meta.push(esc(v.contact));
+  if(v.email)   meta.push(esc(v.email));
+  if(v.area)    meta.push(esc(v.area));
+
+  var tags = v.cats.filter(function(c){ return c !== spec; }).map(function(c){
+    return '<span class="vnd-trade fam-' + (FAM_OF[c] || "SERVICE") + '">Also ' + esc(c) + '</span>';
+  }).join("");
+  if(v.flag) tags += '<span class="vnd-flag">' + esc(v.flag) + '</span>';
+
+  var links = [];
+  var phones = v.phones || (v.phone ? [{num:v.phone}] : []);
+  phones.forEach(function(p){
+    links.push('<a class="vnd-link vnd-call" href="tel:' + esc(p.num.replace(/[^\d+]/g,"")) + '">'
+      + (p.who ? esc(p.who) + " " : "") + esc(p.num) + '</a>');
+  });
+  if(v.site){
+    var href = /^https?:\/\//i.test(v.site) ? v.site : "https://" + v.site;
+    links.push('<a class="vnd-link" href="' + esc(href) + '" target="_blank" rel="noopener">Website &#8599;</a>');
+  }
+  links.push('<a class="vnd-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query='
+    + encodeURIComponent(v.name + " " + (v.area || "Pittsburgh PA")) + '">Google &#8599;</a>');
+
+  return '<article class="vnd-card">'
+    + '<div class="vnd-bar fam-' + (FAM_OF[spec] || famsOf(v)[0]) + '"></div>'
+    + '<div class="vnd-main">'
+    +   '<h3 class="vnd-title">' + esc(v.name) + '<span class="vnd-tag ' + t[1] + '">' + t[0] + '</span></h3>'
+    +   (tags ? '<div class="vnd-tags">' + tags + '</div>' : "")
+    +   (meta.length ? '<div class="vnd-meta">' + meta.join('<span class="vnd-sep">/</span>') + '</div>' : "")
+    +   '<div class="vnd-links">' + links.join("") + '</div>'
+    +   (v.by ? '<p class="vnd-prov">Recommended by <b>' + esc(v.by) + '</b></p>' : "")
+    + '</div></article>';
+}
+
+function renderLegend(){
+  var total = merged();
+  var html = FAMILIES.filter(function(f){
+    return total.some(function(v){ return famsOf(v).indexOf(f.key) !== -1; });
+  }).map(function(f){
+    var on = hidden.indexOf(f.key) === -1;
+    var n = total.filter(function(v){ return famsOf(v).indexOf(f.key) !== -1; }).length;
+    return '<button type="button" data-fam="' + f.key + '" aria-pressed="' + on + '">'
+      + '<i class="fam-' + f.key + '"></i>' + esc(f.label) + ' ' + n + '</button>';
+  }).join("");
+  html += '<span class="vnd-hint">Click to hide</span>';
+  html += '<button type="button" class="vnd-reset' + (hidden.length ? "" : " vnd-off") + '" id="vnd-reset">Show all</button>';
+  document.getElementById("vnd-legend").innerHTML = html;
+}
+
+function renderPicker(){
+  var counts = {}, list = merged();
+  list.forEach(function(v){ v.cats.forEach(function(c){ counts[c] = (counts[c] || 0) + 1; }); });
+  var names = Object.keys(counts).sort(function(a,b){
+    return a.localeCompare(b, "en", {sensitivity:"base"}); });
+  var sel = document.getElementById("vnd-spec");
+  var html = '<option value="">All specialties (' + list.length + ')</option>'
+    + names.map(function(c){
+        return '<option value="' + esc(c) + '">' + esc(c) + ' (' + counts[c] + ')</option>';
+      }).join("");
+  if(sel.innerHTML !== html) sel.innerHTML = html;
+  sel.value = specFilter;
+}
+
+function render(){
+  var rows = visible(merged());
+  var specs = [];
+  rows.forEach(function(v){ v.cats.forEach(function(c){
+    if(specs.indexOf(c) === -1) specs.push(c); }); });
+  specs.sort(function(a,b){ return a.localeCompare(b, "en", {sensitivity:"base"}); });
+  if(specFilter) specs = specs.filter(function(c){ return c === specFilter; });
+  renderPicker();
+
+  document.getElementById("vnd-list").innerHTML = rows.length
+    ? specs.map(function(c){
+        var inSpec = rows.filter(function(v){ return v.cats.indexOf(c) !== -1; });
+        return '<section class="vnd-spec"><h2 class="vnd-spec-head">'
+          + '<span class="vnd-dot fam-' + (FAM_OF[c] || "SERVICE") + '"></span>' + esc(c)
+          + '<span>' + inSpec.length + (inSpec.length === 1 ? ' vendor' : ' vendors') + '</span></h2>'
+          + inSpec.map(function(v){ return cardHTML(v, c); }).join("") + '</section>';
+      }).join("")
+    : '<p class="vnd-empty">Nothing matches &mdash; try another specialty</p>';
+
+  document.getElementById("vnd-count").textContent =
+    rows.length + (rows.length === 1 ? " vendor" : " vendors");
+  renderLegend();
+}
+
+function save(){ try{ localStorage.setItem(FILTER_KEY, JSON.stringify(hidden)); }catch(e){} }
+
+document.getElementById("vnd-legend").addEventListener("click", function(e){
+  if(e.target.closest("#vnd-reset")){ hidden = []; save(); render(); return; }
+  var b = e.target.closest("button[data-fam]");
+  if(!b) return;
+  var k = b.getAttribute("data-fam"), i = hidden.indexOf(k);
+  if(i === -1) hidden.push(k); else hidden.splice(i,1);
+  save(); render();
+});
+document.getElementById("vnd-q").addEventListener("input", function(e){
+  query = e.target.value.trim().toLowerCase(); render();
+});
+document.getElementById("vnd-spec").addEventListener("change", function(e){
+  specFilter = e.target.value; render();
+});
+
+render();
 })();
 </script>
 </body>
