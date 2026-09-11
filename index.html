@@ -189,6 +189,90 @@
   .tabbar button.active{background:var(--bg);color:var(--navy);}
   .panel{display:none;} .panel.active{display:block;}
 
+  /* ---- Floor time planner ---- */
+  .ft-rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:18px 24px;
+    background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin-bottom:14px;}
+  .ft-rules h4{margin:0 0 6px 0;font-family:var(--font-display);font-size:13px;font-weight:700;
+    letter-spacing:.05em;text-transform:uppercase;color:var(--navy);}
+  .ft-rules p{margin:0;font-size:13px;line-height:1.55;color:var(--text-muted);}
+  .ft-rules b{color:var(--text);}
+  .ft-bar{display:grid;grid-template-columns:minmax(220px,1fr) auto auto;gap:22px;align-items:end;
+    background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 18px;margin-bottom:14px;}
+  .ft-cap{display:block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--text-muted);margin-bottom:6px;}
+  .ft-field{position:relative;}
+  .ft-field input{font:inherit;width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:6px;
+    background:#fff;color:var(--text);font-size:15px;}
+  .ft-field input:focus{outline:none;border-color:var(--navy);}
+  .ft-menu{position:absolute;top:100%;left:0;right:0;z-index:40;margin-top:3px;max-height:230px;overflow-y:auto;
+    background:#fff;border:1px solid var(--border);border-radius:6px;box-shadow:0 8px 22px rgba(1,33,105,.14);padding:3px;}
+  .ft-menu button{display:block;width:100%;text-align:left;padding:7px 10px;border:none;border-radius:4px;
+    background:none;color:var(--text);font-size:14px;cursor:pointer;}
+  .ft-menu button:hover,.ft-menu button.on{background:var(--navy);color:#fff;}
+  .ft-who{display:flex;align-items:baseline;gap:10px;}
+  .ft-who strong{font-family:var(--font-display);font-size:18px;}
+  .ft-who button{border:none;background:none;color:var(--text-muted);font-size:12px;text-decoration:underline;
+    cursor:pointer;padding:0;}
+  .ft-pips{display:flex;gap:4px;margin-bottom:6px;}
+  .ft-pip{width:34px;height:10px;border:1px solid var(--border);border-radius:3px;background:#fff;}
+  .ft-pip.used{background:var(--navy);border-color:var(--navy);}
+  .ft-num{font-size:12px;color:var(--text-muted);}
+  .ft-num.full{color:var(--navy);font-weight:700;}
+  .ft-legend{display:flex;flex-direction:column;gap:5px;font-size:12px;color:var(--text-muted);}
+  .ft-key{display:inline-flex;align-items:center;gap:7px;}
+  .ft-sw{width:13px;height:13px;border:1px solid var(--border);border-radius:3px;background:#fff;}
+  .ft-sw.t{background:#E9ECF1;}
+  .ft-sw.m{background:var(--navy);border-color:var(--navy);}
+  .ft-nav{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px;}
+  .ft-nav .month-label{font-size:16px;}
+  .ft-tag{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--navy);
+    color:#fff;border-radius:999px;padding:3px 10px;}
+  .ft-spacer{flex:1;}
+  .ft-count{font-size:12px;font-weight:600;color:var(--text-muted);}
+  .ft-wrap{overflow-x:auto;background:var(--card);border:1px solid var(--border);border-radius:10px;}
+  .ft-planner{min-width:780px;}
+  .ft-clock{display:grid;grid-template-columns:120px repeat(4,1fr);background:#EDEFF3;
+    border-bottom:1px solid var(--border);}
+  .ft-clock span{padding:8px 12px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--text-muted);border-right:1px solid var(--border);}
+  .ft-clock span:last-child{border-right:none;}
+  .ft-row{display:grid;grid-template-columns:120px repeat(4,1fr);border-bottom:1px solid var(--border);}
+  .ft-row:last-child{border-bottom:none;}
+  .ft-rowhead{padding:14px 12px;border-right:1px solid var(--border);display:flex;flex-direction:column;
+    gap:2px;justify-content:center;}
+  .ft-rowhead .d{font-family:var(--font-display);font-weight:700;font-size:15px;}
+  .ft-rowhead .n{font-size:12px;color:var(--text-muted);}
+  .ft-row.today .ft-rowhead{background:var(--navy);}
+  .ft-row.today .ft-rowhead .d{color:#fff;}
+  .ft-row.today .ft-rowhead .n{color:var(--navy-pale);}
+  .ft-slot{position:relative;width:100%;text-align:left;border:none;border-right:1px solid var(--border);
+    background:#fff;padding:13px 12px;min-height:78px;display:flex;flex-direction:column;justify-content:center;
+    gap:4px;color:var(--text);font:inherit;cursor:pointer;}
+  .ft-slot:last-child{border-right:none;}
+  .ft-slot .s{font-size:14px;line-height:1.3;}
+  .ft-slot.open{background:repeating-linear-gradient(-45deg,#fff,#fff 7px,#EDEFF3 7px,#EDEFF3 14px);}
+  .ft-slot.open .s{font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--navy);}
+  .ft-slot.open:hover:not(:disabled){background:var(--navy);}
+  .ft-slot.open:hover:not(:disabled) .s{color:#fff;}
+  .ft-slot.taken{cursor:default;background:#fff;}
+  .ft-slot.taken .s{font-family:var(--font-display);font-weight:700;}
+  .ft-slot.mine{background:var(--navy);}
+  .ft-slot.mine .s{color:#fff;}
+  .ft-slot.blocked{background:#F7F8FA;}
+  .ft-slot.blocked .s,.ft-slot.past .s{font-size:12px;font-weight:400;letter-spacing:0;text-transform:none;
+    color:var(--text-muted);font-family:var(--font-body);}
+  .ft-slot.past{opacity:.45;}
+  .ft-slot:disabled{cursor:not-allowed;}
+  .ft-badge{position:absolute;top:7px;right:11px;font-size:9px;font-weight:700;letter-spacing:.12em;
+    text-transform:uppercase;color:rgba(255,255,255,.72);}
+  .ft-give{align-self:flex-start;border:none;background:none;padding:0;font-size:11px;font-weight:600;
+    letter-spacing:.04em;text-transform:uppercase;color:#fff;opacity:.9;text-decoration:underline;cursor:pointer;}
+  .ft-note{margin:12px 0 0 0;font-size:12px;color:var(--text-muted);}
+  .ft-toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:80;background:var(--navy);
+    color:#fff;padding:11px 20px;border-radius:999px;font-size:14px;max-width:90vw;
+    box-shadow:0 8px 24px rgba(1,33,105,.3);}
+  @media (max-width:760px){ .ft-bar{grid-template-columns:1fr;gap:16px;} }
+
   /* ---- Showing agents ---- */
   .sa-intro{
     background:var(--card);border:1px solid var(--border);border-left:4px solid var(--gold);
@@ -241,6 +325,7 @@
 
 <nav class="tabbar">
   <button type="button" data-tab="calendar" class="active">Calendar</button>
+  <button type="button" data-tab="floor">Floor Time</button>
   <button type="button" data-tab="showing">Showing Agents</button>
 </nav>
 
@@ -275,6 +360,49 @@
   </div>
 
   <div class="agenda" id="agenda"></div>
+</section>
+
+<section class="panel" id="panel-floor">
+  <div class="ft-rules">
+    <div>
+      <h4>Three a week</h4>
+      <p>Every agent holds <b>three shifts per week</b>. The planner counts them and will not hand out a fourth. Give one back and it frees up right away.</p>
+    </div>
+    <div>
+      <h4>Be in the office</h4>
+      <p>Floor time means <b>at the office, in person</b>, for the full two hours. If something comes up, give the shift back so someone else can cover the phones.</p>
+    </div>
+    <div>
+      <h4>Who gets the call</h4>
+      <p>Calls on our own listings go to the <b>listing agent</b> when they are in the building. Every other lead that comes in is yours to pick up.</p>
+    </div>
+    <div>
+      <h4>How far ahead</h4>
+      <p>Agents can schedule <b>a month out</b>. Use the arrows below to move ahead a week at a time.</p>
+    </div>
+  </div>
+
+  <div class="ft-bar">
+    <div class="ft-field" id="ft-identity"></div>
+    <div id="ft-meter"></div>
+    <div class="ft-legend">
+      <span class="ft-key"><span class="ft-sw o"></span>Open</span>
+      <span class="ft-key"><span class="ft-sw t"></span>Taken</span>
+      <span class="ft-key"><span class="ft-sw m"></span>Yours</span>
+    </div>
+  </div>
+
+  <div class="ft-nav">
+    <button class="nav-arrow" id="ft-prev" type="button" aria-label="Previous week">&#8249;</button>
+    <button class="nav-arrow" id="ft-next" type="button" aria-label="Next week">&#8250;</button>
+    <div class="month-label" id="ft-weeklabel">&mdash;</div>
+    <span class="ft-tag" id="ft-weektag" hidden>This week</span>
+    <span class="ft-spacer"></span>
+    <span class="ft-count" id="ft-weekcount"></span>
+  </div>
+
+  <div class="ft-wrap"><div class="ft-planner" id="ft-board"></div></div>
+  <p class="ft-note" id="ft-status">Loading the floor time planner&hellip;</p>
 </section>
 
 <section class="panel" id="panel-showing">
@@ -768,6 +896,258 @@
       +'</div></div>';
   }).join('');
 
+  /* ================= Floor Time planner ================= */
+  /* Bookings live in the office Floor Time Google Sheet, behind the Apps Script
+     web app below. Paste the /exec URL here and the tab goes live for everyone. */
+  var FLOOR_TIME_API = "https://script.google.com/macros/s/AKfycbzHSQTWt1HUjwahmMHExYaLDoVd6h_JnE9GAxAlovNdW9IcQ1NK65SwjWZLOUZo_w/exec";
+
+  var FT_ROSTER = ["Adam Weiss","Adriene Eggert","Alexandra Demoss","Alexis Holben","Alexis Pollock","Allyson Harrison","Amy Rick","Andrew Tiglio","Angela Mayer","Anna Mangerie","Anne Sherman","Annie Augustine","Annmarie Dimitroff","Ashley Garland","Ashley Pugliesi","Ava Billmann","Bayram Kan","Beth Danchek","Beth Nichols","Blanca Pifano-Lenk","Bob Spithaler","Breanne French","Brent Zollner","Brian Gierl","Brittany Bellovich","Cara Moody","Carma Lamm","Caryn Carson","Cathy Swearingen","Cecilia Nelson","Charles James","Chelsea Handyside","Chris Carson","Chris Kohtz","Chris Mundie","Chris Stuempges","Christina Craddock","Christine Emick","Corinne Heim","Courtney Lynn","Cynthia Hovan","Dana Coon","Darla Seifried","Dave McSwigan","Deborah Platts","Debra Merlina","Dennis Marquez","Devalyn Harper","Dori Deible","Elaine Bodnar","Elizabeth Ejzak","Elizabeth Kofmehl","Emma Ferrick","Erin Sekerak","Fiona Kelman","Garvin Bixler","George Hackett","Grace Billmann","Grace Taylor","Gracie Reis","Greg Godbey","Harriett Koedel","Heather Chirumbolo","Heather Digregory","Holly Vierling","Howard McQuillan","Irene Klocko","James Perry","James Uhler","Jamie Pillar","Jane Bloch","Janette Schafer","Jay Paulding","Jeffrey Stapinski","Jennie Leonard","Jennifer Bargar","Jennifer Bartlett","Jennifer Mance","Jenny Branch","Jeremy Thieroff","Jill Sutter","Joan Chiaramonte","Joanne Grus","John Angiulli","John Barley","John Hendrickson","John Kelly","John Perry","Jonathan Bernstein","Jonathan Kohn","Jordan Jankowski","Joseph Gardonis","Joseph Koehler","Joyce Weyman","Katelyn Davis","Kayla Higham","Keni Jefferson","Kevin Brown","Kevin Trumble","Kim Esposito","Kimberly Murray","Kimmarie Angiulli","Krista Tivo","Kristina Waltman","Kristy Burja","Kylie Podgorski","Lana Zortman","Laura Palmer","Lauren Pearlman","Leann Pader","Leigh Krawchyk","Leslie Glikis","Linda Boettcher","Linda Jackson","Linda Miller","Lindsey Schafer","Lisa Baldwin","Logan Shreffler","Louis Kostante","Lynne Kelly","Marcia Shipley","Maria Folino","Maria Ronac","Marie Myrlie","Marissa Kohan","Marlene Lotzmann","Marta Heisel","Mary Montgomery","Matthew Lenk","Matthew Torrence","Matthew Vogel","Maurice Fullenwider","Meredith Avolio","Michael Cowan","Michael Shusteric","Michelle Ricci","Mirnela Ibisevic","Mutsa Mavesere","Nabeel Shehzad","Nancy Reis","Nancy Snider","Naomi Harris","Natalie Hollinger","Nicholas Hopkins","Nicolas Marocco","Patti McMahon","Paul Rechenmacher","Paul Sorby","Penny Folino","Renee Georgi","Rhonda Jackson","Rick Schweikert","Ritu Mehra","Robbi Rance","Robert Grentz","Robin Taylor","Rocio Delgado-Covey","Roger Rech","Roksolana Backus","Ryan McMahon","Ryan Miller","Sally Holmes","Sandra Schall","Sandra Smith","Sara Bernstein","Sara Clagett","Scott Gabriel","Scott Moore","Sean Belajac","Sean Regan","Sepi Miller","Shannon Thieroff","Shelley Wood","Stefania James","Stephanie Heisel","Stephen Lanzilotti","Stephen Romac","Steven Jeffery","Steven Matcho","Suzanne Kindsvater","Tamara Groden","Taylor Jones","Theodora Malobicky","Vicky Chang","Victoria Cuglieri","Xuantrinh Groves","Yan Haust","Yanina Amatore","Zita Billmann","Zoey Hampton"];
+  var FT_SLOTS = [9,11,13,15];
+  var FT_HEADS = ["9 - 11 AM","11 AM - 1 PM","1 - 3 PM","3 - 5 PM"];
+  var FT_DAYS = ["Monday","Tuesday","Wednesday","Thursday","Friday"];
+  var FT_MONTHS = ["January","February","March","April","May","June","July",
+                   "August","September","October","November","December"];
+  var FT_CAP = 3, FT_WEEKS_AHEAD = 4, FT_KEY = "cbnh_floor_agent";
+
+  var ftMe = null, ftBookings = {}, ftBusy = false, ftTimer = null, ftPoll = null;
+  try { var sv = localStorage.getItem(FT_KEY); if (sv) ftMe = JSON.parse(sv); } catch(e){}
+
+  function ftPad(n){ return (n < 10 ? "0" : "") + n; }
+  function ftYmd(d){ return d.getFullYear() + "-" + ftPad(d.getMonth()+1) + "-" + ftPad(d.getDate()); }
+  function ftAdd(d,n){ var x = new Date(d.getFullYear(), d.getMonth(), d.getDate()); x.setDate(x.getDate()+n); return x; }
+  function ftMonday(d){ var x = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+    x.setDate(x.getDate() - ((x.getDay()+6) % 7)); return x; }
+  function ftSlug(n){ return n.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,""); }
+  function ftStarted(ds, slot){ var p = ds.split("-");
+    return new Date(+p[0], +p[1]-1, +p[2], FT_SLOTS[slot], 0, 0) <= new Date(); }
+
+  var ftThisMonday = ftMonday(new Date());
+  var ftWeek = new Date(ftThisMonday);
+
+  function ftToast(msg){
+    var t = document.getElementById("ft-toast");
+    if (!t){ t = document.createElement("div"); t.id = "ft-toast"; t.className = "ft-toast"; document.body.appendChild(t); }
+    t.textContent = msg; t.hidden = false;
+    clearTimeout(ftTimer); ftTimer = setTimeout(function(){ t.hidden = true; }, 3800);
+  }
+  function ftSay(msg){ var s = document.getElementById("ft-status"); if (s) s.textContent = msg; }
+
+  /* ---- who am I ---- */
+  function ftRenderIdentity(){
+    var box = document.getElementById("ft-identity");
+    box.innerHTML = "";
+    if (ftMe){
+      var cap = document.createElement("span"); cap.className = "ft-cap"; cap.textContent = "Signed in as";
+      var row = document.createElement("div"); row.className = "ft-who";
+      var s = document.createElement("strong"); s.textContent = ftMe.name;
+      var b = document.createElement("button"); b.type = "button"; b.textContent = "Not you?";
+      b.onclick = function(){ ftMe = null; try{ localStorage.removeItem(FT_KEY); }catch(e){}
+        ftRenderIdentity(); ftRender(); };
+      row.appendChild(s); row.appendChild(b);
+      box.appendChild(cap); box.appendChild(row);
+      return;
+    }
+    var lab = document.createElement("label"); lab.className = "ft-cap";
+    lab.setAttribute("for","ft-name"); lab.textContent = "Your name";
+    var inp = document.createElement("input"); inp.type = "text"; inp.id = "ft-name"; inp.autocomplete = "off";
+    inp.placeholder = "Start typing to find your name";
+    var menu = document.createElement("div"); menu.className = "ft-menu"; menu.hidden = true;
+    box.appendChild(lab); box.appendChild(inp); box.appendChild(menu);
+
+    var matches = [], cursor = -1;
+    function paint(){
+      menu.innerHTML = "";
+      if (!matches.length){ menu.hidden = true; return; }
+      matches.forEach(function(n, i){
+        var b = document.createElement("button"); b.type = "button"; b.textContent = n;
+        if (i === cursor) b.className = "on";
+        b.onmousedown = function(e){ e.preventDefault(); pick(n); };
+        menu.appendChild(b);
+      });
+      menu.hidden = false;
+    }
+    function pick(n){
+      ftMe = { name: n, key: ftSlug(n) };
+      try { localStorage.setItem(FT_KEY, JSON.stringify(ftMe)); } catch(e){}
+      ftRenderIdentity(); ftRender();
+    }
+    inp.oninput = function(){
+      var q = inp.value.trim().toLowerCase();
+      matches = q ? FT_ROSTER.filter(function(n){ return n.toLowerCase().indexOf(q) > -1; }).slice(0,8) : [];
+      cursor = matches.length ? 0 : -1; paint();
+    };
+    inp.onkeydown = function(e){
+      if (e.key === "ArrowDown"){ e.preventDefault(); cursor = Math.min(cursor+1, matches.length-1); paint(); }
+      else if (e.key === "ArrowUp"){ e.preventDefault(); cursor = Math.max(cursor-1, 0); paint(); }
+      else if (e.key === "Enter" && matches[cursor]){ e.preventDefault(); pick(matches[cursor]); }
+      else if (e.key === "Escape"){ menu.hidden = true; }
+    };
+    inp.onblur = function(){ setTimeout(function(){ menu.hidden = true; }, 150); };
+  }
+
+  function ftMyCount(){
+    if (!ftMe) return 0;
+    var n = 0;
+    for (var k in ftBookings){ if (ftBookings[k].agentKey === ftMe.key) n++; }
+    return n;
+  }
+
+  function ftRenderMeter(){
+    var box = document.getElementById("ft-meter"); box.innerHTML = "";
+    var cap = document.createElement("span"); cap.className = "ft-cap"; cap.textContent = "Shifts this week";
+    var pips = document.createElement("div"); pips.className = "ft-pips";
+    var used = ftMyCount();
+    for (var i = 0; i < FT_CAP; i++){
+      var p = document.createElement("span"); p.className = "ft-pip" + (i < used ? " used" : ""); pips.appendChild(p);
+    }
+    var n = document.createElement("span"); n.className = "ft-num" + (used >= FT_CAP ? " full" : "");
+    n.textContent = !ftMe ? "Pick your name to see your count"
+      : used >= FT_CAP ? used + " of " + FT_CAP + " used. This week is full."
+      : used + " of " + FT_CAP + " used";
+    box.appendChild(cap); box.appendChild(pips); box.appendChild(n);
+  }
+
+  /* ---- the grid ---- */
+  function ftRender(){
+    ftRenderMeter();
+    var board = document.getElementById("ft-board");
+    board.innerHTML = "";
+    var today = ftYmd(new Date());
+    var atCap = ftMe && ftMyCount() >= FT_CAP;
+    var live = !!FLOOR_TIME_API;
+    var taken = 0;
+
+    var clock = document.createElement("div"); clock.className = "ft-clock";
+    var c0 = document.createElement("span"); c0.textContent = "Day"; clock.appendChild(c0);
+    FT_HEADS.forEach(function(h){ var s = document.createElement("span"); s.textContent = h; clock.appendChild(s); });
+    board.appendChild(clock);
+
+    for (var d = 0; d < 5; d++){
+      var date = ftAdd(ftWeek, d), ds = ftYmd(date);
+      var row = document.createElement("div"); row.className = "ft-row" + (ds === today ? " today" : "");
+      var head = document.createElement("div"); head.className = "ft-rowhead";
+      var dow = document.createElement("span"); dow.className = "d"; dow.textContent = FT_DAYS[d];
+      var dt = document.createElement("span"); dt.className = "n";
+      dt.textContent = FT_MONTHS[date.getMonth()].slice(0,3) + " " + date.getDate();
+      head.appendChild(dow); head.appendChild(dt); row.appendChild(head);
+
+      for (var si = 0; si < 4; si++){
+        row.appendChild(ftCell(ds, si, d, taken));
+        if (ftBookings[ds + "_" + si]) taken++;
+      }
+      board.appendChild(row);
+    }
+
+    var end = ftAdd(ftWeek, 4), same = ftWeek.getMonth() === end.getMonth();
+    document.getElementById("ft-weeklabel").textContent =
+      FT_MONTHS[ftWeek.getMonth()] + " " + ftWeek.getDate() + " to " +
+      (same ? "" : FT_MONTHS[end.getMonth()] + " ") + end.getDate();
+    document.getElementById("ft-weektag").hidden = ftWeek.getTime() !== ftThisMonday.getTime();
+    document.getElementById("ft-weekcount").textContent = taken + " of 20 shifts taken";
+    document.getElementById("ft-prev").disabled = ftWeek.getTime() <= ftThisMonday.getTime();
+    document.getElementById("ft-next").disabled = ftWeek.getTime() >= ftAdd(ftThisMonday, 7 * FT_WEEKS_AHEAD).getTime();
+
+    function ftCell(ds, si){
+      var rec = ftBookings[ds + "_" + si];
+      var past = ftStarted(ds, si);
+      var mine = rec && ftMe && rec.agentKey === ftMe.key;
+      var el = document.createElement("button"); el.type = "button"; el.className = "ft-slot";
+      var s = document.createElement("span"); s.className = "s"; el.appendChild(s);
+
+      if (rec){
+        el.className += " taken"; el.disabled = true; s.textContent = rec.agent;
+        if (mine){
+          el.className += " mine";
+          var badge = document.createElement("span"); badge.className = "ft-badge"; badge.textContent = "You";
+          el.appendChild(badge);
+          if (!past){
+            el.disabled = false;
+            var g = document.createElement("button"); g.type = "button"; g.className = "ft-give";
+            g.textContent = "Give it back";
+            g.onclick = function(e){ e.stopPropagation(); ftSend("release", ds, si); };
+            el.appendChild(g);
+          }
+        }
+        if (past) el.className += " past";
+      } else if (past){
+        el.className += " open past blocked"; el.disabled = true; s.textContent = "Closed";
+      } else if (!live){
+        el.className += " open blocked"; el.disabled = true; s.textContent = "Open";
+      } else if (!ftMe){
+        el.className += " open blocked"; el.disabled = true; s.textContent = "Pick your name first";
+      } else if (atCap){
+        el.className += " open blocked"; el.disabled = true; s.textContent = "At your 3 this week";
+      } else {
+        el.className += " open"; s.textContent = "Open. Take it";
+        el.onclick = function(){ ftSend("book", ds, si); };
+      }
+      return el;
+    }
+  }
+
+  /* ---- talking to the sheet ---- */
+  function ftApply(list){
+    ftBookings = {};
+    (list || []).forEach(function(b){ ftBookings[b.date + "_" + b.slot] = b; });
+    ftRender();
+  }
+
+  var ftJsonpN = 0;
+  function ftLoad(){
+    if (!FLOOR_TIME_API){
+      ftRender();
+      ftSay("The planner is not connected to the office sheet yet, so shifts cannot be booked from here.");
+      return;
+    }
+    var want = ftYmd(ftWeek);
+    var cb = "ftcb" + (++ftJsonpN);
+    var s = document.createElement("script");
+    var done = false;
+    window[cb] = function(res){
+      done = true;
+      try { delete window[cb]; } catch(e){ window[cb] = undefined; }
+      if (s.parentNode) s.parentNode.removeChild(s);
+      if (ftYmd(ftWeek) !== want) return;
+      if (res && res.ok){ ftApply(res.bookings); ftSay("Live planner. Everyone in the office sees the same thing."); }
+      else ftSay("Could not read the planner just now. It will try again shortly.");
+    };
+    s.onerror = function(){
+      if (done) return;
+      if (s.parentNode) s.parentNode.removeChild(s);
+      ftSay("Could not reach the planner. Check your connection and reload.");
+    };
+    s.src = FLOOR_TIME_API + "?week=" + encodeURIComponent(want) + "&callback=" + cb + "&t=" + Date.now();
+    document.body.appendChild(s);
+  }
+
+  function ftSend(action, ds, si){
+    if (!FLOOR_TIME_API || !ftMe || ftBusy) return;
+    ftBusy = true;
+    fetch(FLOOR_TIME_API, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify({ action: action, date: ds, slot: si, agent: ftMe.name, agentKey: ftMe.key })
+    }).then(function(r){ return r.json(); }).then(function(res){
+      ftBusy = false;
+      if (res.bookings) ftApply(res.bookings);
+      if (res.ok) ftToast(action === "book"
+        ? "Booked. " + FT_DAYS[(new Date(ds + "T12:00:00")).getDay() - 1] + ", " + FT_HEADS[si]
+        : "Given back. It is open to the office again.");
+      else { ftToast(res.error || "That did not save."); ftLoad(); }
+    }).catch(function(){
+      ftBusy = false;
+      ftToast("That did not save. Try once more.");
+      ftLoad();
+    });
+  }
+
+  document.getElementById("ft-prev").addEventListener("click", function(){ ftWeek = ftAdd(ftWeek, -7); ftRender(); ftLoad(); });
+  document.getElementById("ft-next").addEventListener("click", function(){ ftWeek = ftAdd(ftWeek, 7); ftRender(); ftLoad(); });
+
+  ftRenderIdentity();
+  ftRender();
+  ftLoad();
+
   var tabs=document.querySelectorAll('.tabbar button');
   Array.prototype.forEach.call(tabs,function(b){
     b.addEventListener('click',function(){
@@ -776,7 +1156,9 @@
       Array.prototype.forEach.call(document.querySelectorAll('.panel'),function(p){
         p.classList.remove('active');
       });
-      document.getElementById('panel-'+b.getAttribute('data-tab')).classList.add('active');
+      var which=b.getAttribute('data-tab');
+      document.getElementById('panel-'+which).classList.add('active');
+      if(which==='floor') ftLoad();
     });
   });
 })();
