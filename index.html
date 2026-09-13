@@ -1020,7 +1020,10 @@
   function ftStarted(ds, slot){ var p = ds.split("-");
     return new Date(+p[0], +p[1]-1, +p[2], FT_SLOTS[slot], 0, 0) <= new Date(); }
 
-  var ftThisMonday = ftMonday(new Date());
+  var ftToday = new Date();
+  var ftThisMonday = ftMonday(ftToday);
+  /* On Saturday and Sunday every slot this week is past, so open on the coming week. */
+  if (ftToday.getDay() === 0 || ftToday.getDay() === 6) ftThisMonday = ftAdd(ftThisMonday, 7);
   var ftWeek = new Date(ftThisMonday);
 
   function ftToast(msg){
