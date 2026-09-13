@@ -198,6 +198,9 @@
   .tabbar button:last-child{border-right-width:2px;}
   .tabbar button:hover{color:var(--ink);}
   .tabbar button.active{background:var(--blue-bright);color:var(--onink);}
+  .tabbar a{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;
+    background:var(--paper-2);color:var(--ink-3);border:2px solid var(--rule);border-right-width:0;padding:11px 20px;}
+  .tabbar a:hover{color:var(--ink);}
   .panel{display:none;} .panel.active{display:block;}
 
   /* ---- Contractors / Vendors ---- */
@@ -383,6 +386,7 @@
     header.app-header{padding:20px 14px 10px;}
     .tabbar{padding:0 14px;}
     .tabbar button{padding:10px 14px;letter-spacing:.1em;}
+    .tabbar a{padding:10px 14px;letter-spacing:.1em;}
     main{padding:14px;}
     .month-label{min-width:0;font-size:22px;}
     .cal-day{min-height:58px;padding:5px;gap:2px;}
@@ -409,6 +413,7 @@
   <button type="button" data-tab="calendar" class="active">Calendar</button>
   <button type="button" data-tab="floor">Floor Time</button>
   <button type="button" data-tab="showing">Showing Agents</button>
+  <a href="open-houses.html">Open Houses</a>
   <button type="button" data-tab="vendors">Contractors / Vendors</button>
 </nav>
 
