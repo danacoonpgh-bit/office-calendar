@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>North Hills Agent Hub — Open Houses</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@300;400;500;600&display=swap">
+<style>
+  /* ---- Tokens: copied verbatim from the live office calendar ---- */
+  :root{
+    --blue:#2a6fb8; --blue-bright:#418FDE; --blue-soft:#bdd8f2; --sea:#0d2b4e; --gold:#9a6f08; --teal:#0F6F62;
+    --ink:#131517; --ink-2:#4c535b; --ink-3:#858c95;
+    --paper:#f5f6f8; --paper-2:#ffffff; --paper-3:#e8ebef;
+    --rule:#131517; --hair:#ccd2d9; --onink:#ffffff;
+    --error:#B3261E; --error-bg:#FCEBEA; --error-line:#E8B9B5;
+    --font-display:"Anton","Arial Black",system-ui,sans-serif;
+    --font-body:"Work Sans","Segoe UI",system-ui,sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --blue:#6fb0f0; --blue-bright:#8cc4f8; --blue-soft:#1d4568; --sea:#2f6094; --gold:#d9a827; --teal:#2f9d8d;
+      --ink:#e9edf2; --ink-2:#a8b1bb; --ink-3:#7a828c; --paper:#0f1216; --paper-2:#171b21; --paper-3:#1f242b;
+      --rule:#e9edf2; --hair:#2d333b; --onink:#0f1216; --error:#ff9c95; --error-bg:#3a1d1b; --error-line:#7a3b36;
+    }
+  }
+  :root[data-theme="dark"]{
+    --blue:#6fb0f0; --blue-bright:#8cc4f8; --blue-soft:#1d4568; --sea:#2f6094; --gold:#d9a827; --teal:#2f9d8d;
+    --ink:#e9edf2; --ink-2:#a8b1bb; --ink-3:#7a828c; --paper:#0f1216; --paper-2:#171b21; --paper-3:#1f242b;
+    --rule:#e9edf2; --hair:#2d333b; --onink:#0f1216; --error:#ff9c95; --error-bg:#3a1d1b; --error-line:#7a3b36;
+  }
+  *{box-sizing:border-box;}
+  [hidden]{display:none!important;}
+  html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);
+    font-family:var(--font-body);font-weight:300;font-variant-numeric:tabular-nums;}
+  body{min-height:100vh;font-size:15px;line-height:1.5;}
+
+  header.app-header{background:var(--paper);color:var(--ink);padding:26px 20px 12px;max-width:1060px;margin:0 auto;
+    border-bottom:5px solid var(--rule);display:flex;align-items:flex-end;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+  .brand-block{line-height:1;}
+  .brand-title{font-family:var(--font-display);font-weight:400;font-size:clamp(34px,7vw,68px);line-height:.86;
+    text-transform:uppercase;letter-spacing:-.02em;}
+  .brand-title .r{color:var(--blue-bright);}
+  .brand-sub{font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);margin-top:8px;}
+  .mock-pill{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--onink);
+    background:var(--gold);padding:5px 10px;margin-bottom:4px;white-space:nowrap;}
+
+  main{max-width:1060px;margin:0 auto;padding:20px;}
+
+  button{font-family:var(--font-body);cursor:pointer;border:2px solid var(--rule);background:var(--paper-2);
+    color:var(--ink);font-size:14px;padding:8px 14px;transition:background .12s,color .12s,border-color .12s;}
+  button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--blue);outline-offset:2px;}
+  .btn-sm{padding:7px 13px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;}
+  .btn-secondary:hover{background:var(--blue-bright);border-color:var(--blue-bright);color:var(--onink);}
+  .btn-primary{background:var(--blue-bright);border-color:var(--blue-bright);color:var(--onink);}
+  .btn-primary:hover{background:var(--blue);border-color:var(--blue);}
+  .linkish{border:none;background:none;color:var(--blue);text-decoration:underline;padding:0;font-size:12px;font-weight:500;}
+
+  .tabbar{max-width:1060px;margin:16px auto 0;padding:0 20px;display:flex;flex-wrap:wrap;}
+  .tabbar a,.tabbar span{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;
+    background:var(--paper-2);color:var(--ink-3);border:2px solid var(--rule);border-right-width:0;padding:11px 20px;}
+  .tabbar > :last-child{border-right-width:2px;}
+  .tabbar a:hover{color:var(--ink);}
+  .tabbar .active{background:var(--blue-bright);color:var(--onink);}
+
+  .toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:12px;}
+  .month-nav{display:flex;align-items:center;gap:12px;}
+  .month-label{font-family:var(--font-display);font-weight:400;font-size:27px;text-transform:uppercase;letter-spacing:-.01em;}
+  .nav-arrow{background:var(--paper-2);border:2px solid var(--rule);color:var(--ink);width:40px;height:40px;
+    font-size:17px;line-height:1;padding:0;display:flex;align-items:center;justify-content:center;}
+  .nav-arrow:hover{background:var(--blue-bright);border-color:var(--blue-bright);color:var(--onink);}
+  .toolbar-right{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .oh-me{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);
+    display:flex;gap:8px;align-items:baseline;}
+  .oh-me strong{font-family:var(--font-display);font-weight:400;font-size:19px;letter-spacing:-.01em;color:var(--ink);}
+
+  .view-toggle{display:flex;border:2px solid var(--rule);background:var(--paper-2);}
+  .view-toggle button{border:none;border-right:2px solid var(--rule);background:none;color:var(--ink-3);
+    padding:7px 15px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;}
+  .view-toggle button:last-child{border-right:none;}
+  .view-toggle button.active{background:var(--blue-bright);color:var(--onink);}
+
+  /* ---- Section heads ---- */
+  .oh-section{margin-bottom:38px;}
+  .oh-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    border-bottom:5px solid var(--rule);padding-bottom:8px;margin-bottom:14px;}
+  .oh-head h2{font-family:var(--font-display);font-weight:400;font-size:clamp(26px,4.4vw,36px);line-height:1;
+    text-transform:uppercase;letter-spacing:-.01em;margin:0;}
+  .oh-head h2 .n{color:var(--blue-bright);margin-right:10px;}
+  .sa-intro{background:var(--paper-2);border:2px solid var(--rule);border-left:6px solid var(--gold);
+    padding:15px 17px;margin-bottom:16px;font-size:14px;line-height:1.55;color:var(--ink-2);max-width:70ch;}
+  .sa-intro strong{font-family:var(--font-display);font-weight:400;font-size:20px;text-transform:uppercase;
+    letter-spacing:-.01em;color:var(--ink);}
+  .oh-sub{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 14px;}
+  .sa-count{font-size:11px;font-weight:600;color:var(--ink-3);letter-spacing:.14em;text-transform:uppercase;}
+
+  /* ---- Opportunity cards (agenda style + photo) ---- */
+  .agenda-day{margin-bottom:20px;}
+  .agenda-day-header{font-family:var(--font-display);font-weight:400;font-size:20px;letter-spacing:-.01em;
+    text-transform:uppercase;color:var(--ink);margin:0 0 8px 0;padding-bottom:6px;border-bottom:2px solid var(--rule);}
+  .agenda-day.is-today .agenda-day-header{color:var(--blue-bright);}
+  .oh-card{background:var(--paper-2);border:2px solid var(--rule);padding:13px 15px;margin-bottom:10px;
+    display:flex;gap:13px;align-items:flex-start;}
+  .agenda-bar{width:5px;align-self:stretch;flex-shrink:0;}
+  .oh-photo{width:150px;height:104px;flex-shrink:0;background:var(--paper-3);border:2px solid var(--rule);
+    overflow:hidden;position:relative;}
+  .oh-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+  .oh-photo.none::after{content:"No photo";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);}
+  .agenda-main{flex:1;min-width:0;}
+  .agenda-title{font-weight:600;font-size:17px;line-height:1.25;margin:0 0 5px 0;word-break:break-word;}
+  .agenda-meta{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);
+    display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .cat-tag{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#fff;padding:3px 8px;}
+  .oh-people{font-size:13.5px;color:var(--ink-2);margin:7px 0 0;line-height:1.5;}
+  .oh-people b{color:var(--ink);font-weight:600;}
+  .oh-people a{color:var(--blue);text-decoration:none;}
+  .oh-people a:hover{text-decoration:underline;}
+  .oh-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px;}
+  .event-link-btn{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--onink);background:var(--blue-bright);border:2px solid var(--blue-bright);text-decoration:none;padding:7px 13px;}
+  .event-link-btn:hover{background:var(--blue);border-color:var(--blue);}
+  .vnd-link{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+    text-decoration:none;padding:7px 13px;border:2px solid var(--rule);background:var(--paper-2);color:var(--ink-2);}
+  .vnd-link:hover{background:var(--blue-bright);border-color:var(--blue-bright);color:var(--onink);}
+  .oh-card.past{opacity:.5;}
+  .agenda-empty{color:var(--ink-3);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+    text-align:center;padding:40px 10px;background:var(--paper-2);border:2px solid var(--rule);}
+
+  /* ---- Request cards (showing-agents style) ---- */
+  .sa-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px;}
+  .sa-card{background:var(--paper-2);border:2px solid var(--rule);padding:14px 16px;display:flex;flex-direction:column;gap:8px;min-width:0;}
+  .sa-card.mine{border-left:6px solid var(--teal);}
+  .sa-name{font-family:var(--font-display);font-weight:400;font-size:21px;text-transform:uppercase;letter-spacing:-.01em;color:var(--ink);}
+  .sa-slots{display:flex;gap:6px;flex-wrap:wrap;}
+  .sa-area{display:inline-flex;align-items:center;font-size:10px;font-weight:600;letter-spacing:.14em;
+    text-transform:uppercase;color:#fff;background:var(--blue);padding:4px 10px;line-height:1.35;}
+  .sa-links{display:flex;flex-direction:column;gap:4px;margin-top:2px;}
+  .sa-links a{font-size:13px;color:var(--blue);text-decoration:none;word-break:break-all;}
+  .sa-links a:hover{text-decoration:underline;}
+
+  /* ---- Modal + forms ---- */
+  .overlay{position:fixed;inset:0;background:rgba(10,14,22,.55);display:none;align-items:flex-start;
+    justify-content:center;padding:24px 16px;z-index:100;overflow-y:auto;}
+  .overlay.open{display:flex;}
+  .modal{background:var(--paper-2);border:2px solid var(--rule);width:100%;max-width:580px;margin-top:24px;
+    box-shadow:14px 14px 0 rgba(19,21,23,.14);}
+  .modal-header{display:flex;align-items:center;justify-content:space-between;padding:15px 20px;border-bottom:2px solid var(--rule);}
+  .modal-header h2{font-family:var(--font-display);font-weight:400;font-size:24px;text-transform:uppercase;letter-spacing:-.01em;margin:0;}
+  .modal-close{background:none;border:none;font-size:22px;color:var(--ink-3);padding:2px 8px;}
+  .modal-close:hover{color:var(--ink);}
+  .modal-body{padding:16px 20px 20px;}
+  .modal-body p{margin:0 0 14px;font-size:14px;color:var(--ink-2);line-height:1.55;}
+  .f-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .f-row{margin-bottom:14px;}
+  .ft-cap{display:block;font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);margin-bottom:7px;}
+  .ft-cap em{font-style:normal;color:var(--ink-3);letter-spacing:.06em;text-transform:none;font-weight:400;}
+  .f-input{font:inherit;width:100%;padding:8px 10px;border:2px solid var(--rule);background:var(--paper);color:var(--ink);
+    font-size:16px;font-weight:400;color-scheme:light dark;}
+  .f-input:focus{outline:none;border-color:var(--blue);}
+  .f-help{font-size:12px;color:var(--ink-3);margin-top:5px;}
+  #p-link-tip{color:var(--gold);font-weight:500;}
+  .f-steps{margin:0 0 10px;padding:12px 14px 12px 34px;background:var(--paper);border:2px solid var(--rule);
+    border-left:6px solid var(--blue-bright);font-size:13.5px;color:var(--ink-2);line-height:1.5;}
+  .f-steps li{margin:2px 0;}
+  .f-steps li:first-child{margin-bottom:8px;}
+  .f-steps li::marker{font-weight:600;color:var(--ink);}
+  .f-slots{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+  .f-grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .f-days{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;}
+  .f-day{display:flex;flex-direction:column;align-items:center;gap:4px;border:2px solid var(--rule);background:var(--paper);
+    padding:8px 2px;cursor:pointer;font-size:13px;font-weight:600;text-align:center;}
+  .f-day input{width:16px;height:16px;accent-color:var(--blue-bright);margin:0;}
+  .f-day small{display:block;font-size:10px;font-weight:400;opacity:.8;}
+  .f-day:has(input:checked){background:var(--blue-bright);border-color:var(--blue-bright);color:var(--onink);}
+  .f-day:has(input:disabled){opacity:.35;cursor:not-allowed;}
+  .f-avail{display:grid;grid-template-columns:auto repeat(3,1fr);gap:6px;align-items:stretch;}
+  .f-avail .h{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);text-align:center;align-self:end;}
+  .f-avail .h small{display:block;letter-spacing:0;text-transform:none;font-weight:400;color:var(--ink-3);}
+  .f-avail .d{font-size:14px;font-weight:600;padding:4px 12px 4px 0;display:flex;flex-direction:column;justify-content:center;}
+  .f-avail .d small{font-size:11px;font-weight:400;color:var(--ink-3);}
+  .f-cell{display:flex;align-items:center;justify-content:center;border:2px solid var(--rule);background:var(--paper);min-height:40px;cursor:pointer;}
+  .f-cell input{width:18px;height:18px;accent-color:var(--blue-bright);margin:0;cursor:pointer;}
+  .f-cell:has(input:checked){background:var(--blue-bright);border-color:var(--blue-bright);}
+  .f-cell:has(input:disabled){opacity:.3;cursor:not-allowed;}
+  .sa-area.tw{background:var(--sea);}
+  select.f-input{cursor:pointer;}
+  #p-flex{border-left:6px solid var(--gold);padding-left:14px;margin-bottom:14px;}
+  .f-slot{display:flex;gap:10px;align-items:center;border:2px solid var(--rule);background:var(--paper);padding:11px 12px;cursor:pointer;
+    font-size:14px;font-weight:500;}
+  .f-slot input{width:18px;height:18px;accent-color:var(--blue-bright);margin:0;}
+  .f-slot:has(input:checked){background:var(--blue-bright);border-color:var(--blue-bright);color:var(--onink);}
+  .f-slot small{display:block;font-size:11px;font-weight:400;opacity:.8;}
+  .f-err{background:var(--error-bg);color:var(--error);border:2px solid var(--error-line);padding:9px 12px;font-size:14px;margin-bottom:14px;}
+  .f-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:6px;flex-wrap:wrap;}
+  .f-preview{height:120px;border:2px solid var(--rule);background:var(--paper-3);margin-top:8px;overflow:hidden;}
+  .f-preview img{width:100%;height:100%;object-fit:cover;display:block;}
+  .confirm-box{border:2px solid var(--rule);border-left:6px solid var(--blue-bright);padding:12px 14px;margin-bottom:14px;background:var(--paper);}
+  .confirm-box b{display:block;font-size:17px;font-weight:600;color:var(--ink);}
+
+  .ft-toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);z-index:120;background:var(--ink);
+    color:var(--paper);border:2px solid var(--blue-bright);padding:13px 24px;font-size:14px;font-weight:500;max-width:90vw;}
+
+  footer.app-footer{max-width:1060px;margin:10px auto 34px auto;padding:0 20px;font-size:12px;color:var(--ink-3);line-height:1.6;}
+
+  @media (prefers-reduced-motion: reduce){*{transition:none!important;}}
+  html,body{overflow-x:hidden;}
+  .sa-intro,.oh-card,.sa-card,.agenda-empty{max-width:100%;min-width:0;}
+  .oh-people,.agenda-title,.sa-links a{overflow-wrap:anywhere;}
+  @media (max-width:640px){
+    .oh-people a{display:inline-block;}
+    .oh-sub .view-toggle{width:100%;}
+    .oh-sub .view-toggle button{flex:1;}
+    header.app-header{padding:20px 14px 10px;}
+    .tabbar{padding:0 14px;}
+    .tabbar a,.tabbar span{padding:10px 14px;letter-spacing:.1em;}
+    main{padding:14px;}
+    .month-label{font-size:22px;}
+    .oh-card{flex-wrap:wrap;}
+    .oh-photo{width:100%;height:170px;order:-1;}
+    .agenda-bar{display:none;}
+    .f-grid{grid-template-columns:1fr 1fr;}
+    .f-grid .f-date{grid-column:1 / -1;}
+    .f-days{grid-template-columns:repeat(4,1fr);}
+    .modal{margin-top:0;min-height:100vh;border-width:0;}
+    .overlay{padding:0;}
+  }
+</style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="brand-block">
+    <div class="brand-title">Coldwell Banker<br><span class="r">North Hills</span></div>
+    <div class="brand-sub">Agent Hub</div>
+  </div>
+  <span class="mock-pill" id="mock-pill">Mock-up</span>
+</header>
+
+<nav class="tabbar" aria-label="Office site">
+  <a href="./">Calendar</a>
+  <a href="./">Floor Time</a>
+  <a href="./">Showing Agents</a>
+  <span class="active" aria-current="page">Open Houses</span>
+  <a href="./">Contractors / Vendors</a>
+</nav>
+
+<main>
+  <div class="toolbar">
+    <div class="month-nav">
+      <button class="nav-arrow" id="prev-wk" type="button" aria-label="Previous week">‹</button>
+      <div class="month-label" id="wk-label"></div>
+      <button class="nav-arrow" id="next-wk" type="button" aria-label="Next week">›</button>
+    </div>
+    <div class="toolbar-right">
+      <div class="oh-me" id="me-bar"></div>
+      <button class="btn-secondary btn-sm" id="this-wk" type="button">This week</button>
+    </div>
+  </div>
+
+  <!-- 1. Opportunities -->
+  <section class="oh-section" aria-labelledby="h-opps">
+    <div class="oh-head">
+      <h2 id="h-opps"><span class="n">1</span>Open House Opportunities</h2>
+      <button class="btn-primary btn-sm" id="post-btn" type="button">+ Post an open house</button>
+    </div>
+    <div class="sa-intro">
+      <strong>Can’t sit your own open house?</strong><br>
+      Post it here with the address and your open house link. Another agent claims it.
+      First to claim gets it. Two reasons to use it. Your listing still gets opened up for buyers,
+      and an agent without listings gets real time in front of them.
+    </div>
+    <div class="oh-sub">
+      <div class="sa-count" id="opp-count"></div>
+      <div class="view-toggle" role="group" aria-label="Filter open houses">
+        <button type="button" data-f="all" class="active">All</button>
+        <button type="button" data-f="open">Open</button>
+        <button type="button" data-f="claimed">Claimed</button>
+      </div>
+    </div>
+    <div id="opp-list"></div>
+  </section>
+
+  <!-- 2. Requests -->
+  <section class="oh-section" aria-labelledby="h-reqs">
+    <div class="oh-head">
+      <h2 id="h-reqs"><span class="n">2</span>Want to Sit an Open House?</h2>
+      <button class="btn-primary btn-sm" id="req-btn" type="button">+ I’m available</button>
+    </div>
+    <div class="sa-intro">
+      <strong>Looking for an open house this week?</strong><br>
+      Tell listing agents when you’re free. They’ll see your name here and can reach out directly.
+      Check section 1 first. If something fits, claim it before someone else does.
+    </div>
+    <div class="sa-count" id="req-count" style="margin-bottom:12px"></div>
+    <div id="req-list"></div>
+  </section>
+</main>
+
+<footer class="app-footer">
+  <span id="foot-mock">Mock-up only. Everything saves in this browser, so nobody else sees your posts or claims yet.
+  Sample listings and agents are placeholders, not real data.
+  <button class="linkish" id="reset-btn" type="button">Reset sample data</button></span>
+  <span id="foot-live" hidden>Live board. Everyone in the office sees the same posts, claims and availability.
+  It refreshes every minute, and the first agent to claim an open house gets it.</span>
+</footer>
+
+<div class="overlay" id="ov" role="dialog" aria-modal="true" aria-labelledby="m-title">
+  <div class="modal">
+    <div class="modal-header"><h2 id="m-title"></h2><button class="modal-close" id="m-close" type="button" aria-label="Close">×</button></div>
+    <div class="modal-body" id="m-body"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  // Paste the Open Houses Apps Script web app URL (ends in /exec) here to go live.
+  // Empty = local mock-up: sample data, saves in this browser only.
+  const API = 'https://script.google.com/macros/s/AKfycbzL8FvAqh11hLkIq3Cyafh-VdMMtsCsjOD1dSif87rCz24Kc6zn9UIzPej0yH5_MuD8/exec';
+  const KEY = 'cbnh-openhouse-mock-v3';
+  const ME_KEY = 'cbnh_openhouse_me', FLOOR_KEY = 'cbnh_floor_agent';
+  const $ = s => document.querySelector(s);
+  const pad = n => String(n).padStart(2,'0');
+  const iso = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+  const parse = s => { const [y,m,d] = s.split('-').map(Number); return new Date(y,m-1,d); };
+  const addDays = (d,n) => { const x = new Date(d); x.setDate(x.getDate()+n); return x; };
+  const today0 = () => { const t = new Date(); t.setHours(0,0,0,0); return t; };
+  const DOW = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const MON = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const uid = () => Math.random().toString(36).slice(2,10);
+  const same = (a,b) => !!a && !!b && a.name.trim().toLowerCase() === b.name.trim().toLowerCase();
+  const telHref = p => 'tel:' + String(p).replace(/[^0-9+]/g,'');
+  const normUrl = u => { u = (u||'').trim(); if (!u) return ''; return /^(https?:|data:image\/)/i.test(u) ? u : 'https://' + u; };
+
+  // A week "belongs" to its Saturday. Mon–Fri roll forward, Sunday rolls back.
+  const satOf = d => { const w = d.getDay(); return addDays(d, w === 0 ? -1 : 6 - w); };
+  // Default view: the coming weekend. On a Sunday, that's next weekend.
+  const defaultSat = () => { const t = today0(); return addDays(t, 6 - t.getDay()); };
+
+  function fmtT(t){ let [h,m] = t.split(':').map(Number); const ap = h >= 12 ? 'PM' : 'AM'; h = h % 12 || 12; return { s:`${h}:${pad(m)}`, ap }; }
+  function fmtRange(a,b){ const x = fmtT(a), y = fmtT(b); return x.ap === y.ap ? `${x.s}–${y.s} ${y.ap}` : `${x.s} ${x.ap}–${y.s} ${y.ap}`; }
+  const shortDate = d => `${MON[d.getMonth()].slice(0,3)} ${d.getDate()}`;
+  const toMin = t => { const [h,m] = t.split(':').map(Number); return h * 60 + m; };
+  const fromMin = n => `${pad(Math.floor(n / 60))}:${pad(n % 60)}`;
+  const dayShort = ds => { const d = parse(ds); return `${DOW[d.getDay()].slice(0,3)} ${shortDate(d)}`; };
+  // Flexible posts: the listing agent gives days + a window; the sitter picks the exact time when claiming.
+  const isFlexOpen = o => o.flex && !o.claimedBy;
+  const isPast = o => isFlexOpen(o) ? parse(o.days[o.days.length - 1]) < today0() : parse(o.date) < today0();
+  // Weeks run Monday–Sunday (keyed by their Saturday), so weekday twilight open houses fit too.
+  const weekDays = sat => Array.from({ length:7 }, (_, i) => addDays(sat, i - 5));
+  function weekLabel(sat){
+    const mon = addDays(sat,-5), sun = addDays(sat,1);
+    return mon.getMonth() === sun.getMonth() ? `Week of ${shortDate(mon)}–${sun.getDate()}` : `Week of ${shortDate(mon)} – ${shortDate(sun)}`;
+  }
+  // "Mon Sep 14 – Wed Sep 16, Sat Sep 19": collapses back-to-back days into ranges.
+  function daysText(days){
+    const runs = [];
+    days.forEach(ds => { const last = runs[runs.length - 1];
+      if (last && +addDays(parse(last[last.length - 1]), 1) === +parse(ds)) last.push(ds); else runs.push([ds]); });
+    return runs.map(r => r.length === 1 ? dayShort(r[0]) : `${dayShort(r[0])} – ${dayShort(r[r.length - 1])}`).join(', ');
+  }
+
+  // ---------- sample data ----------
+  const sampleSvg = (sky, wall) => 'data:image/svg+xml;utf8,' + encodeURIComponent(
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200"><rect width="300" height="200" fill="${sky}"/>` +
+    `<rect y="150" width="300" height="50" fill="#6f9a5b"/><polygon points="70,95 150,40 230,95" fill="#3b3f46"/>` +
+    `<rect x="85" y="92" width="130" height="68" fill="${wall}"/><rect x="138" y="118" width="24" height="42" fill="#0d2b4e"/>` +
+    `<rect x="98" y="108" width="28" height="22" fill="#dfe9f3"/><rect x="174" y="108" width="28" height="22" fill="#dfe9f3"/></svg>`);
+
+  function seed(){
+    const s = defaultSat(), sat = iso(s), sun = iso(addDays(s,1)), thu = iso(addDays(s,-2));
+    const A = { name:'Sample Agent A', phone:'412-555-0101', email:'agent.a@example.com' };
+    const B = { name:'Sample Agent B', phone:'412-555-0102', email:'agent.b@example.com' };
+    const C = { name:'Sample Agent C', phone:'412-555-0103', email:'agent.c@example.com' };
+    const D = { name:'Sample Agent D', phone:'412-555-0104', email:'agent.d@example.com' };
+    const E = { name:'Sample Agent E', phone:'412-555-0105', email:'agent.e@example.com' };
+    return {
+      me: null,
+      opps: [
+        { id:uid(), address:'22 Twilight Ct, McCandless, PA', link:'https://example.com/open-house-4', date:thu, start:'17:00', end:'19:00', photo:sampleSvg('#e9c9a8','#e8e2d6'), agent:A, claimedBy:null },
+        { id:uid(), address:'123 Sample Ave, Wexford, PA', link:'https://example.com/open-house-1', date:sat, start:'13:00', end:'15:00', photo:sampleSvg('#bdd8f2','#f1ece2'), agent:A, claimedBy:null },
+        { id:uid(), address:'45 Example Dr, Cranberry Twp, PA', link:'https://example.com/open-house-2', date:sat, start:'11:00', end:'13:00', photo:sampleSvg('#d9e4ee','#c9b79c'), agent:B, claimedBy:C },
+        { id:uid(), address:'789 Placeholder Rd, Gibsonia, PA', link:'https://example.com/open-house-3', flex:true, days:[sat,sun], winStart:'11:00', winEnd:'16:00', date:sat, start:null, end:null, photo:'', agent:B, claimedBy:null }
+      ],
+      reqs: [
+        { id:uid(), week:sat, slots:['thu-tw','sat-pm','sun-pm'], agent:D },
+        { id:uid(), week:sat, slots:['sun-am','sun-pm'], agent:E }
+      ]
+    };
+  }
+
+  function load(){ try { const r = localStorage.getItem(KEY); return r ? JSON.parse(r) : null; } catch(e){ return null; } }
+  function loadMe(){ try { const r = localStorage.getItem(ME_KEY); return r ? JSON.parse(r) : null; } catch(e){ return null; } }
+  // Agents who already picked their name in Floor Time get it pre-filled here.
+  const floorName = () => { try { const f = localStorage.getItem(FLOOR_KEY); return f ? (JSON.parse(f).name || '') : ''; } catch(e){ return ''; } };
+  function save(){
+    try {
+      if (state.me) localStorage.setItem(ME_KEY, JSON.stringify(state.me));
+      if (!API) localStorage.setItem(KEY, JSON.stringify(state));
+    } catch(e){}
+  }
+
+  let state = API ? { me: loadMe(), opps: [], reqs: [] } : (load() || seed());
+  if (!state.me) state.me = loadMe();
+  let viewSat = defaultSat();
+  let filter = 'all';
+  let loadedWeek = null, loadMsg = '', busy = false, jsonpN = 0;
+
+  // ---------- shared board (Apps Script) ----------
+  // Reads: JSONP for the week on screen. Same approach as Floor Time.
+  function fetchWeek(){
+    if (!API) return;
+    const want = iso(viewSat), cb = 'ohcb' + (++jsonpN), s = document.createElement('script');
+    let done = false;
+    window[cb] = res => {
+      done = true;
+      try { delete window[cb]; } catch(e){ window[cb] = undefined; }
+      s.remove();
+      if (iso(viewSat) !== want) return;
+      if (res && res.ok){ state.opps = res.opps || []; state.reqs = res.reqs || []; loadedWeek = want; loadMsg = ''; }
+      else loadMsg = 'Could not read the board just now. It will try again in a minute.';
+      render();
+    };
+    s.onerror = () => { if (done) return; s.remove(); loadMsg = 'Could not reach the board. Check your connection and reload.'; render(); };
+    s.src = `${API}?week=${encodeURIComponent(want)}&callback=${cb}&t=${Date.now()}`;
+    document.body.appendChild(s);
+  }
+
+  // Every change goes through here. Mock-up: apply it in this browser.
+  // Live: the sheet decides (first claim wins), then the board redraws from its answer.
+  function commit(action, payload, applyLocal, onOk){
+    if (!API){ applyLocal(); save(); render(); if (onOk) onOk(); return; }
+    if (busy){ toast('Still saving your last change. One moment.'); return; }
+    busy = true;
+    toast('Saving…');   // the sheet takes a few seconds to answer
+    const week = payload.week || iso(viewSat);
+    fetch(API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(Object.assign({ action, week, me: state.me }, payload))
+    }).then(r => r.json()).then(res => {
+      busy = false;
+      if (res.opps && week === iso(viewSat)){ state.opps = res.opps; state.reqs = res.reqs || []; loadedWeek = week; loadMsg = ''; }
+      render();
+      if (res.ok){ if (onOk) onOk(); }
+      else toast(res.error || 'That did not save. Try once more.');
+    }).catch(() => {
+      busy = false;
+      toast('That did not save. Check your connection and try once more.');
+      fetchWeek();
+    });
+  }
+
+  // ---------- render ----------
+  // Availability blocks: every day of the week × morning / afternoon / twilight. Keys look like "thu-tw".
+  const WEEK_KEYS = ['mon','tue','wed','thu','fri','sat','sun'];
+  const PARTS = [['am','morning','Before noon'], ['pm','afternoon','Noon–5 PM'], ['tw','twilight','5 PM on']];
+  const SLOT_ORDER = WEEK_KEYS.flatMap(d => PARTS.map(p => `${d}-${p[0]}`));
+  const slotLabel = s => { const [d, p] = s.split('-'); return `${d[0].toUpperCase()}${d.slice(1)} ${PARTS.find(x => x[0] === p)[1]}`; };
+
+  function render(){
+    const wk = iso(viewSat), t0 = today0();
+    $('#wk-label').textContent = weekLabel(viewSat);
+
+    $('#me-bar').innerHTML = state.me
+      ? `You are <strong>${esc(state.me.name)}</strong> <button class="linkish" data-act="me" type="button">change</button>`
+      : `<button class="linkish" data-act="me" type="button" style="font-size:13px">Set your name</button>`;
+
+    if (API && loadedWeek !== wk){
+      const msg = `<div class="agenda-empty">${esc(loadMsg || 'Loading the board…')}</div>`;
+      $('#opp-count').textContent = ''; $('#opp-list').innerHTML = msg;
+      $('#req-count').textContent = ''; $('#req-list').innerHTML = msg;
+      return;
+    }
+
+    // Opportunities
+    const inWeek = state.opps.filter(o => iso(satOf(parse(o.date))) === wk)
+      .sort((a,b) => (a.date + (a.start || a.winStart)).localeCompare(b.date + (b.start || b.winStart)));
+    const nOpen = inWeek.filter(o => !o.claimedBy && !isPast(o)).length;
+    const nClaimed = inWeek.filter(o => o.claimedBy).length;
+    $('#opp-count').textContent = `${inWeek.length} posted · ${nOpen} open · ${nClaimed} claimed`;
+
+    const shown = inWeek.filter(o => filter === 'all' || (filter === 'open' ? !o.claimedBy : !!o.claimedBy));
+    if (!shown.length){
+      $('#opp-list').innerHTML = `<div class="agenda-empty">${inWeek.length ? 'Nothing matches this filter' : 'No open houses posted for this week yet'}</div>`;
+    } else {
+      const days = {}, flexOpen = shown.filter(isFlexOpen);
+      shown.filter(o => !isFlexOpen(o)).forEach(o => (days[o.date] = days[o.date] || []).push(o));
+      $('#opp-list').innerHTML = (flexOpen.length ? `<div class="agenda-day">
+          <h3 class="agenda-day-header">Flexible: You Pick the Time</h3>
+          ${flexOpen.map(oppCard).join('')}</div>` : '') + Object.keys(days).sort().map(ds => {
+        const d = parse(ds), isToday = +d === +t0;
+        return `<div class="agenda-day${isToday ? ' is-today' : ''}">
+          <h3 class="agenda-day-header">${DOW[d.getDay()]}, ${MON[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}</h3>
+          ${days[ds].map(oppCard).join('')}</div>`;
+      }).join('');
+    }
+
+    // Requests
+    const reqs = state.reqs.filter(r => r.week === wk);
+    const mineReq = state.me && reqs.find(r => same(r.agent, state.me));
+    $('#req-btn').textContent = mineReq ? 'Edit my availability' : '+ I’m available';
+    $('#req-count').textContent = `${reqs.length} agent${reqs.length === 1 ? '' : 's'} available`;
+    $('#req-list').innerHTML = reqs.length
+      ? `<div class="sa-grid">${reqs.map(reqCard).join('')}</div>`
+      : `<div class="agenda-empty">No one has asked for an open house this week yet</div>`;
+  }
+
+  function oppCard(o){
+    const past = isPast(o), flexOpen = isFlexOpen(o);
+    const when = flexOpen
+      ? `<span class="cat-tag" style="background:var(--gold)">Sitter picks the time</span><span>${daysText(o.days)} · anytime ${fmtRange(o.winStart, o.winEnd)}</span>`
+      : `<span>${fmtRange(o.start, o.end)}</span>${o.flex ? '<span>· Time picked by sitter</span>' : ''}`;
+    const mineList = same(o.agent, state.me), mineClaim = same(o.claimedBy, state.me);
+    let tag, color;
+    if (past && !o.claimedBy){ tag = 'Past'; color = 'var(--ink-3)'; }
+    else if (o.claimedBy){ tag = mineClaim ? 'You’re sitting' : 'Claimed'; color = 'var(--sea)'; }
+    else { tag = 'Open'; color = 'var(--blue-bright)'; }
+    const person = (label, p) => `<div class="oh-people">${label} <b>${esc(p.name)}</b>` +
+      (p.phone ? ` · <a href="${esc(telHref(p.phone))}">${esc(p.phone)}</a>` : '') +
+      (p.email ? ` · <a href="mailto:${esc(p.email)}">${esc(p.email)}</a>` : '') + `</div>`;
+    const actions = [];
+    if (!o.claimedBy && !past && !mineList) actions.push(`<button class="event-link-btn" data-act="claim" data-id="${o.id}" type="button">${flexOpen ? 'Pick a time & claim' : 'Claim this open house'}</button>`);
+    if (o.link) actions.push(`<a class="vnd-link" href="${esc(o.link)}" target="_blank" rel="noopener">Open house link ↗</a>`);
+    if (o.claimedBy && (mineClaim || mineList) && !past) actions.push(`<button class="linkish" data-act="release" data-id="${o.id}" type="button">${mineClaim ? 'I can’t make it — release' : 'Release claim'}</button>`);
+    if (mineList) actions.push(`<button class="linkish" data-act="remove" data-id="${o.id}" type="button">Remove listing</button>`);
+    return `<div class="oh-card${past ? ' past' : ''}">
+      <div class="agenda-bar" style="background:${color}"></div>
+      <div class="oh-photo${o.photo ? '' : ' none'}">${o.photo ? `<img src="${esc(o.photo)}" alt="Photo of ${esc(o.address)}" loading="lazy">` : ''}</div>
+      <div class="agenda-main">
+        <div class="agenda-title">${esc(o.address)}</div>
+        <div class="agenda-meta"><span class="cat-tag" style="background:${color}">${tag}</span>${mineList ? '<span class="cat-tag" style="background:var(--teal)">Your listing</span>' : ''}${when}</div>
+        ${person('Listed by', o.agent)}
+        ${o.claimedBy ? person('Sitting:', o.claimedBy) : ''}
+        <div class="oh-actions">${actions.join('')}</div>
+      </div></div>`;
+  }
+
+  function reqCard(r){
+    const mine = same(r.agent, state.me);
+    return `<div class="sa-card${mine ? ' mine' : ''}">
+      <div class="sa-name">${esc(r.agent.name)}</div>
+      <div class="sa-slots">${SLOT_ORDER.filter(s => r.slots.includes(s)).map(s => `<span class="sa-area${s.endsWith('-tw') ? ' tw' : ''}">${slotLabel(s)}</span>`).join('')}</div>
+      <div class="sa-links">
+        ${r.agent.email ? `<a href="mailto:${esc(r.agent.email)}">${esc(r.agent.email)}</a>` : ''}
+        ${r.agent.phone ? `<a href="${esc(telHref(r.agent.phone))}">${esc(r.agent.phone)}</a>` : ''}
+      </div>
+      ${mine ? `<div><button class="linkish" data-act="edit-req" type="button">Edit</button> &nbsp; <button class="linkish" data-act="del-req" data-id="${r.id}" type="button">Remove</button></div>` : ''}
+    </div>`;
+  }
+
+  // ---------- modal ----------
+  let lastFocus = null;
+  function openModal(title, html, onSubmit){
+    lastFocus = document.activeElement;
+    $('#m-title').textContent = title;
+    $('#m-body').innerHTML = html;
+    $('#ov').classList.add('open');
+    const form = $('#m-body form');
+    if (form){
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        const err = onSubmit(new FormData(form), form);
+        if (err){ const box = form.querySelector('.f-err'); box.textContent = err; box.hidden = false; }
+        else closeModal();
+      });
+      const first = form.querySelector('input:not([type=checkbox]),button'); if (first) first.focus();
+    }
+  }
+  function closeModal(){ $('#ov').classList.remove('open'); if (lastFocus) lastFocus.focus(); }
+  $('#m-close').addEventListener('click', closeModal);
+  $('#ov').addEventListener('click', e => { if (e.target.id === 'ov') closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && $('#ov').classList.contains('open')) closeModal(); });
+  document.addEventListener('click', e => { if (e.target.dataset.act === 'cancel') closeModal(); });
+
+  let toastTimer;
+  function toast(msg){
+    let t = $('.ft-toast'); if (!t){ t = document.createElement('div'); t.className = 'ft-toast'; t.setAttribute('role','status'); document.body.appendChild(t); }
+    t.textContent = msg; t.hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => t.hidden = true, 3200);
+  }
+
+  // ---------- identity ----------
+  function withMe(then){ if (state.me) then(); else identity(then); }
+  function identity(then){
+    const m = state.me || {};
+    openModal('Who are you?', `<form novalidate>
+      <p>Enter this once. It’s how listing agents and sitters reach each other.</p>
+      <div class="f-err" hidden></div>
+      <div class="f-row"><label class="ft-cap" for="i-name">Your name</label><input class="f-input" id="i-name" name="name" value="${esc(m.name || floorName())}" autocomplete="name"></div>
+      <div class="f-row"><label class="ft-cap" for="i-phone">Cell phone</label><input class="f-input" id="i-phone" name="phone" value="${esc(m.phone)}" autocomplete="tel" inputmode="tel"></div>
+      <div class="f-row"><label class="ft-cap" for="i-email">Email <em>(optional)</em></label><input class="f-input" id="i-email" name="email" value="${esc(m.email)}" autocomplete="email" inputmode="email"></div>
+      <div class="f-actions"><button class="btn-secondary btn-sm" type="button" data-act="cancel">Cancel</button><button class="btn-primary btn-sm" type="submit">Save</button></div>
+    </form>`, fd => {
+      const name = fd.get('name').trim(), phone = fd.get('phone').trim(), email = fd.get('email').trim();
+      if (!name) return 'Add your name.';
+      if (phone.replace(/\D/g,'').length < 10) return 'Add a 10-digit phone number so agents can reach you.';
+      state.me = { name, phone, email }; save(); render();
+      if (then) setTimeout(then, 0);
+    });
+  }
+
+  // ---------- post an open house ----------
+  function postForm(){
+    const sat = iso(viewSat), first = satOf(today0());
+    const wkOpts = Array.from({ length:8 }, (_, i) => { const s = addDays(first, 7 * i); return `<option value="${iso(s)}"${iso(s) === sat ? ' selected' : ''}>${weekLabel(s)}</option>`; }).join('');
+    openModal('Post an open house', `<form novalidate>
+      <p>You’re posting as <b>${esc(state.me.name)}</b>. It goes live the moment you post, and the first agent to claim it gets it.</p>
+      <div class="f-err" hidden></div>
+      <div class="f-row"><label class="ft-cap" for="p-addr">Property address</label><input class="f-input" id="p-addr" name="address" placeholder="123 Main St, Wexford, PA 15090" autocomplete="off"></div>
+      <div class="f-row"><label class="ft-cap" for="p-link">Open house link</label>
+        <ol class="f-steps">
+          <li><a class="vnd-link" href="https://www.coldwellbanker.com/city/pa/pittsburgh" target="_blank" rel="noopener">Find your home on coldwellbanker.com ↗</a></li>
+          <li>Search for your listing and open it.</li>
+          <li>Copy the web address from the top of the page. On a phone, tap Share → Copy.</li>
+          <li>Come back to this tab and paste it below.</li>
+        </ol>
+        <input class="f-input" id="p-link" name="link" placeholder="Paste your coldwellbanker.com listing link" inputmode="url">
+        <div class="f-help" id="p-link-tip" hidden>That isn’t a coldwellbanker.com link. It will still post, but the CB link is the one to use.</div></div>
+      <div class="f-row"><span class="ft-cap">When</span>
+        <div class="f-slots">
+          <label class="f-slot"><input type="radio" name="mode" value="fixed" checked><span>Set date &amp; time<small>You choose exactly when</small></span></label>
+          <label class="f-slot"><input type="radio" name="mode" value="flex"><span>Sitter picks the time<small>You give the days and a window</small></span></label>
+        </div></div>
+      <div id="p-flex" hidden>
+        <div class="f-row"><label class="ft-cap" for="p-wk">Week</label><select class="f-input" id="p-wk">${wkOpts}</select></div>
+        <div class="f-row"><span class="ft-cap">Days it can run <em>(weekdays work for twilight open houses)</em></span><div class="f-days" id="p-days"></div></div>
+        <div class="f-grid2 f-row">
+          <div><label class="ft-cap" for="p-ws">Earliest start</label><input class="f-input" id="p-ws" type="time" name="wstart" value="11:00" step="900"></div>
+          <div><label class="ft-cap" for="p-we">Latest end</label><input class="f-input" id="p-we" type="time" name="wend" value="17:00" step="900"></div>
+        </div>
+        <div class="f-help">The agent who claims it picks the day and at least 2 hours inside this window.</div>
+      </div>
+      <div class="f-grid f-row" id="p-fixed">
+        <div class="f-date"><label class="ft-cap" for="p-date">Date</label><input class="f-input" id="p-date" type="date" name="date" value="${sat}" min="${iso(today0())}"></div>
+        <div><label class="ft-cap" for="p-start">Start</label><input class="f-input" id="p-start" type="time" name="start" value="13:00" step="900"></div>
+        <div><label class="ft-cap" for="p-end">End</label><input class="f-input" id="p-end" type="time" name="end" value="15:00" step="900"></div>
+      </div>
+      <div class="f-row"><label class="ft-cap" for="p-photo">Photo link <em>(optional)</em></label><input class="f-input" id="p-photo" name="photo" placeholder="Right-click the main listing photo → Copy image address" inputmode="url">
+        <div class="f-preview" id="p-prev" hidden></div></div>
+      <div class="f-actions"><button class="btn-secondary btn-sm" type="button" data-act="cancel">Cancel</button><button class="btn-primary btn-sm" type="submit">Post it</button></div>
+    </form>`, fd => {
+      const address = fd.get('address').trim(), link = normUrl(fd.get('link')), photo = normUrl(fd.get('photo'));
+      if (!address) return 'Add the property address.';
+      if (!link) return 'Add the open house link so sitters can see the listing.';
+      let when;
+      if (fd.get('mode') === 'flex'){
+        const days = fd.getAll('day').sort(), ws = fd.get('wstart'), we = fd.get('wend');
+        if (!days.length) return 'Check at least one day it can run.';
+        if (!ws || !we) return 'Add the earliest start and latest end.';
+        if (toMin(we) - toMin(ws) < 120) return 'Open houses run at least 2 hours, so the window needs to be at least 2 hours.';
+        when = { flex:true, days, winStart:ws, winEnd:we, date:days[0], start:null, end:null };
+      } else {
+        const date = fd.get('date'), start = fd.get('start'), end = fd.get('end');
+        if (!date) return 'Pick a date.';
+        if (parse(date) < today0()) return 'That date has already passed.';
+        if (!start || !end) return 'Add a start and end time.';
+        if (end <= start) return 'End time needs to be after the start time.';
+        when = { date, start, end };
+      }
+      const s = satOf(parse(when.date)), jumped = iso(s) !== iso(viewSat);
+      if (jumped){ viewSat = s; loadedWeek = API ? null : loadedWeek; }
+      commit('post', { week: iso(s), opp: { address, link, photo, ...when } },
+        () => state.opps.push({ id:uid(), week: iso(s), address, link, photo, ...when, agent:{...state.me}, claimedBy:null }),
+        () => toast(jumped ? `Posted. Jumped to the ${weekLabel(s).replace('Week','week')}.` : 'Posted. It’s live for every agent.'));
+    });
+    const wkSel = $('#p-wk'), daysBox = $('#p-days');
+    const drawDays = () => {
+      const s = parse(wkSel.value);
+      // Sat and Sun start checked; weekdays are opt-in (twilight).
+      daysBox.innerHTML = weekDays(s).map(d => { const gone = d < today0(), wkend = d.getDay() === 0 || d.getDay() === 6;
+        return `<label class="f-day"><input type="checkbox" name="day" value="${iso(d)}" ${gone ? 'disabled' : wkend ? 'checked' : ''}><span>${DOW[d.getDay()].slice(0,3)}<small>${shortDate(d)}</small></span></label>`; }).join('');
+    };
+    wkSel.addEventListener('change', drawDays); drawDays();
+    document.querySelectorAll('#m-body input[name=mode]').forEach(r => r.addEventListener('change', () => {
+      const flex = document.querySelector('#m-body input[name=mode]:checked').value === 'flex';
+      $('#p-fixed').hidden = flex; $('#p-flex').hidden = !flex;
+    }));
+    const lk = $('#p-link'), tip = $('#p-link-tip');
+    lk.addEventListener('change', () => { const u = lk.value.trim(); tip.hidden = !u || /coldwellbanker\.com/i.test(u); });
+    const ph = $('#p-photo'), prev = $('#p-prev');
+    ph.addEventListener('change', () => {
+      const u = normUrl(ph.value);
+      if (!u){ prev.hidden = true; prev.innerHTML = ''; return; }
+      prev.hidden = false; prev.innerHTML = `<img alt="Photo preview" src="${esc(u)}">`;
+      prev.querySelector('img').onerror = () => { prev.innerHTML = '<div class="f-help" style="padding:10px">That link didn’t load as an image. It will show “No photo” on the card.</div>'; };
+    });
+  }
+
+  // ---------- claim ----------
+  function claimFlex(o){
+    const days = o.days.filter(ds => parse(ds) >= today0());
+    const ws = toMin(o.winStart), we = toMin(o.winEnd), defEnd = fromMin(Math.min(ws + 120, we));
+    openModal('Pick your time', `<form novalidate>
+      <div class="confirm-box"><b>${esc(o.address)}</b>${daysText(o.days)} · anytime ${fmtRange(o.winStart, o.winEnd)}<br>Listed by ${esc(o.agent.name)}</div>
+      <p>${esc(o.agent.name)} left the timing to you. Pick the day and at least 2 hours inside their window. First to claim gets it.</p>
+      <div class="f-err" hidden></div>
+      <div class="f-row"><span class="ft-cap">Day</span><div class="f-days">${days.map((ds, i) => { const d = parse(ds);
+        return `<label class="f-day"><input type="radio" name="day" value="${ds}" ${i === 0 ? 'checked' : ''}><span>${DOW[d.getDay()].slice(0,3)}<small>${shortDate(d)}</small></span></label>`; }).join('')}</div></div>
+      <div class="f-grid2 f-row">
+        <div><label class="ft-cap" for="c-start">Start</label><input class="f-input" id="c-start" type="time" name="start" value="${o.winStart}" step="900"></div>
+        <div><label class="ft-cap" for="c-end">End</label><input class="f-input" id="c-end" type="time" name="end" value="${defEnd}" step="900"></div>
+      </div>
+      <div class="f-actions"><button class="btn-secondary btn-sm" type="button" data-act="cancel">Not yet</button><button class="btn-primary btn-sm" type="submit">Claim it</button></div>
+    </form>`, fd => {
+      if (o.claimedBy) return `Too late. ${o.claimedBy.name} claimed it first.`;
+      const day = fd.get('day'), start = fd.get('start'), end = fd.get('end');
+      if (!day) return 'Pick a day.';
+      if (!start || !end) return 'Add a start and end time.';
+      if (end <= start) return 'End time needs to be after the start time.';
+      if (toMin(start) < ws || toMin(end) > we) return `Pick a time between ${fmtRange(o.winStart, o.winEnd)}.`;
+      if (toMin(end) - toMin(start) < 120) return 'Open houses run at least 2 hours. Push the end time out.';
+      commit('claim', { id:o.id, date:day, start, end },
+        () => Object.assign(o, { date:day, start, end, claimedBy:{ ...state.me } }),
+        () => toast(`It’s yours: ${dayShort(day)}, ${fmtRange(start, end)}. Call ${o.agent.name} at ${o.agent.phone}.`));
+    });
+  }
+
+  function claim(id){
+    const o = state.opps.find(x => x.id === id); if (!o) return;
+    if (isFlexOpen(o)) return claimFlex(o);
+    const d = parse(o.date);
+    openModal('Claim this open house?', `<form>
+      <div class="confirm-box"><b>${esc(o.address)}</b>${DOW[d.getDay()]}, ${MON[d.getMonth()]} ${d.getDate()} · ${fmtRange(o.start,o.end)}<br>Listed by ${esc(o.agent.name)}</div>
+      <p>You’re committing to sit it. ${esc(o.agent.name)} sees your name and phone right away. Call them to get lockbox and sign details.</p>
+      <div class="f-err" hidden></div>
+      <div class="f-actions"><button class="btn-secondary btn-sm" type="button" data-act="cancel">Not yet</button><button class="btn-primary btn-sm" type="submit">Claim it</button></div>
+    </form>`, () => {
+      if (o.claimedBy) return `Too late. ${o.claimedBy.name} claimed it first.`;
+      commit('claim', { id:o.id },
+        () => { o.claimedBy = { ...state.me }; },
+        () => toast(`It’s yours. Call ${o.agent.name} at ${o.agent.phone}.`));
+    });
+  }
+
+  // ---------- availability request ----------
+  function reqForm(){
+    const wk = iso(viewSat);
+    const existing = state.reqs.find(r => r.week === wk && same(r.agent, state.me));
+    const has = s => existing && existing.slots.includes(s) ? 'checked' : '';
+    const grid = `<div class="f-avail f-row">
+      <div></div>${PARTS.map(p => `<div class="h">${p[1]}<small>${p[2]}</small></div>`).join('')}
+      ${weekDays(viewSat).map((d, i) => { const gone = d < today0(), key = WEEK_KEYS[i];
+        return `<div class="d">${DOW[d.getDay()].slice(0,3)}<small>${shortDate(d)}</small></div>` + PARTS.map(p =>
+          `<label class="f-cell" title="${DOW[d.getDay()]} ${p[1]}"><input type="checkbox" name="slot" value="${key}-${p[0]}" aria-label="${DOW[d.getDay()]} ${p[1]}" ${gone ? 'disabled' : has(`${key}-${p[0]}`)}></label>`).join(''); }).join('')}
+    </div>`;
+    openModal(existing ? 'Edit your availability' : 'I’m available', `<form novalidate>
+      <p>Check every block you can cover for the <b>${weekLabel(viewSat).replace('Week','week')}</b>. Listing agents will reach out to <b>${esc(state.me.name)}</b> at ${esc(state.me.phone)}.</p>
+      <div class="f-err" hidden></div>
+      ${grid}
+      <div class="f-actions"><button class="btn-secondary btn-sm" type="button" data-act="cancel">Cancel</button><button class="btn-primary btn-sm" type="submit">${existing ? 'Save changes' : 'Add me'}</button></div>
+    </form>`, fd => {
+      const slots = fd.getAll('slot');
+      if (!slots.length) return 'Check at least one block.';
+      commit('avail', { week:wk, slots }, () => {
+        if (existing){ existing.slots = slots; existing.agent = { ...state.me }; }
+        else state.reqs.push({ id:uid(), week:wk, slots, agent:{ ...state.me } });
+      }, () => {
+        const open = state.opps.filter(o => iso(satOf(parse(o.date))) === wk && !o.claimedBy && !isPast(o) && !same(o.agent, state.me)).length;
+        toast(open ? `You’re on the list. ${open} open house${open === 1 ? ' is' : 's are'} still unclaimed above.` : 'You’re on the list.');
+      });
+    });
+  }
+
+  // ---------- events ----------
+  // A dead photo link falls back to the "No photo" block.
+  document.addEventListener('error', e => {
+    const img = e.target, box = img.parentNode;
+    if (img.tagName === 'IMG' && box.classList && box.classList.contains('oh-photo')){ box.classList.add('none'); img.remove(); }
+  }, true);
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-act]'); if (!b) return;
+    const id = b.dataset.id;
+    switch (b.dataset.act){
+      case 'me': identity(); break;
+      case 'claim': withMe(() => claim(id)); break;
+      case 'release': {
+        const o = state.opps.find(x => x.id === id); if (!o) break;
+        if (!confirm(`Release ${o.address}? It goes back to open for anyone to claim.`)) break;
+        commit('release', { id }, () => {
+          o.claimedBy = null;
+          if (o.flex) Object.assign(o, { date:o.days[0], start:null, end:null });  // back to "sitter picks"
+        }, () => toast('Released. It’s open again.'));
+        break;
+      }
+      case 'remove': {
+        const o = state.opps.find(x => x.id === id); if (!o) break;
+        if (!confirm(`Remove ${o.address} from the board?${o.claimedBy ? ` ${o.claimedBy.name} has claimed it, so let them know.` : ''}`)) break;
+        commit('remove', { id }, () => { state.opps = state.opps.filter(x => x.id !== id); }, () => toast('Listing removed.'));
+        break;
+      }
+      case 'edit-req': withMe(reqForm); break;
+      case 'del-req':
+        // Empty availability = off the list for this week.
+        commit('avail', { slots: [] }, () => { state.reqs = state.reqs.filter(r => r.id !== id); }, () => toast('Removed from the list.'));
+        break;
+    }
+  });
+  $('#post-btn').addEventListener('click', () => withMe(postForm));
+  $('#req-btn').addEventListener('click', () => withMe(reqForm));
+  const goWeek = s => { viewSat = s; render(); fetchWeek(); };
+  $('#prev-wk').addEventListener('click', () => goWeek(addDays(viewSat,-7)));
+  $('#next-wk').addEventListener('click', () => goWeek(addDays(viewSat,7)));
+  $('#this-wk').addEventListener('click', () => goWeek(defaultSat()));
+  document.querySelectorAll('[data-f]').forEach(b => b.addEventListener('click', () => {
+    filter = b.dataset.f; document.querySelectorAll('[data-f]').forEach(x => x.classList.toggle('active', x === b)); render();
+  }));
+  $('#reset-btn').addEventListener('click', () => {
+    if (!confirm('Reset to the sample data? Anything you posted in this browser is cleared.')) return;
+    state = seed(); viewSat = defaultSat(); save(); render(); toast('Sample data restored.');
+  });
+
+  if (API){
+    $('#mock-pill').hidden = true; $('#foot-mock').hidden = true; $('#foot-live').hidden = false;
+    fetchWeek();
+    // Keep the board current, but never redraw under an open form.
+    setInterval(() => { if (!document.hidden && !busy && !$('#ov').classList.contains('open')) fetchWeek(); }, 60000);
+    document.addEventListener('visibilitychange', () => { if (!document.hidden && !busy) fetchWeek(); });
+  }
+  render();
+})();
+</script>
+</body>
+</html>
