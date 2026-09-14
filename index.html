@@ -1207,6 +1207,19 @@
       return;
     }
     var want = ftYmd(ftWeek);
+    // Ask without Google account cookies first: on phones signed in to Google the old
+    // script-tag request gets an account prompt instead of data. Old route is the fallback.
+    if (window.fetch && !ftLoad.jsonp){
+      fetch(FLOOR_TIME_API + "?week=" + encodeURIComponent(want) + "&t=" + Date.now(), { credentials: "omit" })
+        .then(function(r){ return r.json(); })
+        .then(function(res){
+          if (ftYmd(ftWeek) !== want) return;
+          if (res && res.ok){ ftApply(res.bookings); ftSay("Live planner. Everyone in the office sees the same thing."); }
+          else ftSay("Could not read the planner just now. It will try again shortly.");
+        })
+        .catch(function(){ ftLoad.jsonp = true; ftLoad(); ftLoad.jsonp = false; });
+      return;
+    }
     var cb = "ftcb" + (++ftJsonpN);
     var s = document.createElement("script");
     var done = false;
