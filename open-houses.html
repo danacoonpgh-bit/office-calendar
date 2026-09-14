@@ -413,6 +413,21 @@
   // Reads: JSONP for the week on screen. Same approach as Floor Time.
   function fetchWeek(){
     if (!API) return;
+    // Cookie-free read first (phones signed in to Google get an account prompt on the
+    // script-tag route). The script tag below is the fallback.
+    if (window.fetch && !fetchWeek.jsonp){
+      const w = iso(viewSat);
+      fetch(`${API}?week=${encodeURIComponent(w)}&t=${Date.now()}`, { credentials: "omit" })
+        .then(r => r.json())
+        .then(res => {
+          if (iso(viewSat) !== w) return;
+          if (res && res.ok){ state.opps = res.opps || []; state.reqs = res.reqs || []; loadedWeek = w; loadMsg = ""; }
+          else loadMsg = "Could not read the board just now. It will try again in a minute.";
+          render();
+        })
+        .catch(() => { fetchWeek.jsonp = true; fetchWeek(); fetchWeek.jsonp = false; });
+      return;
+    }
     const want = iso(viewSat), cb = 'ohcb' + (++jsonpN), s = document.createElement('script');
     let done = false;
     window[cb] = res => {
