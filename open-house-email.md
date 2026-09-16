@@ -1,11 +1,13 @@
-# Office email — Open Houses board
+# Office email — claim an open house
 
 Link target: https://danacoonpgh-bit.github.io/office-calendar/open-houses.html
 (hyperlink the words "Agent Hub")
 
+Fill in the address lines from the board before sending. Delete the ones you don't use.
+
 ---
 
-**Subject:** Post your open house, or claim one
+**Subject:** Open houses are up for grabs — claim one
 
 **Preview text:** First agent to claim it gets it.
 
@@ -13,14 +15,16 @@ Link target: https://danacoonpgh-bit.github.io/office-calendar/open-houses.html
 
 Hi all,
 
-The [Agent Hub](https://danacoonpgh-bit.github.io/office-calendar/open-houses.html) has a new Open Houses tab.
+There are open houses posted on the [Agent Hub](https://danacoonpgh-bit.github.io/office-calendar/open-houses.html) right now, sitting there unclaimed:
 
-**Post yours** — set an exact time, or give a window and let the sitter pick. It goes live the second you post, and the first agent to claim it gets it.
+- [Address] — [Day, time]
+- [Address] — [Day, time]
+- [Address] — [Day, time]
 
-**Or claim one** — see everything posted for the week, claim it, and the listing agent's phone and email are right on the card. Can't make it? Release it.
+Get on there and claim one. First agent to claim it gets it, and the listing agent's phone and email are right on the card. Can't make it after all? Release it and it goes back on the board.
 
-Nothing posted yet? Add your name to the "I'm available" list and listing agents will come to you.
+Have a listing of your own? Post it the same way. Takes two minutes.
 
-Takes about two minutes. No login, works on your phone.
+No login, works on your phone.
 
 Dana
