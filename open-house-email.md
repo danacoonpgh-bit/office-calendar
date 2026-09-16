@@ -1,10 +1,11 @@
 # Office email — Open Houses board
 
-Live page: https://danacoonpgh-bit.github.io/office-calendar/open-houses.html
+Link target: https://danacoonpgh-bit.github.io/office-calendar/open-houses.html
+(hyperlink the words "Agent Hub")
 
 ---
 
-**Subject:** Post your open house, or claim one — new board on the Agent Hub
+**Subject:** Post your open house, or claim one
 
 **Preview text:** First agent to claim it gets it.
 
@@ -12,31 +13,14 @@ Live page: https://danacoonpgh-bit.github.io/office-calendar/open-houses.html
 
 Hi all,
 
-The Agent Hub now has an **Open Houses** tab. Two things you can do there:
+The [Agent Hub](https://danacoonpgh-bit.github.io/office-calendar/open-houses.html) has a new Open Houses tab.
 
-**Post your open house.** Put your listing on the board and any agent in the
-office can pick it up. Set an exact day and time, or give a range of days and a
-window and let the sitter choose. It goes live the second you post it, and the
-first agent to claim it gets it.
+**Post yours** — set an exact time, or give a window and let the sitter pick. It goes live the second you post, and the first agent to claim it gets it.
 
-**Claim one.** Newer agent, slow week, or just want the door traffic — the board
-shows everything posted for the week. Claim it and the listing agent's phone and
-email are right on the card. Changed your mind? Release it and it goes back on
-the board.
+**Or claim one** — see everything posted for the week, claim it, and the listing agent's phone and email are right on the card. Can't make it? Release it.
 
-There's also a **"I'm available"** list. If you want to sit an open house but
-nothing is posted yet, put your name up and listing agents can come to you.
+Nothing posted yet? Add your name to the "I'm available" list and listing agents will come to you.
 
-**How to post (about two minutes):**
-1. Open the board and enter your name, phone, and email once. That's how sitters
-   and listing agents reach each other.
-2. Find your listing on coldwellbanker.com, copy the web address, paste it in.
-3. Pick the week, the days, and the time. Post.
-
-No login, no app. Works on your phone.
-
-👉 https://danacoonpgh-bit.github.io/office-calendar/open-houses.html
-
-Bookmark it. Questions, come find me.
+Takes about two minutes. No login, works on your phone.
 
 Dana
