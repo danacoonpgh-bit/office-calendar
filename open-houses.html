@@ -598,19 +598,39 @@
   }
 
   // ---------- identity ----------
-  function withMe(then){ if (state.me) then(); else identity(then); }
+  // Names come from the same office roster Floor Time uses (FT_ROSTER in index.html),
+  // read at load so the two pages can never drift. If the roster can't be read,
+  // any name is accepted rather than locking agents out.
+  let ROSTER = [];
+  fetch('index.html', { cache: 'no-cache' }).then(r => r.text()).then(t => {
+    const m = t.match(/var FT_ROSTER = (\[[^\]]*\]);/);
+    if (m) ROSTER = JSON.parse(m[1]);
+  }).catch(() => {});
+  const rosterName = s => {
+    if (!ROSTER.length) return (s || '').trim();
+    const q = (s || '').trim().replace(/\s+/g, ' ').toLowerCase();
+    return ROSTER.find(n => n.toLowerCase() === q) || '';
+  };
+  // Saved names from before the roster rule are asked to re-pick once, starting the
+  // Monday the board is wiped (2026-09-28), so nobody loses a post they already made.
+  const needsPick = me => !me || (iso(today0()) >= '2026-09-28' && !rosterName(me.name));
+  function withMe(then){ if (!needsPick(state.me)) then(); else identity(then); }
   function identity(then){
     const m = state.me || {};
+    const start = rosterName(m.name) || rosterName(floorName()) || '';
     openModal('Who are you?', `<form novalidate>
       <p>Enter this once. It’s how listing agents and sitters reach each other.</p>
       <div class="f-err" hidden></div>
-      <div class="f-row"><label class="ft-cap" for="i-name">Your name</label><input class="f-input" id="i-name" name="name" value="${esc(m.name || floorName())}" autocomplete="name"></div>
+      <div class="f-row"><label class="ft-cap" for="i-name">Your name</label><input class="f-input" id="i-name" name="name" value="${esc(start)}" list="oh-roster" placeholder="Start typing, then pick your name" autocomplete="off">
+        <datalist id="oh-roster">${ROSTER.map(n => `<option value="${esc(n)}">`).join('')}</datalist></div>
       <div class="f-row"><label class="ft-cap" for="i-phone">Cell phone</label><input class="f-input" id="i-phone" name="phone" value="${esc(m.phone)}" autocomplete="tel" inputmode="tel"></div>
       <div class="f-row"><label class="ft-cap" for="i-email">Email <em>(optional)</em></label><input class="f-input" id="i-email" name="email" value="${esc(m.email)}" autocomplete="email" inputmode="email"></div>
       <div class="f-actions"><button class="btn-secondary btn-sm" type="button" data-act="cancel">Cancel</button><button class="btn-primary btn-sm" type="submit">Save</button></div>
     </form>`, fd => {
-      const name = fd.get('name').trim(), phone = fd.get('phone').trim(), email = fd.get('email').trim();
-      if (!name) return 'Add your name.';
+      const typed = fd.get('name').trim(), phone = fd.get('phone').trim(), email = fd.get('email').trim();
+      if (!typed) return 'Add your name.';
+      const name = rosterName(typed);
+      if (!name) return 'Pick your name from the office list as you type it. Not on the list? Email dana.coon@pittsburghmoves.com.';
       if (phone.replace(/\D/g,'').length < 10) return 'Add a 10-digit phone number so agents can reach you.';
       state.me = { name, phone, email }; save(); render();
       if (then) setTimeout(then, 0);
