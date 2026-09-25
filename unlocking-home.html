@@ -179,6 +179,13 @@
   .tf-office.home{background:var(--ink);color:var(--paper);border-color:var(--ink);font-weight:600;}
   .tf-visit.tf-nh{border-left-color:var(--blue-bright);}
   .tf-visit.tf-past{opacity:.45;}
+  .tf-office .when{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--onink);
+    background:var(--ink);align-self:flex-start;padding:1px 6px;margin-bottom:3px;}
+  .tf-office-nolink .addr{font-style:italic;}
+  .tf-visit-more{grid-column:1 / -1;border-top:1px solid var(--hair);padding-top:10px;margin-top:4px;font-size:14px;color:var(--ink-2);}
+  .tf-visit-more p{margin:0 0 6px;}
+  .tf-visit-more b{color:var(--ink);font-weight:600;}
+  .tf-visit-more .tf-btn{margin-top:4px;}
 
   /* Prizes */
   .tf-prizes{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;}
@@ -428,17 +435,18 @@
   <!-- VISITORS -->
   <h2 class="tf-h2">Leaders visiting our offices</h2>
   <p class="tf-sub">Executives from Compass International Holdings, Coldwell Banker's parent company, are visiting Pittsburgh offices this fall.
-    Every agent is welcome at any location. Exact times are still being confirmed and will be added here.</p>
+    Every agent is welcome at any location. Times for the later visits are still being confirmed and will be added here.</p>
   <div class="tf-visits" id="tf-visits">
-    <div class="tf-visit" data-date="2026-09-30">
-      <div class="d">Sep 30<small>Wednesday</small></div>
-      <div class="who">Will<small>National platform trainer, Compass International Holdings</small></div>
-      <div class="tf-offices"><a class="tf-office" href="https://www.google.com/maps/dir/?api=1&amp;destination=Coldwell%20Banker%20Realty%2C%209600%20Perry%20Hwy%2C%20Suite%20100%2C%20Pittsburgh%2C%20PA%2015237" target="_blank" rel="noopener"><b>North Hills</b><span class="addr">9600 Perry Hwy, Suite 100<br>Pittsburgh, PA 15237</span><span class="go">Directions ↗</span></a><a class="tf-office" href="https://www.google.com/maps/dir/?api=1&amp;destination=Coldwell%20Banker%20Realty%2C%20201%20S%20Highland%20Ave%2C%20Pittsburgh%2C%20PA%2015206" target="_blank" rel="noopener"><b>Shadyside</b><span class="addr">201 S Highland Ave<br>Pittsburgh, PA 15206</span><span class="go">Directions ↗</span></a><a class="tf-office" href="https://www.google.com/maps/dir/?api=1&amp;destination=Coldwell%20Banker%20Realty%2C%2017%20Brilliant%20Ave%2C%20Pittsburgh%2C%20PA%2015215" target="_blank" rel="noopener"><b>Fox Chapel</b><span class="addr">17 Brilliant Ave<br>Pittsburgh, PA 15215</span><span class="go">Directions ↗</span></a></div>
-    </div>
-    <div class="tf-visit" data-date="2026-10-01">
+    <div class="tf-visit tf-visit-lead" data-date="2026-10-01">
       <div class="d">Oct 1<small>Thursday</small></div>
-      <div class="who">Will<small>National platform trainer, Compass International Holdings</small></div>
-      <div class="tf-offices"><a class="tf-office" href="https://www.google.com/maps/dir/?api=1&amp;destination=Coldwell%20Banker%20Realty%2C%201630%20Washington%20Rd%2C%20Pittsburgh%2C%20PA%2015241" target="_blank" rel="noopener"><b>South Regional</b><span class="addr">1630 Washington Rd<br>Pittsburgh, PA 15241</span><span class="go">Directions ↗</span></a><a class="tf-office" href="https://www.google.com/maps/dir/?api=1&amp;destination=Coldwell%20Banker%20Realty%2C%206305%20University%20Blvd%2C%20Moon%20Township%2C%20PA%2015108" target="_blank" rel="noopener"><b>Airport</b><span class="addr">6305 University Blvd<br>Moon Township, PA 15108</span><span class="go">Directions ↗</span></a><a class="tf-office" href="https://www.google.com/maps/dir/?api=1&amp;destination=Coldwell%20Banker%20Realty%2C%2020510%20Route%2019%2C%20Suite%20101%2C%20Cranberry%20Township%2C%20PA%2016066" target="_blank" rel="noopener"><b>Cranberry Township</b><span class="addr">20510 Route 19, Suite 101<br>Cranberry Township, PA 16066</span><span class="go">Directions ↗</span></a></div>
+      <div class="who">Will Hardy<small>VP of Strategy &amp; Business Operations, Compass International Holdings</small></div
+      ><div class="tf-offices"><a class="tf-office" href="https://www.google.com/maps/dir/?api=1&amp;destination=Coldwell%20Banker%20Realty%2C%206305%20University%20Blvd%2C%20Moon%20Township%2C%20PA%2015108" target="_blank" rel="noopener"><span class="when">10:00 AM</span><b>Airport</b><span class="addr">6305 University Blvd<br>Moon Township, PA 15108</span><span class="go">Directions ↗</span></a><div class="tf-office tf-office-nolink"><span class="when">12:30 PM</span><b>City Center</b><span class="addr">Address coming soon</span></div><a class="tf-office" href="https://www.google.com/maps/dir/?api=1&amp;destination=Coldwell%20Banker%20Realty%2C%2017%20Brilliant%20Ave%2C%20Pittsburgh%2C%20PA%2015215" target="_blank" rel="noopener"><span class="when">2:00 PM</span><b>Fox Chapel</b><span class="addr">17 Brilliant Ave<br>Pittsburgh, PA 15215</span><span class="go">Directions ↗</span></a></div>
+      <div class="tf-visit-more">
+        <p><b>Pick one session.</b> Open to all agents in the Pittsburgh region, not just the offices he is visiting.</p>
+        <p><b>What Will is covering:</b> CB Curated, our signature marketing experience, including the three-phase marketing strategy he developed for Compass; and how to make the most of your past clients.</p>
+        <p><b>Bring your laptop or phone</b> so you can follow along in the Home Platform as he walks through best practices.</p>
+        <a class="tf-btn primary" href="https://forms.cloud.microsoft/r/tQNQqt4bGx" target="_blank" rel="noopener">RSVP to a session ↗</a>
+      </div>
     </div>
     <div class="tf-visit" data-date="2026-10-15">
       <div class="d">Oct 15<small>Thursday</small></div>
@@ -498,8 +506,7 @@
     function key(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
 
     add('2026-09-28','deadline','RSVP deadline for Oct 9','Last day to RSVP for the in-person kickoff. <a href="'+RSVP+'" target="_blank" rel="noopener">RSVP here</a>.',1);
-    add('2026-09-30','visit','Will: office visits','National platform trainer, Compass International Holdings. Visiting North Hills, Shadyside and Fox Chapel. Any agent is welcome. Time to be confirmed.',5);
-    add('2026-10-01','visit','Will: office visits','National platform trainer, Compass International Holdings. Visiting South Regional, Airport and Cranberry Township. Any agent is welcome. Time to be confirmed.',5);
+       add('2026-10-01','visit','Will Hardy: office sessions','VP of Strategy &amp; Business Operations, Compass International Holdings. Airport 10:00 AM, City Center 12:30 PM, Fox Chapel 2:00 PM. Pick one; open to all Pittsburgh agents. Covering CB Curated and making the most of past clients. Bring your laptop or phone. <a href="https://forms.cloud.microsoft/r/tQNQqt4bGx" target="_blank" rel="noopener">RSVP to a session</a>.',5);
     add('2026-10-09','person','In-person kickoff','Doors 9:00 AM, program 10:00 AM to 1:00 PM. '+HOTEL+'. <a href="'+RSVP+'" target="_blank" rel="noopener">RSVP</a>.',2);
     add('2026-10-15','visit','Rory Golod: office visits','President of Growth, Compass International Holdings. Visiting South Regional and North Hills. Any agent is welcome. Time to be confirmed.',5);
     add('2026-11-04','visit','Ashley: office visits','Head of Home Platform training, Compass International Holdings. Visiting East Regional, Shadyside and North Hills. Any agent is welcome. Time to be confirmed.',5);
