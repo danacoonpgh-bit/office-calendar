@@ -16,6 +16,7 @@
     --sea:#0d2b4e;
     --gold:#9a6f08;
     --teal:#0F6F62;
+    --ferry:#A8412A;
     --ink:#131517;
     --ink-2:#4c535b;
     --ink-3:#858c95;
@@ -34,7 +35,7 @@
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
       --blue:#6fb0f0; --blue-bright:#8cc4f8; --blue-soft:#1d4568;
-      --sea:#2f6094; --gold:#d9a827; --teal:#2f9d8d;
+      --sea:#2f6094; --gold:#d9a827; --teal:#2f9d8d; --ferry:#E07A5F;
       --ink:#e9edf2; --ink-2:#a8b1bb; --ink-3:#7a828c;
       --paper:#0f1216; --paper-2:#171b21; --paper-3:#1f242b;
       --rule:#e9edf2; --hair:#2d333b; --onink:#0f1216;
@@ -43,7 +44,7 @@
   }
   :root[data-theme="dark"]{
     --blue:#6fb0f0; --blue-bright:#8cc4f8; --blue-soft:#1d4568;
-    --sea:#2f6094; --gold:#d9a827; --teal:#2f9d8d;
+    --sea:#2f6094; --gold:#d9a827; --teal:#2f9d8d; --ferry:#E07A5F;
     --ink:#e9edf2; --ink-2:#a8b1bb; --ink-3:#7a828c;
     --paper:#0f1216; --paper-2:#171b21; --paper-3:#1f242b;
     --rule:#e9edf2; --hair:#2d333b; --onink:#0f1216;
@@ -113,6 +114,7 @@
   .cat-OTHER{background:var(--ink-2);}
   .cat-CBR_MARKETING{background:var(--gold);}
   .cat-HOME_PLATFORM{background:var(--teal);}
+  .cat-UNLOCKING_HOME{background:var(--ferry);}
 
   /* ---- Month grid ---- */
   .cal-grid{background:var(--paper-2);border:2px solid var(--rule);overflow:hidden;}
@@ -165,6 +167,8 @@
     text-transform:uppercase;color:var(--onink);background:var(--blue-bright);border:2px solid var(--blue-bright);
     text-decoration:none;padding:7px 13px;}
   .event-link-btn:hover{background:var(--blue);border-color:var(--blue);}
+  .event-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+  .event-links .event-link-btn{margin-top:0;}
   .agenda-empty{color:var(--ink-3);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
     text-align:center;padding:44px 10px;}
 
@@ -540,6 +544,7 @@
     MEETING:   { label: "Meeting",      cls: "cat-MEETING"   },
     CBR_MARKETING: { label: "CB Marketing Workshop", cls: "cat-CBR_MARKETING" },
     HOME_PLATFORM: { label: "HOME Platform Workshop", cls: "cat-HOME_PLATFORM" },
+    UNLOCKING_HOME: { label: "Tom Ferry Coaching", cls: "cat-UNLOCKING_HOME" },
     OTHER:     { label: "Other",        cls: "cat-OTHER"     }
   };
   // Legacy alias: anything still tagged WORKSHOP is a CB marketing session.
@@ -860,6 +865,22 @@
         ? "Register ↗"
         : (/teams\.microsoft|zoom\.us|meet\.google/i.test(ev.link) ? "Join Meeting ↗" : "Open Link ↗");
       main.appendChild(a);
+    }
+    // Optional labeled buttons, e.g. [{ "label": "RSVP", "url": "..." }, { "label": "Directions", "url": "..." }]
+    if (ev.links && ev.links.length){
+      var row = document.createElement("div");
+      row.className = "event-links";
+      ev.links.forEach(function(l){
+        if (!l || !l.url) return;
+        var b = document.createElement("a");
+        b.className = "event-link-btn";
+        b.href = l.url;
+        b.target = "_blank";
+        b.rel = "noopener noreferrer";
+        b.textContent = (l.label || "Open Link") + " ↗";
+        row.appendChild(b);
+      });
+      main.appendChild(row);
     }
     card.appendChild(main);
     return card;
