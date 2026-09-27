@@ -240,7 +240,7 @@ def dump(days: dict[str, list[dict]]) -> str:
         for j, e in enumerate(entries):
             fields = ", ".join(
                 f"{json.dumps(k)}: {json.dumps(e[k], ensure_ascii=False)}"
-                for k in ("id", "title", "time", "category", "link", "notes")
+                for k in ("id", "title", "time", "category", "link", "notes", "links")
                 if k in e
             )
             lines.append(f"    {{ {fields} }}" + ("," if j < len(entries) - 1 else ""))
