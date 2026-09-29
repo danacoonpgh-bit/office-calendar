@@ -6,7 +6,7 @@
 <title>Unlocking Home</title>
 <meta name="description" content="Unlocking Home: seven weeks of free Tom Ferry coaching for Coldwell Banker Realty Pittsburgh agents, Oct 5 to Nov 20. Dates, RSVP, prizes and office visits.">
 <meta property="og:title" content="Unlocking Home: Tom Ferry Coaching">
-<meta property="og:description" content="Seven weeks of free Tom Ferry coaching, Oct 5 to Nov 20. RSVP for the Oct 9 kickoff by Sept 28.">
+<meta property="og:description" content="Seven weeks of free Tom Ferry coaching, Oct 5 to Nov 20. In-person kickoff Oct 9 in Cranberry.">
 <meta property="og:image" content="https://tomferry.com/assets/brand/2025/tom-thumbnail-3.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -268,10 +268,6 @@
     <span class="tf-activate-flag">Required</span>
     <p><b>You must be activated on the Home Platform to sign up for the Tom Ferry coaching.</b>
       Not activated yet? Reach out to your Agent Development Specialist or office staff to get activated.</p>
-    <div class="tf-rsvp-big">
-      <div class="tf-rsvp-text">RSVP for the Tom Ferry kickoff by <span>Monday, September 28</span></div>
-      <a class="tf-rsvp-btn" href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=IDN0KF5kQEiBVLS6vUEWLGxtOnNIYHtGpc3VEc_fqKpUOUpFN09COEhJMFhOUDNDSVk3QjNNMEhWTy4u&amp;route=shorturl" target="_blank" rel="noopener">RSVP now ↗</a>
-    </div>
   </div>
 
   <header class="tf-mast">
@@ -336,10 +332,8 @@
         <dt>Doors</dt><dd>9:00 AM</dd>
         <dt>Program</dt><dd>10:00 AM to 1:00 PM</dd>
         <dt>Where</dt><dd>DoubleTree by Hilton Pittsburgh, Cranberry<br>910 Sheraton Drive, Mars, PA 16046</dd>
-        <dt>RSVP by</dt><dd>Monday, September 28</dd>
       </dl>
       <div class="tf-actions">
-        <a class="tf-btn primary" href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=IDN0KF5kQEiBVLS6vUEWLGxtOnNIYHtGpc3VEc_fqKpUOUpFN09COEhJMFhOUDNDSVk3QjNNMEhWTy4u&amp;route=shorturl" target="_blank" rel="noopener">RSVP ↗</a>
         <a class="tf-btn" href="https://maps.google.com/?q=910+Sheraton+Drive+Mars+PA+16046" target="_blank" rel="noopener">Directions ↗</a>
       </div>
     </article>
@@ -504,15 +498,14 @@
   // Calendar. Weekly sessions are generated from the program rules (Oct 5 to Nov 20);
   // one-off events are listed by hand below.
   (function(){
-    var RSVP='https://forms.cloud.microsoft/pages/responsepage.aspx?id=IDN0KF5kQEiBVLS6vUEWLGxtOnNIYHtGpc3VEc_fqKpUOUpFN09COEhJMFhOUDNDSVk3QjNNMEhWTy4u&route=shorturl';
     var HOTEL='DoubleTree by Hilton Pittsburgh, Cranberry, 910 Sheraton Drive, Mars';
     var ev={};
     function add(date,type,title,note,sort){(ev[date]=ev[date]||[]).push({type:type,title:title,note:note||'',sort:sort==null?50:sort});}
     function key(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
 
-    add('2026-09-28','deadline','RSVP deadline for Oct 9','Last day to RSVP for the in-person kickoff. <a href="'+RSVP+'" target="_blank" rel="noopener">RSVP here</a>.',1);
+    add('2026-09-28','deadline','RSVP deadline for Oct 9','RSVP for the in-person kickoff is now closed.',1);
        add('2026-10-01','visit','Will Hardy: office sessions','VP of Strategy &amp; Business Operations, Compass International Holdings. Airport 10:00 AM, City Center (Shadyside) 12:30 PM, Fox Chapel 2:30 PM. Pick one; open to all Pittsburgh agents. Covering CB Curated and making the most of past clients. Bring your laptop or phone. <a href="https://forms.cloud.microsoft/r/tQNQqt4bGx" target="_blank" rel="noopener">RSVP to a session</a>.',5);
-    add('2026-10-09','person','In-person kickoff','Doors 9:00 AM, program 10:00 AM to 1:00 PM. '+HOTEL+'. <a href="'+RSVP+'" target="_blank" rel="noopener">RSVP</a>.',2);
+    add('2026-10-09','person','In-person kickoff','Doors 9:00 AM, program 10:00 AM to 1:00 PM. '+HOTEL+'. RSVP closed.',2);
     add('2026-10-15','visit','Rory Golod: office visits','President of Growth, Compass International Holdings. Visiting South Regional and North Hills. Any agent is welcome. Time to be confirmed.',5);
     add('2026-11-04','visit','Ashley Donat: office visits','SVP of Coaching &amp; Agent Business Growth, Compass International Holdings. Visiting East Regional, City Center (Shadyside) and North Hills. Any agent is welcome. Time to be confirmed.',5);
     add('2026-11-05','visit','Ashley Donat: office visits','SVP of Coaching &amp; Agent Business Growth, Compass International Holdings. Visiting South Regional, Airport and Cranberry Township. Any agent is welcome. Time to be confirmed.',5);
