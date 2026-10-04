@@ -390,6 +390,8 @@
     <strong>Watch parties at the office</strong>
     <p>You can join the Monday coaching and the Wednesday workshops from the office with other agents, and get help in the room while you work in Home.</p>
     <p>The first Monday session, <b>October 5 at 10:00 AM</b>, is on Teams or at an in-office watch party. Ask your office about watch party times for the rest of the program.</p>
+    <p><b>Join on Zoom.</b> The Monday coaching sessions (Oct 12, 19 and 26) and the Wednesday workshops (Oct 7 to Nov 18) all use one Zoom room, at 10:00 AM or 3:00 PM Eastern: <a href="https://tomferry.zoom.us/j/91471739254" target="_blank" rel="noopener">tomferry.zoom.us/j/91471739254</a>. Bookmark it. The link comes from the Coldwell Banker calendar invites.</p>
+    <p style="margin-top:6px"><a class="tf-btn primary" href="https://tomferry.zoom.us/j/91471739254" target="_blank" rel="noopener">Join on Zoom ↗</a></p>
     <p><b>Add the sessions to your calendar.</b> Coldwell Banker Realty emailed "Add to Calendar" links on Oct 1 (subject: Join Us for "Unlocking Home"). Pick 10 AM or 3 PM for the Mondays starting Oct 12 and for the Wednesdays starting Oct 7. November Monday invites will come in a few weeks.</p>
   </div>
 
@@ -503,6 +505,7 @@
   // one-off events are listed by hand below.
   (function(){
     var HOTEL='DoubleTree by Hilton Pittsburgh, Cranberry, 910 Sheraton Drive, Mars';
+    var ZOOM='<a href="https://tomferry.zoom.us/j/91471739254" target="_blank" rel="noopener">Join on Zoom</a> (same room for every session).';
     var ev={};
     function add(date,type,title,note,sort){(ev[date]=ev[date]||[]).push({type:type,title:title,note:note||'',sort:sort==null?50:sort});}
     function key(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
@@ -521,8 +524,8 @@
     var start=new Date(2026,9,5), end=new Date(2026,10,20);
     for(var d=new Date(start); d<=end; d.setDate(d.getDate()+1)){
       var k=key(d), dow=d.getDay(), wk=Math.floor((d-start)/(7*864e5))+1;
-      if(dow===1) add(k,'virtual','Tom Ferry coaching','Week '+wk+'. 10:00 AM or 3:00 PM. Virtual, or watch with the group at the office. Weekly $1,000 prizes drawn at the end.',10);
-      if(dow===3) add(k,'virtual','Home Platform workshop','Week '+wk+'. 10:00 AM or 3:00 PM. Virtual, or watch with the group at the office.',10);
+      if(dow===1) add(k,'virtual','Tom Ferry coaching','Week '+wk+'. 10:00 AM or 3:00 PM. Virtual, or watch with the group at the office. Weekly $1,000 prizes drawn at the end. '+(k>='2026-10-12'&&k<='2026-10-26'?ZOOM:(k>'2026-10-26'?'Coldwell Banker will send the November Zoom invites in a few weeks.':'')),10);
+      if(dow===3) add(k,'virtual','Home Platform workshop','Week '+wk+'. 10:00 AM or 3:00 PM. Virtual, or watch with the group at the office. '+ZOOM,10);
       if(dow===4||dow===5) add(k,'virtual','Group mastermind (optional)','Week '+wk+'. 10:00 AM or 3:00 PM, Thursday or Friday. Pick one.',20);
     }
     add('2026-10-05','virtual','Unlocking Home launches','Day one of the seven-week program. The 10:00 AM session is on Teams or at an in-office watch party.',0);
