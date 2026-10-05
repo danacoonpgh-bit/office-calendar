@@ -388,9 +388,8 @@
   </div>
 
   <div class="tf-watch">
-    <strong>Watch parties at the office</strong>
-    <p>You can join the Monday coaching and the Wednesday workshops from the office with other agents, and get help in the room while you work in Home.</p>
-    <p>The first Monday session is <b>October 12</b>, at 10:00 AM or 3:00 PM. Ask your office about watch party times.</p>
+    <strong>Join the live sessions</strong>
+    <p>The first Monday session is <b>October 12</b>, at 10:00 AM or 3:00 PM.</p>
     <p><b>Join on Zoom.</b> The Monday coaching sessions (Oct 12 to Nov 16) and the Wednesday workshops (Oct 7 to Nov 18) all use one Zoom room, at 10:00 AM or 3:00 PM Eastern: <a href="https://tomferry.zoom.us/j/91471739254" target="_blank" rel="noopener">tomferry.zoom.us/j/91471739254</a>. Bookmark it. The link comes from the Coldwell Banker calendar invites.</p>
     <p style="margin-top:6px"><a class="tf-btn primary" href="https://tomferry.zoom.us/j/91471739254" target="_blank" rel="noopener">Join on Zoom ↗</a></p>
     <p><b>Add the sessions to your calendar.</b> Coldwell Banker Realty emailed "Add to Calendar" links on Oct 1 (subject: Join Us for "Unlocking Home"). Pick 10 AM or 3 PM for the Mondays starting Oct 12 and for the Wednesdays starting Oct 7. November Monday invites will come in a few weeks.</p>
@@ -398,7 +397,7 @@
 
   <!-- WEEK BY WEEK -->
   <h2 class="tf-h2">Week by week</h2>
-  <p class="tf-sub">Every session runs twice that day, at <b>10:00 AM</b> and again at <b>3:00 PM</b> Eastern. Pick either one. Join from your computer or phone, or come to the office and watch with the group.</p>
+  <p class="tf-sub">Every session runs twice that day, at <b>10:00 AM</b> and again at <b>3:00 PM</b> Eastern. Pick either one. Join from your computer or phone.</p>
   <div class="tf-table-wrap">
     <table class="tf-table" id="tf-weeks">
       <thead><tr><th>Week</th><th>Mon coaching<span class="tf-th-time">10 AM · 3 PM</span></th><th>Wed workshop<span class="tf-th-time">10 AM · 3 PM</span></th><th>Thu / Fri mastermind<span class="tf-th-time">10 AM · 3 PM</span></th><th>Also</th></tr></thead>
@@ -525,8 +524,8 @@
     var start=new Date(2026,9,5), end=new Date(2026,10,20);
     for(var d=new Date(start); d<=end; d.setDate(d.getDate()+1)){
       var k=key(d), dow=d.getDay(), wk=Math.floor((d-start)/(7*864e5))+1;
-      if(dow===1&&k!=='2026-10-05') add(k,'virtual','Tom Ferry coaching','Week '+wk+'. 10:00 AM or 3:00 PM. Virtual, or watch with the group at the office. 5 attendees win $1,000 at each session. '+ZOOM,10);
-      if(dow===3) add(k,'virtual','Home Platform workshop','Week '+wk+'. 10:00 AM or 3:00 PM. Virtual, or watch with the group at the office. '+ZOOM,10);
+      if(dow===1&&k!=='2026-10-05') add(k,'virtual','Tom Ferry coaching','Week '+wk+'. 10:00 AM or 3:00 PM. Virtual. 5 attendees win $1,000 at each session. '+ZOOM,10);
+      if(dow===3) add(k,'virtual','Home Platform workshop','Week '+wk+'. 10:00 AM or 3:00 PM. Virtual. '+ZOOM,10);
       if(dow===4||dow===5) add(k,'virtual','Group mastermind (optional)','Week '+wk+'. 10:00 AM or 3:00 PM, Thursday or Friday. Pick one. Join link comes in the Saturday look-ahead email.',20);
     }
     add('2026-10-07','virtual','Unlocking Home launches','Day one of the seven-week program, starting with the first Home Platform workshop at 10:00 AM or 3:00 PM.',0);
