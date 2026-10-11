@@ -628,7 +628,15 @@
       var manualDays = manual.days || manual;
       Object.keys(manualDays).forEach(function(k){
         if (!Array.isArray(manualDays[k])) return;
-        days[k] = (days[k] || []).concat(manualDays[k]);
+        var seen = {};
+        (days[k] || []).forEach(function(e){
+          if (e.id) seen[e.id] = 1;
+          seen[(e.title || "") + "|" + (e.time || "")] = 1;
+        });
+        var extra = manualDays[k].filter(function(e){
+          return !(e.id && seen[e.id]) && !seen[(e.title || "") + "|" + (e.time || "")];
+        });
+        days[k] = (days[k] || []).concat(extra);
       });
       state.days = days;
       state.generated = auto.generated || null;
