@@ -374,7 +374,6 @@
   ],
   "2026-11-02": [
     { "id": "uh-1102-coaching", "title": "Tom Ferry Coaching (Week 5)", "time": "10:00 AM or 3:00 PM", "category": "UNLOCKING_HOME", "notes": "Unlocking Home coaching with Tom Ferry International, virtual. Pick either time. Join links come in Coldwell Banker's Saturday look-ahead email. Five attendees win $1,000 at each Monday session; to qualify, attend at least three Monday sessions and use Home.", "links": [{"label": "Details", "url": "https://danacoonpgh-bit.github.io/office-calendar/unlocking-home.html"}] },
-    { "id": "io-1102-panel", "title": "Agent Panel", "time": "1:00–2:00 PM", "category": "TRAINING", "link": "https://teams.microsoft.com/meet/238737558835899?p=Lg51oNehLFjCSDmkwB", "notes": "Monthly agent panel (Teams)." },
     { "id": "hp-1102-seller-system", "title": "Seller System", "time": "12:00–12:45 PM", "category": "HOME_PLATFORM", "link": "https://events.teams.microsoft.com/event/a676dbc9-f484-441d-884b-0335d647eca5@28743320-645e-4840-8154-b4babd41162c?source=copyLinkOneEventsShareDialog", "notes": "HOME Platform live workshop (virtual via Teams). Click Register to sign up." },
     { "id": "hp-1102-seller-system-pm", "title": "Seller System", "time": "5:00–5:45 PM", "category": "HOME_PLATFORM", "link": "https://events.teams.microsoft.com/event/c193165c-8329-49a7-bc51-5f5c044ac3a7@28743320-645e-4840-8154-b4babd41162c", "notes": "HOME Platform live workshop (virtual via Teams). Click Register to sign up." }
   ],
@@ -438,9 +437,6 @@
   ],
   "2026-11-25": [
     { "id": "ws-1125-social-media-mastermind", "title": "Social Media Mastermind", "time": "1:00–2:00 PM", "category": "CBR_MARKETING", "link": "https://events.teams.microsoft.com/event/c1bea840-0927-4f51-9bd4-818abe5ce809@28743320-645e-4840-8154-b4babd41162c", "notes": "CBR Marketing Workshop (virtual via Teams). Live Q&A with the social media team. Have your questions answered by the social media experts! Click the link to register (Teams)." }
-  ],
-  "2026-12-07": [
-    { "id": "io-1207-panel", "title": "Agent Panel", "time": "1:00–2:00 PM", "category": "TRAINING", "link": "https://teams.microsoft.com/meet/238737558835899?p=Lg51oNehLFjCSDmkwB", "notes": "Monthly agent panel (Teams)." }
   ],
   "2026-12-08": [
     { "id": "io-1208-sales", "title": "North Hills Sales Meeting", "time": "10:00 AM", "category": "MEETING", "link": "https://teams.microsoft.com/meet/22928830154684?p=SXqfIvrY5n6UdM8moJ", "notes": "In person at the North Hills office, with a Teams option." }
