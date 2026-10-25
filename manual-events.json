@@ -418,7 +418,8 @@
     { "id": "uh-1116-coaching", "title": "Tom Ferry Coaching (Week 7)", "time": "10:00 AM or 3:00 PM", "category": "UNLOCKING_HOME", "notes": "Unlocking Home coaching with Tom Ferry International, virtual. Pick either time. Join links come in Coldwell Banker's Saturday look-ahead email. Five attendees win $1,000 at each Monday session; to qualify, attend at least three Monday sessions and use Home.", "links": [{"label": "Details", "url": "https://danacoonpgh-bit.github.io/office-calendar/unlocking-home.html"}] }
   ],
   "2026-11-17": [
-    { "id": "io-1117-all-pittsburgh", "title": "All Pittsburgh Meeting", "time": "10:00 AM", "category": "MEETING", "link": "https://cbu.zoom.us/j/98182607374", "notes": "Region-wide meeting (Zoom). Replaces the North Hills sales meeting this week." }
+    { "id": "io-1117-all-pittsburgh", "title": "All Pittsburgh Meeting", "time": "10:00 AM", "category": "MEETING", "link": "https://cbu.zoom.us/j/98182607374", "notes": "Region-wide meeting (Zoom). Replaces the North Hills sales meeting this week." },
+    { "id": "io-1117-friendsgiving", "title": "Friendsgiving", "time": "12:00 PM", "category": "OTHER", "link": "", "notes": "Office Friendsgiving. More details coming soon." }
   ],
   "2026-11-18": [
     { "id": "uh-1118-workshop", "title": "Tom Ferry Home Platform Workshop (Week 7)", "time": "10:00 AM or 3:00 PM", "category": "UNLOCKING_HOME", "notes": "Unlocking Home hands-on workshop on using the Home Platform, led by Coldwell Banker's professional development team. Virtual, pick either time. Join on Zoom (one link for every session).", "links": [{"label": "Join on Zoom", "url": "https://tomferry.zoom.us/j/91471739254"}, {"label": "Details", "url": "https://danacoonpgh-bit.github.io/office-calendar/unlocking-home.html"}] },
