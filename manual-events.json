@@ -407,6 +407,7 @@
   ],
   "2026-11-12": [
     { "id": "uh-1112-mastermind", "title": "Tom Ferry Group Mastermind (Week 6, optional)", "time": "10:00 AM or 3:00 PM", "category": "UNLOCKING_HOME", "notes": "Optional Unlocking Home mastermind: review what you learned, share wins, stay on track. Runs Thursday and Friday, pick one day and one time. Join links come in the Saturday look-ahead email.", "links": [{"label": "Sign up", "url": "https://url.usb.m.mimecastprotect.com/s/_LtIC3Ym08c4NYM9lsQtZEsQWokZ?domain=page.tomferry.com"}, {"label": "Details", "url": "https://danacoonpgh-bit.github.io/office-calendar/unlocking-home.html"}] },
+    { "id": "io-1112-cb-curated-mls", "title": "CB Curated and MLS Rules with John Perry", "time": "11:00–11:30 AM", "category": "TRAINING", "link": "https://teams.microsoft.com/meet/2457564436965187?p=NSBGr9Ou39HcxTogZN", "notes": "John Perry walks through the do's and don'ts of CB Curated and the MLS rules that go with it. Virtual via Teams." },
     { "id": "ws-1112-content-impact-s", "title": "Content with Impact the S.O.L.D Method", "time": "1:00–2:00 PM", "category": "CBR_MARKETING", "link": "https://events.teams.microsoft.com/event/73edfc6b-9942-4514-996e-a3b0cb8bb71d@28743320-645e-4840-8154-b4babd41162c", "notes": "CBR Marketing Workshop (virtual via Teams). Learn how to create social media content that captures attention, builds your brand, and drives real results. This class shows agents how to make impactful posts that connect with clients and stand out online. Click the link to register (Teams)." }
   ],
   "2026-11-13": [
@@ -418,7 +419,7 @@
   ],
   "2026-11-17": [
     { "id": "io-1117-all-pittsburgh", "title": "All Pittsburgh Meeting", "time": "10:00 AM", "category": "MEETING", "link": "https://cbu.zoom.us/j/98182607374", "notes": "Region-wide meeting (Zoom). Replaces the North Hills sales meeting this week." },
-    { "id": "io-1117-friendsgiving", "title": "Friendsgiving", "time": "12:00 PM", "category": "OTHER", "link": "", "notes": "Office Friendsgiving. More details coming soon." }
+    { "id": "io-1117-friendsgiving", "title": "Friendsgiving", "time": "11:30 AM–1:00 PM", "category": "OTHER", "link": "https://script.google.com/macros/s/AKfycbz0xu-FNeg_xIZui0CPQXoRcwXEReDbz5LKW02fASaHa-PoXV57lcwri25dNNJGnuEg/exec", "notes": "Office Friendsgiving at 9600 Perry Hwy. Keystone Closing brings the turkey. Click the link to pick your dish, or choose Just coming to eat and bring $10. Please sign up by Fri 11/13." }
   ],
   "2026-11-18": [
     { "id": "uh-1118-workshop", "title": "Tom Ferry Home Platform Workshop (Week 7)", "time": "10:00 AM or 3:00 PM", "category": "UNLOCKING_HOME", "notes": "Unlocking Home hands-on workshop on using the Home Platform, led by Coldwell Banker's professional development team. Virtual, pick either time. Join on Zoom (one link for every session).", "links": [{"label": "Join on Zoom", "url": "https://tomferry.zoom.us/j/91471739254"}, {"label": "Details", "url": "https://danacoonpgh-bit.github.io/office-calendar/unlocking-home.html"}] },
