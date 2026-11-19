@@ -443,11 +443,17 @@
   "2026-11-25": [
     { "id": "ws-1125-social-media-mastermind", "title": "Social Media Mastermind", "time": "1:00–2:00 PM", "category": "CBR_MARKETING", "link": "https://events.teams.microsoft.com/event/c1bea840-0927-4f51-9bd4-818abe5ce809@28743320-645e-4840-8154-b4babd41162c", "notes": "CBR Marketing Workshop (virtual via Teams). Live Q&A with the social media team. Have your questions answered by the social media experts! Click the link to register (Teams)." }
   ],
+  "2026-12-02": [
+    { "id": "ws-1202-blueprint-benefits-luxury", "title": "THE BLUEPRINT & BENEFITS OF YOUR LUXURY CERTIFICATION", "time": "1:00–2:00 PM", "category": "CBR_MARKETING", "link": "https://events.teams.microsoft.com/event/c00e2204-ea21-4c08-9de7-d812fe69d3df@28743320-645e-4840-8154-b4babd41162c?source=copyLinkOneEventsShareDialog", "notes": "CBR Marketing Workshop (virtual via Teams). Unlock the Benefits of Global Luxury Certification Discover why more agents are pursuing Global Luxury certification and how it can help distinguish you in today's marketplace. Join us to explore the advantages, opportunities, and resources available to certified Luxury Property Specialists, along with practical ways to bring your credentials into client conversations, listing presentations and ev… Click the link to register (Teams)." }
+  ],
   "2026-12-08": [
     { "id": "io-1208-sales", "title": "North Hills Sales Meeting", "time": "10:00 AM", "category": "MEETING", "link": "https://teams.microsoft.com/meet/22928830154684?p=SXqfIvrY5n6UdM8moJ", "notes": "In person at the North Hills office, with a Teams option." }
   ],
   "2026-12-15": [
     { "id": "io-1215-all-pittsburgh", "title": "All Pittsburgh Meeting", "time": "10:00 AM", "category": "MEETING", "link": "https://cbu.zoom.us/j/98182607374", "notes": "Region-wide meeting (Zoom). Replaces the North Hills sales meeting this week." }
+  ],
+  "2026-12-16": [
+    { "id": "ws-1216-social-media-mastermind", "title": "Social Media Mastermind", "time": "1:00–2:00 PM", "category": "CBR_MARKETING", "link": "https://events.teams.microsoft.com/event/c5e4bdc1-b5ab-4986-b35c-49c15def7dd9@28743320-645e-4840-8154-b4babd41162c", "notes": "CBR Marketing Workshop (virtual via Teams). Live Q&A with the social media team. Have your questions answered by the social media experts! Click the link to register (Teams)." }
   ],
   "2026-12-29": [
     { "id": "io-1229-sales", "title": "North Hills Sales Meeting", "time": "10:00 AM", "category": "MEETING", "link": "https://teams.microsoft.com/meet/28664551904578?p=bGNa3J8a70BVjgCKUI", "notes": "In person at the North Hills office, with a Teams option." }
